@@ -20,6 +20,7 @@ public class Person implements Cloneable {
 		try {
 			Person cloned = (Person) super.clone();
 			cloned.address = new Address(this.address.street, this.address.city);
+			// deep clone
 			return cloned;
 		} catch (CloneNotSupportedException e) {
 			System.out.println("복제할 수 없는 객체입니다.");
@@ -29,9 +30,12 @@ public class Person implements Cloneable {
 	}
 
 	public boolean equals(Object obj) {
-		return this.name == ((Person) obj).name && this.age == ((Person) obj).age
-				&& ((Person) obj).address.equals(this.address);
+		if (obj != null && obj instanceof Person) { // 널 체크 및 instanceof 체크
+			return this.name.equals(((Person) obj).name) && this.age == ((Person) obj).age
+					&& ((Person) obj).address.equals(this.address);
+			// String 비교는 equals()
+		} else
+			return false;
 	}
 
-	
 }

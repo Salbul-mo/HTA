@@ -14,6 +14,10 @@ public class Address {
 	}
 
 	public boolean equals(Object obj) {
-		return this.city == ((Address)obj).city && this.street ==((Address)obj).street;
+		if (obj != null && obj instanceof Address) {// 널체크 및 instanceof 체크
+			return this.city.equals(((Address) obj).city) && this.street.equals(((Address) obj).street);
+			// String 은 equals() 쓴다.
+		} else
+			return false;
 	}
 }
