@@ -56,6 +56,9 @@ public class HashMap_Generics {
 		// 출력 방법 4. get(key) : key에 해당하는 value를 출력 - 가장 많이 사용
 		System.out.println(hm.get("woman"));// 재미있니
 		System.out.println(hm.get("city"));// Busan
+		
+		System.out.println(hm.get("Woman"));// null -> 키값은 대소문자 구분한다.
+		
 
 		// 출력 방법 5.
 		System.out.println("======================");

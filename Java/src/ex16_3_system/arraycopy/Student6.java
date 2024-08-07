@@ -1,8 +1,7 @@
-package ex15_1_arraylist;
+package ex16_3_system.arraycopy;
 
-import java.util.ArrayList;
 
-public class Student5 {
+public class Student6 implements Comparable<Student6> {
 
 	String name;
 
@@ -10,7 +9,7 @@ public class Student5 {
 	// [0]-국어 [1]-영어 [2]-수학
 	static int[] subject = new int[3];
 
-	Student5(String name, int kor, int eng, int math) {
+	Student6(String name, int kor, int eng, int math) {
 		this.name = name;
 		score[0] = kor;
 		score[1] = eng;
@@ -32,19 +31,7 @@ public class Student5 {
 		return Math.round((getTotal() / 3f) * 10) / 10.0f;
 	}
 
-	public static void sort(ArrayList<Student5> as) {
-		for (int i = 0; i < as.size() - 1; i++) { // < 오름차순 / > 내림차순
-			for (int j = i + 1; j < as.size(); j++) {
-				if (as.get(i).getTotal() < as.get(j).getTotal()) {
-					// ArrayList 의 타입이 Student5 라서 굳이 다운 캐스팅 안해도 된다.
-					Student5 temp = as.get(i);
-					as.set(i, as.get(j));
-					as.set(j, temp);
-				}
-			}
-		}
 
-	}
 
 	public String toString() {
 		String score = "";
@@ -52,6 +39,18 @@ public class Student5 {
 			score += "\t" + i;
 		}
 		return this.name + score + "\t" + getTotal() + "\t" + getAverage();
+
+	}
+
+	@Override
+	public int compareTo(Student6 o) {
+		if (getTotal() < o.getTotal()) {
+			return -1;
+		} else if (getTotal() == o.getTotal()) {
+			return this.name.compareTo(o.name);
+		} else {
+			return 1;
+		}
 
 	}
 }

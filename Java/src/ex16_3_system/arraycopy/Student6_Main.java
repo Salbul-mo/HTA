@@ -1,13 +1,12 @@
-package ex15_1_arraylist;
+package ex16_3_system.arraycopy;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
-public class Student5_Main {
+public class Student6_Main {
 	public static void main(String args[]) {
-		ArrayList<Student5> as = new ArrayList<Student5>();
+		ArrayList<Student6> as = new ArrayList<Student6>();
 		input(as);
-		Student5.sort(as);
+		Collections.sort(as);
 		print(as);
 	}
 
@@ -27,7 +26,7 @@ public class Student5_Main {
 		}
 	}
 
-	private static void input(ArrayList<Student5> as) {
+	private static void input(ArrayList<Student6> as) {
 
 		Scanner sc = new Scanner(System.in);
 		while (true) {
@@ -39,7 +38,7 @@ public class Student5_Main {
 			int eng = inputNumber(sc, 0, 100);
 			System.out.print("수학 점수를 입력하세요(0~100)>");
 			int math = inputNumber(sc, 0, 100);
-			as.add(new Student5(name, kor, eng, math));
+			as.add(new Student6(name, kor, eng, math));
 			System.out.print("계속 입력하시겠습니까?(q 또는 Q이면 종료 그외는 계속)");
 			String str = sc.nextLine();
 			if (str.equalsIgnoreCase("q")) {
@@ -48,14 +47,9 @@ public class Student5_Main {
 		}
 		sc.close();
 	}
-	/* int cnt = 0;
-	 * 		try(Scanner sc = new Scanner(System.in)) {
-	 * 			System.out.println("국어"); 
-	 * 			int kor = inputNumber(sc,0,100);
-	 * catch 문에서 sc.close() 해야하나?
-	 */
 
-	public static void print(ArrayList<Student5> as) {
+
+	public static void print(ArrayList<Student6> as) {
 
 		System.out.println("=========== 학생별 / 과목별 총점 구하기 ===========");
 		System.out.println("\t국어\t영어\t수학\t총점\t평균");
@@ -65,7 +59,7 @@ public class Student5_Main {
 		}
 
 		System.out.print(String.format("%48s", "\n총점").replace(" ", "="));
-		for (int sub : Student5.subject) {
+		for (int sub : Student6.subject) {
 			System.out.print("\t" + sub);
 		}
 		System.out.println();
