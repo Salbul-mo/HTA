@@ -1,4 +1,4 @@
-package ex15_1_LinkedList;
+package ex15_1_linkedList;
 
 import java.util.LinkedList;
 

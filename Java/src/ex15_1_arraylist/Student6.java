@@ -1,4 +1,4 @@
-package ex16_3_system.arraycopy;
+package ex15_1_arraylist;
 
 public class Student6 implements Comparable<Student6> {
 
@@ -39,15 +39,15 @@ public class Student6 implements Comparable<Student6> {
 
 	}
 
+	// 자바 7 이상에서는 Integer.compare() 를 사용하여 간결하게 작성할 수 있다.
+	//public static int compare(int x, int y) {
+	//Integer.compare(int , int) 내용
+	//return (x < y) ? -1 : ((x == y) ? 0 : 1); // y가 크면 -1 반환, (같으면 0 반환, 아니면 1 반환) 
+	//삼항 연산자 두 번 겹쳐서 쓸 수 있다.
 	@Override
 	public int compareTo(Student6 o) {
-		if (getTotal() < o.getTotal()) {
-			return -1;
-		} else if (getTotal() == o.getTotal()) {
-			return this.name.compareTo(o.name);
-		} else {
-			return 1;
-		}
-
+		return Integer.compare(this.getTotal(), o.getTotal());
 	}
+
 }
+

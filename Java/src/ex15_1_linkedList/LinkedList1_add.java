@@ -1,4 +1,4 @@
-package ex15_1_LinkedList;
+package ex15_1_linkedList;
 /*
  * LinkedList 사용 예
  * LinkedList 와  ArrayList의 차이점

@@ -1,8 +1,8 @@
-package ex16_3_system.arraycopy;
+package ex15_1_arraylist;
 
 import java.util.*;
 
-public class Student6_Main {
+public class Student6_Comparable {
 	public static void main(String args[]) {
 		ArrayList<Student6> as = new ArrayList<Student6>();
 		input(as);
