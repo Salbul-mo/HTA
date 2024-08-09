@@ -13,8 +13,8 @@ public class PrintThread extends Thread {
 			synchronized (sa) { // 동기화 시작
 				int sum = sa.getAccount1().getBalance() + sa.getAccount2().getBalance();
 				System.out.println("계좌 잔액 합계 : " + sum);
-				cnt++;
 			} // 동기화 끝
+			cnt++;
 
 			try {
 				Thread.sleep(1);

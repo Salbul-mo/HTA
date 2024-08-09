@@ -18,7 +18,7 @@ class Account {
 	}
 
 	int withdraw(int amount) { // 출금
-		if (amount < balance) {
+		if (amount > balance) {
 			return 0;
 		}
 		balance -= amount;
