@@ -25,11 +25,18 @@ public class EX0809 {
 			while ((str = reader.readLine()) != null) {
 				StringTokenizer stok = new StringTokenizer(str);
 				while (stok.hasMoreTokens()) {
+					/*
 					String name = stok.nextToken();
-					int kor = Integer.valueOf(stok.nextToken());
+					int kor = Integer.valueOf(stok.nextToken()); 
 					int eng = Integer.valueOf(stok.nextToken());
 					int math = Integer.valueOf(stok.nextToken());
-					as.add(new Student6(name, kor, eng, math));
+					as.add(new Student6(name,kor,eng,math));
+					*/
+					as.add(new Student6(stok.nextToken(),// 이름 
+										Integer.valueOf(stok.nextToken()),// Integer.parseInt 국어 점수
+										Integer.valueOf(stok.nextToken()),// Intege.parseInt 영어 점수
+										Integer.valueOf(stok.nextToken())));// Integer.parseInt 수학 점수 
+					//따로 변수명으로 안만들고 바로 생성자에 집어넣을 수 있다.
 				}
 			}
 		} catch (IOException e) {
