@@ -3,7 +3,7 @@ package boj;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class ABC_10430{
 
 	public static void main(String[] args) throws IOException {
 		

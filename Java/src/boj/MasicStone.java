@@ -76,7 +76,7 @@ public class MasicStone {
 
 		Trie trie = new Trie();
 
-		ArrayList<Long> num = new ArrayList<>();
+    	ArrayList<Long> num = new ArrayList<>();
 		Long cnt = 0L;
 		Long val = 0L;
 		Long limit =1L; 

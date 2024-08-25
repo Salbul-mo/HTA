@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.chrono.ThaiBuddhistDate;
 
-public class Main {
+public class Budda_18108 {
 
 	public static void main(String[] args) throws IOException {
 		

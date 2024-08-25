@@ -1,6 +1,6 @@
 package boj;
 
-public class Main {
+public class Cat_10171 {
 	
 	public static void main(String[] args) {
 	/*	

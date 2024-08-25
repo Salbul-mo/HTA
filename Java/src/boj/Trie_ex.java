@@ -2,12 +2,12 @@ package boj;
 
 import java.util.NoSuchElementException;
 
-public class Trie {
+public class Trie_ex {
 
 	Node root;
 	static final int SIZE = 2; // 0 아니면 1 , I 아니면 X
 
-	public Trie() {
+	public Trie_ex() {
 		this.root = new Node();
 		this.root.val = ' ';
 	}
@@ -55,7 +55,6 @@ public class Trie {
 		for (int i = 0; i < SIZE ; i++) {
 			System.out.print(current.child[i]);
 			current = current.child[i];
-			if(current.child[i] != null &&)
 		}
 	}
 		

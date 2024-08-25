@@ -3,9 +3,9 @@ package boj;
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class AdivideB_1008  {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer stok = new StringTokenizer(br.readLine());
 		double a = 0;

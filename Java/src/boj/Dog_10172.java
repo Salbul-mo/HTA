@@ -1,6 +1,6 @@
 package boj;
 
-public class Main {
+public class Dog_10172 {
 
 	public static void main(String[] args) {
 		/*

@@ -1,12 +1,12 @@
 package boj;
 
 import java.io.*;
-
 import java.util.*;
 
-public class AplusB_1000 {
+public class EqualCheck_1330 {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String args[]) throws IOException {
+	
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer stok = new StringTokenizer(br.readLine());
 		int a = 0;
@@ -14,9 +14,15 @@ public class AplusB_1000 {
 		while (stok.hasMoreTokens()) {
 			a = Integer.valueOf(stok.nextToken());
 			b = Integer.valueOf(stok.nextToken());
+			
 		}
 		
-		System.out.println(a - b);
+		if (a > b)
+		System.out.println(">");
+		else if (a < b)
+		System.out.println("<");
+		else 
+		System.out.println("==");
+		
 	}
-
 }
