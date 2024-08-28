@@ -30,7 +30,7 @@ public class FileInput_Output_Stream_EX {
 				if (num == -1) // 읽을 데이터 없으면 반복문 탎출
 					break;
 
-				out.write(readByte);
+				out.write(readByte); 
 				// in.write(readByte, 0, readCount);
 				// Writes b.length bytes from the specified byte array to this file outputstream.
 				// byte[] b => buffer which the data was input

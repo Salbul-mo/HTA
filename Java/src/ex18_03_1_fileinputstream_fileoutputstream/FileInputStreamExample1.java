@@ -34,7 +34,7 @@ public class FileInputStreamExample1 {
 				for (int cnt = 0; cnt < num; cnt++) {
 					System.out.printf("%02d ", arr[cnt]);
 				}
-
+ 
 				System.out.println("\n\n8진수 출력");
 				for (int cnt = 0; cnt < num; cnt++) {
 					System.out.printf("%02o ", arr[cnt]);

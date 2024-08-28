@@ -16,6 +16,7 @@ public class Trie_ex {
 		Node[] child = new Node[SIZE]; // 뒤로 연결되는 문자열 저장하는 배열
 		boolean isTerminal = false; // 현재 노드가 문자열 완성되는 노드인지 여부
 		int childNum = 0; // 현재 노드에 연결된 문자열 갯수
+		@SuppressWarnings("unused")
 		char val; // 현재 노드의 값
 	}
 

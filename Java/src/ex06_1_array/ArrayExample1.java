@@ -2,6 +2,7 @@ package ex06_1_array;
 
 public class ArrayExample1 {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
 		int[] arr = new int[10];

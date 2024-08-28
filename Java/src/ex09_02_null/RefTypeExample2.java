@@ -1,6 +1,7 @@
 package ex09_02_null;
 
 public class RefTypeExample2 {
+	@SuppressWarnings("null")
 	public static void main(String[] args) {
 		
 		Point obj = null; // 아무 데이터도 가리키지 않는 참조값
