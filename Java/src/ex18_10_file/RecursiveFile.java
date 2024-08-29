@@ -1,6 +1,10 @@
 package ex18_10_file;
-
 /*
+콘솔 버퍼 크기 조정 : Window > Preferences > run/debug > console 에서
+Console buffer size (characters) 옵션 > Limit console output 체크 박스 해제
+ */
+/*
+
  * 현재 디렉토리의 서브디렉토리와 파일 목록을 출력하는 프로그램
  * File 클래스 : 파일 관리 기능을 갖는 클래스
  * 디렉토리 관리 기능도 가지고 있다.
