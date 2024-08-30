@@ -6,8 +6,8 @@ public class RamdaExample_Ex {
 
 		
 		// 인터페이스 익명 구현 객체 방법
-		int max = getMax(new Sample2() {
-			@Override
+		int max = getMax(new Sample2() {  // -> 인터페이스 익명 구현하여 객체 자체를 메서드의 파라미터로 넘긴다.
+			@Override 
 			public int max(int a, int b) {
 				if (a > b)
 					return a;
@@ -36,7 +36,7 @@ public class RamdaExample_Ex {
 		
 	}
 
-	static int getMax(Sample2 sample) {
+	static int getMax(Sample2 sample) { // -> 파라미터로 받은 객체의 max() 메서드를 호출한다.
 		return sample.max(100, 20);
 	}
 }
