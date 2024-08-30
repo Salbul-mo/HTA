@@ -17,7 +17,7 @@ public class Exam2 {
 		//list 에 존재하는 Member 객체들의 나이 평균을 구하시오
 		Stream<Member> stream = list.stream();
 		OptionalDouble avg = stream.mapToInt(Member::getAge).average();
-		System.out.println(avg);
+		System.out.println(avg.getAsDouble());
 		
 		
 	}
