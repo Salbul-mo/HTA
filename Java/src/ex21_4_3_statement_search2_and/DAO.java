@@ -17,11 +17,11 @@ public class DAO {
 		String sql = "select * from emp";
 		
 		boolean first = true;
-
+		// 어차피 search_word는 String[8]로 넘어온다. 값이 null일 뿐이다.
 		for (int i = 0; i < search_word.length; i++) {
 			String single = "";
 
-			if (i == 1 || i == 2 || i == 4)
+			if (i == 1 || i == 2 || i == 4) // 문자열은 ''
 				single = "'";
 
 			if (!(search_word[i] == null)) {

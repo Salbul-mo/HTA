@@ -29,7 +29,7 @@ import java.sql.*;
  *  
  *  	5.  ? 에 대한 값을 설정하기 위해 set자료형() 메서드를 사용한다.
  *  		예) 첫 번째 ? 의 조건값이 정수형 1인 경우 setInt(1,1)
- *  		예) 두 번째 ? 의 조건값이 문자형 '홍길동' 인 경우 setString(2,"홍길동)
+ *  		예) 두 번째 ? 의 조건값이 문자형 '홍길동' 인 경우 setString(2,"홍길동")
  *  		Statement 는 SQL 문장에서 single quotation(')이 필요한 경우 직접 작성해 주었지만
  *  		PreparedStatement 는 자료형에 따라 알아서 single quotation(')을 처리해 준다.
  *  
