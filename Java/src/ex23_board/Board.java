@@ -18,7 +18,6 @@ public class Board {
 
 	}
 
-
 	public String toString() {
 		String re = "";
 		if (board_re_lev > 0) {
