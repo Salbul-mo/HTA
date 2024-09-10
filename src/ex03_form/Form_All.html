@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>다양한 입력 폼</title>
+</head>
+<body>
+	<h1>다양한 입력 폼</h1>
+	
+	<form method="post" action="result.html">
+		<p>
+			성명: <input type="text" value="" name="name"> <br>
+			성별: <input type="radio" name="gender" value="male"> 남성
+				 <input type="radio" name="gender" value="female"> 여성 <br>
+			과목: <select name="subject" size="1">
+					<option value="HTML">HTML</option>
+					<option value="JSP">JSP</option>
+					<option value="CSS">CSS</option>
+					<option value="JavaScript">JavaScript</option>
+				 </select>
+		</p>
+		<p>
+			구입희망분야(복수선택 가능) <br>
+			- 분야: <input type="checkbox" name="books" value="Computer">컴퓨터
+					<input type="checkbox" name="books" value="Economy">경제
+					<input type="checkbox" name="books" value="Common">상식
+		</p>
+		<p>
+			비고: <br>
+			<textarea name="comments" rows="4" cols="40"> 나는 &lt;textarea&gt;입니다.
+			속성은 rows=&quot;4&quot; cols=&quot;40&quot; 입니다. </textarea>
+		</p>
+			
+	<h3>파일 업로드하기(확장자 &quot;png&quot;인 파일만 보입니다.)</h3>
+	
+	<input type="file" accept=".png">		
+	<br>
+	<hr>
+	<input type="submit" value="전송">
+	<input type="reset"  value="취소">
+	
+	</form>
+	
+		
+		
+</body>
+</html>
