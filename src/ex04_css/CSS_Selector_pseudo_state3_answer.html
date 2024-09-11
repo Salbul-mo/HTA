@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>가상클래스 상태 선택자</title>
+    <!-- 
+    	입력 양식의 상태에 따라 각각 스타일을 적용할 수 있다.
+    	가상 클래스 상태 선택자 종류
+    	(1) :checked - 선택된 input 요소에 스타일 적용
+    	(2) :disabled - 사용 불가능한 input 요소에 스타일 적용
+    	(3) :enabled - 사용 가능한 input 요소에 스타일 적용
+    	(4) :not - 지정한 input 요소가 아닌 요소에 스타일 적용
+     -->
+     <style>
+		input:not(:checked)+span {color:green;} 	
+		
+		input[type="radio"]:checked+span {color:red; font-weight:bold;}    
+		input[type="checkbox"]:checked+span {color:orange; font-weight:bold;}
+     </style>
+  </head>
+  	
+  <body>
+  	<form method="get" >
+  		<fieldset>
+  			<legend>과일</legend>
+  			<label><input type="radio" name="fruit" value="apple" checked><span>사과</span></label>
+  			<label><input type="radio" name="fruit" value="pear"><span>배</span></label>
+  		</fieldset>
+  		<fieldset>
+  			<legend>과목</legend>
+  			<label><input type="checkbox" name="subject" value="html"><span>html</span></label>
+  			<label><input type="checkbox" name="subject" value="css"><span>css</span></label>
+  		</fieldset>
+  	
+  	
+  	</form>
+  </body>
+</html>

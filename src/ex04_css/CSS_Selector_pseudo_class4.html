@@ -21,14 +21,14 @@
 		7. h3요소 contnet뒤에 화면 처럼 모양 넣기, font-size:20pt(한글 이응 + 한자 + 3 => (ⓒ))
 		
 	  */
-    	h3::before {content:'◆'; color:blue;}
-    	h3::after {content:' (ⓒcss)'; font-size:20pt;}
+    	h3::before {content:'◆'; color:blue;} /* h3 요소 앞에 content 값 */ 
+    	h3::after {content:' (ⓒcss)'; font-size:20pt;} /*h3 요소 뒤에 content 값 */
     	
-    	a:link {color:blue;} 
-    	a:visited {color:green;}
-		a:active {color:yellow;}
-		p {font-size:10pt;}
-		p::first-letter{background-color:silver; font-size:30px;}
+    	a:link {color:blue;} /* a태그의 하이퍼링크 */
+    	a:visited {color:green;} /* 방문한 a태그의 링크 */
+		a:active {color:yellow;} /* a태그 클릭 */
+		p {font-size:10pt;} /* <p> 폰트 사이즈 */
+		p::first-letter{background-color:silver; font-size:30px;} /* <p> 첫 글자 서식 */ 
 		    		
     	
     </style>

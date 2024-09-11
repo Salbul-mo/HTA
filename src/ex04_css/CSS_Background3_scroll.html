@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>배경화면 속성</title>
+    <style>
+    	body {  background: url(image/desert.jpg) no-repeat; 
+    			background-attachment:scroll;
+    			/*  스크롤을 내리면 배경 이미지가 위로 올라간다.
+    				background-attachment : 스크롤 여부를 정한다.
+    										기본 (scroll)
+    			*/
+    			background-size:100%; }
+    			/*  적용되는 요소의 크기에 비례하여 배경 이미지 적용
+    				형식) background-size : x% y%;
+    					 background-size : 100% 배경 이미지를 가로에 꽉 채운다.
+    			*/
+    	div {height:950px}
+    </style>
+  </head>
+  <body>
+		<div> 제가 보이나요? <br>
+			스크롤을 내리면 배경이미지도 올라가요.</div>  
+  </body>
+</html>
