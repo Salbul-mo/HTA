@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+/* font-family 로 지정한 폰트 중 자동으로 선택 */
+
+/*  입력창인 input 태그 width 꽉 차게, box-size는 border-box로, display는 inline-block,
+	margin은 양 옆만 8px, 1px 회색 실선 테두리. */
+input[type=text], input[type=password] {width: 100%;
+  										padding: 12px 20px;
+  										margin: 8px 0;
+  										display: inline-block;
+  										border: 1px solid #ccc;
+  										box-sizing: border-box;}
+
+/*  배경색 초록, 글씨는 하얀색, padding 은 양옆 14px 위 아래 20px,
+	margin 을 양 옆에만 주고 위 아래는 0으로 설정, 테두리 없음, width 꽉 차게 */
+button {background-color: #04AA6D;
+  		color: white;
+  		padding: 14px 20px;
+  		margin: 8px 0; 
+  		border: none;
+  		cursor: pointer;
+  		width: 100%;}
+
+/*  가로폭 500px, margin 양 옆 30px, 위 아래 자동, 배경색 탁한 회색 */
+form {width:500px;
+		margin:30px auto; 
+		background-color:whitesmoke;}
+		
+		
+legend {margin-bottom:10px;
+		text-align:center;
+		font-size:1.5em;
+		padding-top:0.5em;}
+		
+input[type=chechbox] {margin-bottom:10px;}
+
+fieldset {border:none;}
+</style>
+</head>
+<body>
+  <form  action="result.html" method="post">
+    <fieldset>
+    	<legend>로그인 폼</legend>
+    	<div class="container">
+      	<p>
+      		<label for="uname"><b>Username</b></label>
+      		<input type="text" placeholder="Enter Username" name="uname" required>
+		</p>
+		<p>
+      		<label for="psw"><b>Password</b></label>
+      		<input type="password" placeholder="Enter Password" name="psw" required>
+        </p>
+      		<button type="submit">Login</button>
+      		<label> <input type="checkbox" checked="checked" name="remember"> Remember me </label>
+    	</div>
+		</fieldset>
+  </form>
+</body>
+</html>
