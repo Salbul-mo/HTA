@@ -13,7 +13,7 @@ input[type=text], input[type=password] {width: 100%;
   										padding: 12px 20px;
   										margin: 8px 0;
   										display: inline-block;
-  										border: 1px solid #ccc;
+  										border: 1px solid #04AA6D;
   										box-sizing: border-box;}
 
 /*  배경색 초록, 글씨는 하얀색, padding 은 양옆 14px 위 아래 20px,
@@ -27,10 +27,14 @@ button {background-color: #04AA6D;
   		width: 100%;}
 
 /*  가로폭 500px, margin 양 옆 30px, 위 아래 자동, 배경색 탁한 회색 */
-form {width:500px;
+form {transform:scale(0.1,0.1);
+		width:500px;
 		margin:30px auto; 
-		background-color:whitesmoke;}
-		
+		background-color:whitesmoke;
+		box-shadow: 5px 5px 8px 5px lightgray;
+		transition:transform 0.5s;}
+
+form:hover {transform:scale(1,1)}
 		
 legend {margin-bottom:10px;
 		text-align:center;
@@ -40,6 +44,8 @@ legend {margin-bottom:10px;
 input[type=chechbox] {margin-bottom:10px;}
 
 fieldset {border:none;}
+
+button[type=submit]:hover {opacity:0.8;}
 </style>
 </head>
 <body>

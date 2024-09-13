@@ -1,0 +1,60 @@
+@charset "UTF-8";
+	
+	
+	* {box-sizing:border-box;}
+	
+	html,body {margin:0;
+				height:100%;}
+	
+	header {
+			text-align:center;
+			height:3rem; /* html 요소 font-size의 3배 = 48px */
+			line-height:3rem; /* 수직 정렬 */
+			background-color:skyblue;
+			}
+	
+	nav {height:50px;
+		background:CornflowerBlue;}
+	
+	nav ul {margin:0px;
+			width:500px; /* width 주지 않으면 화면 축소될때 길이 유지가 되지 않는다. */}
+		
+	nav li {display:inline;
+			list-style-type:none;
+			text-align:left;
+			padding:0px 15px;}
+	
+	nav a {text-decoration:none;
+			color:white;
+			font-size:15px;
+			line-height:50px;}
+			
+	/* 함수 계산식 : HTML 문서가 갖는 높이에서 header(48px), nav(50px), footer(50px)를 뺀다. */
+	aside {width:40%;
+			height:calc(100% - 3rem - 50px - 50px); 
+			background-color:HoneyDew;
+			float:right;
+			font-size:x-large;
+			padding:2rem;}
+	
+	aside ul {list-style-type:circle;}
+	
+	article {width:60%;
+			height:calc(100% - 3rem - 50px - 50px);
+			float:right;
+			background-color:DarkSeaGreen;
+			font-size:small;
+			padding:2rem;}
+	
+	article p::before {content:"▶";}
+	
+	footer {clear:both;
+			background-color:Lavender;
+			height:50px;
+			width:100%;
+			line-height:50px;
+			text-align:center;
+			color:white;
+			position:fixed; /* 항상 맨 아래 위치하게 고정 */
+			bottom:0px;
+			}

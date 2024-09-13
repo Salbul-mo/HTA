@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>키 프레임 애니메이션</title>
+    <style>
+    	div {width:100px;
+    		height:100px;}
+    			
+    	@keyframes boxMove {
+    	0% {background-color:yellow; top:0px; left:0px;}
+    	25% {background-color:green; top:50px; left:0px;}
+    	50% {background-color:blue; top:100px; left:0px;}
+    	75% {background-color:olive; top:50px; left:0px;}
+    	100% {background-color:red; top:0px; left:0px;}
+    	}
+    	/*position:relative 로 body의 top과 left 를 기준으로 움직인다? */
+    	
+    	#box {animation:boxMove 6s infinite;
+    			position:relative;}
+    			/*	animation-name:boxMove; 애니메이션 이름
+    				animation-duration:6s;  1회당 소요 시간
+    				animation-iteration-count:infinite; 반혹 횟수
+    			*/
+    </style>
+  </head>
+  <body>
+  	<div id="box"></div>
+  </body>
+</html>
