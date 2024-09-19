@@ -6,14 +6,13 @@
     <style>
     	* {box-sizing:border-box;}
     	
-    	html,body {width:350px; height:400px; overflow:hidden;}
+		    	
+    	div {width:50px; height:50px; float:left; color:DarkSeaGreen; background-color:floralwhite;}
+    	div:nth-child(7n+2) {color:Crimson;}
+    	div:nth-child(7n+1) {color:CornflowerBlue;}
     	
-    	div {width:50px; height:50px; float:left; color:white; background-color:black;}
-    	div:nth-child(7n+2) {color:red;}
-    	div:nth-child(7n+1) {color:blue;}
-    	
-    	#title {width:350px; text-align:center; line-height:50px; font-size:30px; color:green;}
-    	
+    	#title {width:350px; text-align:center; line-height:50px; font-size:23px; color:LightSlateGrey; padding:2px;}
+    	#container {width:350px; height:100%; background-color:floralwhite;}
     
     </style>
   </head>
@@ -24,7 +23,7 @@
   		var m = today.getMonth() + 1;
   		var start = new Date(y,m-1,1);
   		
-  		var str = "<div id='title'>" + y + "년"+ m + "월</div>";
+  		var str = "<div id='container'> <div id='title'>" + y + "년"+ m + "월</div>";
   		str += "<div>일</div> <div>월</div> <div>화</div> <div>수</div> <div>목</div> <div>금</div> <div>토</div>";
   		switch (Number(start.getDay())) {
   		case 0 : break;
@@ -40,15 +39,15 @@
   		var check2 = new Date(y,m-1,31);
   		
   		
-  		if(m == 2 && Math.abs(check2.getDay()-check.getDay()) == 2) {
+  		if(m == 2 && y % 4 == 0 && y % 100 != 0 || m == 2 && y % 4 == 0 && y % 100 == 0 && y % 400 == 0) {
   			for (var cnt = 1; cnt <= 29; cnt++) {
   				str += "<div>" + cnt + "</div>";
   			}
-  		} else if ( m ==2 && Math.abs(check2.getDay()-check.getDay()) == 3) {
+  		} else if ( m ==2 ) {
   			for (var cnt = 1; cnt <= 28; cnt++) {
   				str += "<div>" + cnt + "</div>";
   			}
-  		} else if(check.getDay()==check2.getDay()) {
+  		} else if(check.getDay() == check2.getDay()) {
   			for (var cnt = 1; cnt <= 31; cnt++) {
   				str += "<div>" + cnt + "</div>";
   			}
@@ -57,15 +56,8 @@
   				str += "<div>" + cnt + "</div>";
   			}
   		}
-  		
-  		str += "<div></div><div></div><div></div><div></div><div></div><div></div><div></div>";
+  		str += "</div>";	
   		document.body.innerHTML = str;
-  		
-  	
   	</script>
-  
-  
   </body>
-
-
 </html>
