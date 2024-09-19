@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>confirm : [확인] [취소] 버튼이 있는 대화 상자</title>
+    <style>
+    	body {width:1000px; height:1000px; margin:0px;}
+    	
+    	div {width:1000px; height:1000px; background-color:yellow;}
+    	
+    	img {width:500px; height:400px;}
+    </style>
+  </head>
+  <body>
+  	<script>
+  		/* 확인을 누르면 true, 취소를 누르면 false */
+  		var answer = confirm("장바구니로 이동할까요?");
+  		
+  		if(answer) {
+  			document.body.innerHTML = "Answer = " + answer + "<br>";
+  			document.body.innerHTML += "<img src='image/peng.jpg'>";
+  		} else {
+  			var cancel = "<div> Answer = " + answer + "<br> </div>"
+			document.body.innerHTML = cancel;
+  		}
+  		/*
+  		var list = "Answer = " + answer + "<br>";
+  		
+  		if(answer) {
+  			list += "<img . . .>;
+  		} else {
+  			list += "<style> body {background:yellow} </style>";
+  		}
+  		
+  		document.body.innerHTML = list;
+  		*/
+	</script>
+  </body>
+</html>

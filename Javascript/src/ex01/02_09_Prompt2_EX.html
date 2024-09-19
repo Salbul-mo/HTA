@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>prompt()를 이용한 동적 테이블</title>
+    <style>
+    	table { text-align:center; width:500px; height:200px;
+    			border-collapse:collapse;}
+        
+        table caption { font-weight:bold; margin-bottom:1px; }
+    	
+    	table th,td {border-bottom:1px solid black;}
+    	
+    	table th {background-color:gray; color:white;}
+    	
+    	.first:first-child {border-right:1px solid black;}
+    </style>
+  </head>
+  <body>
+  	<script>
+  		var title1 = prompt("1 순위 책 제목을 입력하세요");
+  		var title2 = prompt("2 순위 책 제목을 입력하세요");
+  		var title3 = prompt("3 순위 책 제목을 입력하세요");
+  		
+  		var list = '<table>'; 
+  		 list += '<caption> 베스트셀러 </caption>';
+  		 list += '<thead> <tr> <th class="first"> 순위 </th> <th> 제목 </th> </tr> </thead>';
+  		 list += '<tbody>';
+  		 list += '<tr> <td class="first"> 1 </td> <td>' + title1 + '</td> </tr>';
+  		 list += '<tr> <td class="first"> 2 </td> <td>' + title2 + '</td> </tr>';
+  		 list += '<tr> <td class="first"> 3 </td> <td>' + title3 + '</td> </tr>';
+  		 list += '</tbody>';
+  		 list += '</table>';
+  		 
+  		document.body.innerHTML = list;
+  	</script>
+  </body>
+</html>

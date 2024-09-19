@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>달력 만들기</title>
+    <style>
+    	* {box-sizing:border-box;}
+    	
+    	html,body {width:350px; height:400px; overflow:hidden;}
+    	
+    	div {width:50px; height:50px; float:left; color:white; background-color:black;}
+    	div:nth-child(7n+2) {color:red;}
+    	div:nth-child(7n+1) {color:blue;}
+    	
+    	#title {width:350px; text-align:center; line-height:50px; font-size:30px; color:green;}
+    	
+    
+    </style>
+  </head>
+  <body>
+  	<script>
+  		var today = new Date();
+  		var y = today.getFullYear();
+  		var m = today.getMonth() + 1;
+  		var start = new Date(y,m-1,1);
+  		
+  		var str = "<div id='title'>" + y + "년"+ m + "월</div>";
+  		str += "<div>일</div> <div>월</div> <div>화</div> <div>수</div> <div>목</div> <div>금</div> <div>토</div>";
+  		switch (Number(start.getDay())) {
+  		case 0 : break;
+  		case 1 : str += "<div></div>"; break;
+  		case 2 : str += "<div></div><div></div>"; break;
+  		case 3 : str += "<div></div><div></div><div></div>"; break;
+  		case 4 : str += "<div></div><div></div><div></div><div></div>"; break;
+  		case 5 : str += "<div></div><div></div><div></div><div></div><div></div>"; break;
+  		case 6 : str += "<div></div><div></div><div></div><div></div><div></div><div></div>"; break;
+  		}
+		  	
+  		var check = new Date(y,m,0);
+  		var check2 = new Date(y,m-1,31);
+  		
+  		
+  		if(m == 2 && Math.abs(check2.getDay()-check.getDay()) == 2) {
+  			for (var cnt = 1; cnt <= 29; cnt++) {
+  				str += "<div>" + cnt + "</div>";
+  			}
+  		} else if ( m ==2 && Math.abs(check2.getDay()-check.getDay()) == 3) {
+  			for (var cnt = 1; cnt <= 28; cnt++) {
+  				str += "<div>" + cnt + "</div>";
+  			}
+  		} else if(check.getDay()==check2.getDay()) {
+  			for (var cnt = 1; cnt <= 31; cnt++) {
+  				str += "<div>" + cnt + "</div>";
+  			}
+  		} else {
+  			for (var cnt = 1; cnt <= 30; cnt++) {
+  				str += "<div>" + cnt + "</div>";
+  			}
+  		}
+  		
+  		str += "<div></div><div></div><div></div><div></div><div></div><div></div><div></div>";
+  		document.body.innerHTML = str;
+  		
+  	
+  	</script>
+  
+  
+  </body>
+
+
+</html>
