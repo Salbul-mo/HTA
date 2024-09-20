@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>달력 만들기</title>
+    <title>달력 만들기 (switch 및 div 이용)</title>
     <style>
     	* {box-sizing:border-box;}
     	
@@ -22,6 +22,7 @@
   		var y = today.getFullYear();
   		var m = today.getMonth() + 1;
   		var start = new Date(y,m-1,1);
+  		// 마지막 일 구하기 => var lastday = new Date(y,m,0).getDate();
   		
   		var str = "<div id='container'> <div id='title'>" + y + "년"+ m + "월</div>";
   		str += "<div>일</div> <div>월</div> <div>화</div> <div>수</div> <div>목</div> <div>금</div> <div>토</div>";
@@ -39,7 +40,7 @@
   		var check2 = new Date(y,m-1,31);
   		
   		
-  		if(m == 2 && y % 4 == 0 && y % 100 != 0 || m == 2 && y % 4 == 0 && y % 100 == 0 && y % 400 == 0) {
+  		if(m == 2 && y % 4 == 0 && y % 100 != 0 || m == 2 && y % 400 == 0) {
   			for (var cnt = 1; cnt <= 29; cnt++) {
   				str += "<div>" + cnt + "</div>";
   			}
