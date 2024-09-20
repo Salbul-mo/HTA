@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Using Objects - literal</title>
+<style>
+table {
+	border-collapse: collapse;
+	border: 1px solid lightgrey;
+	width: 500px;
+	text-align: center;
+	margin: 0 auto;
+	/*
+    			위 아래로 0, 좌 우는 크기에 따라 자동으로 분배. -> 중앙에 오게 된다.
+    		*/
+}
+
+table caption {
+	font-size: 30px;
+	font-weight: bold;
+	color: green;
+}
+
+table th {
+	background: pink;
+}
+
+th, td {
+	border: 1px solid lightgray;
+	height: 30px;
+}
+</style>
+</head>
+<body>
+	<script>
+		// 객체 리터럴
+		// property 는 콜론을 기준으로 키와 값의 쌍으로 작성한다.
+		// property 가 여러 개인 경우 콤마로 구분하여 작성한다.
+		var book = {
+			name : '수미네 반찬',
+			publisher : '성안당',
+			author : '김수미',
+			price : 15300,
+			info : {
+				pages : 442,
+				date : '2010년 1월 30일',
+				ISBN10 : '8970506470',
+				size : '188*243'
+			},
+			print : function() {
+				var out = '<table> <caption>서적 정보</caption>';
+				out += '<thead> <tr> <th> key </th> <th> value </th> </thead> <tbody>';
+
+				for ( var p in this) {
+					if (p != 'print') {
+						if (typeof (this[p]) != "object") {
+							out += "<tr>";
+							out += "<td> book." + p + "</td>";
+							out += "<td>" + this[p];
+
+							if (p == 'price')
+								out += "원";
+
+							out += '</td> </tr>';
+						} else {
+							for ( var p2 in this[p]) {
+								out += "<tr> <td> book." + p + "." + p2
+										+ "</td>";
+								out += "<td>" + this[p][p2];
+
+								if (p2 == 'pages')
+									out += "페이지";
+								else if (p2 == 'size')
+									out += "mm";
+
+								out += '</td> </tr>';
+
+							}
+						}//else (this[p] = object) 문 끝
+					}//if(!print) 문 끝.
+
+				}//for 문 끝.
+				out += '</tbody> </table>';
+				document.body.innerHTML = out;
+			}//print 끝.
+		};// book 끝.
+
+		//출력
+		book.print();
+	</script>
+</body>
+</html>
