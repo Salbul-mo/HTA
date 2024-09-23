@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Array.prototype.push() 에 대해서</title>
+    <!--
+    	 
+    -->
+    <style>
+    	table {
+    		border-collapse:collapse; 
+    		border:1px solid lightgrey; 
+    		width:500px; 
+    		text-align:center;
+    		margin:0 auto;
+    		/*
+    			위 아래로 0, 좌 우는 크기에 따라 자동으로 분배. -> 중앙에 오게 된다.
+    		*/
+    	}
+    	
+    	table caption {
+    		font-size:30px; 
+    		font-weight:bold; 
+    		color:green;
+    	}
+    	
+    	table th {
+    		background:pink;
+    	}
+    	
+    	th,td {
+    		border:1px solid lightgray; 
+    		height:30px; 
+    	}
+    	
+    </style>
+  </head>
+  <body>
+    <script>
+    
+    	//생성자 함수 - 함수를 사용해서 객체를 생성하는 생성자 구현 부분.
+    	function Saram(name_value, age_value, height_value, blood_value, address_value) {
+    		// 객체에 속성을 추가하고 값을 설정하는 부분
+    		// 생성자 함수를 작성할 때 함수 객체 자신을 지칭하는 키워드로 this를 사용한다.
+    		this.name = name_value;
+    		this.age = age_value;
+    		this.height = height_value;
+    		this.blood = blood_value;
+    		this.address = address_value;
+    		
+    		this.display = function () {
+    					out = '<table> <caption>신상 정보</caption>';
+						out += '<thead> <tr>' 
+							 + '<th> key </th> <th> value </th>' 
+							 + '</tr> </thead> <tbody>';
+
+					for (var p in this) {
+						if(p != 'display') {
+							out += "<tr>";
+							out += "<td> saram." + p + "</td>";
+							out += "<td>" + this[p];
+							if (p == 'age')
+								out += "세";
+							else if (p == 'blood')
+								out += "형";
+							else if (p == 'height')
+								out += "cm";
+							
+							out += '</td> </tr>';
+						}
+					}
+		
+					out += '</tbody> </table>';
+					document.body.innerHTML += out; 
+					//<head> 에서 사용하면 실행되지 않는다. <body> 가 없기 때문.
+    		}
+		}
+    	
+    	// 생성자 함수를 이용하여 객체 생성
+    	var na = new Saram("나최고", 25, 170.2, "A", "서울시 강남구");
+    	na.display(); // 메서드 실행
+    	console.log("na.ban = " + na.ban);
+    	
+    	var you = new Saram("너최고", 35, 180, "B", "서울시 종로구");
+    	you.display(); // 메서드 실행
+    	console.log("you.ban = " + you.ban); 
+    	
+    </script>
+  
+  	
+  	
+  </body>
+</html>

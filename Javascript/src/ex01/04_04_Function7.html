@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Function</title>
+    <!-- 함수를 리턴하는 함수. -->
+    <script>
+    	function returnFunction() {
+    			return function () {
+    					alert('Hello Function .. !');
+    			};
+    	}
+    
+    	// 함수 호출 방법 1.
+    	var result = returnFunction();
+    	document.write(result); // result = function () { alert('Hello Function ..!'););
+   		result();
+    			
+   		// 함수 호출 방법 2.
+    	returnFunction()();
+    	// 리턴된 함수를 다시 실행해주어야 하기 때문에 괄호를 하나 더 쳐야한다.
+    	// return = function(){alert('Hello Function .. !');}
+    	// return();
+		
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>

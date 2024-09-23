@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Function</title>
+    <!-- 
+    	 오류 발생 : 함수 안에서 var 로 사용된 변수는 지역 변수로 함수 외부에서는 사용할 수 없다.
+    	 단, 함수 안에서 var 을 생략하면 전역 변수로 취급한다.
+    	 함수 밖에서 선언된 변수는 var 가 있는 없든 모두 전역 변수로 취급한다.
+    -->
+    <script>
+    	// 함수 선언
+    	function test(name) {
+    		var output = 'Hello ' + name + ' .. !';
+    		document.write(output);
+    	}
+    	
+    	test('자바스크립트');
+    	
+    	// output 출력 시도.
+    	alert(output); // 오류 발생 : output is not defined
+    	
+    	/*
+    		Uncaught ReferenceError: output is not defined
+    		at 04_04_Function8_var.html:20:12
+    	*/
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>
