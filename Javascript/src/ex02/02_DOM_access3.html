@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>DOM_access</title>
+    <script>
+    	window.onload = function() {
+    		var clock = document.getElementById('clock');
+    		
+    		var today = new Date();
+    		
+    		clock.innerHTML = today.toLocaleString();
+    		
+    		setInterval(function() {
+    						today = new Date();
+    						clock.innerHTML = today.toLocaleString();}, 1000);
+    	}
+    	
+    </script>
+  </head>
+<body>
+    <h1 id="clock"></h1>
+</body>
+</html>
