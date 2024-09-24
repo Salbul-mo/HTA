@@ -1,0 +1,92 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>default event 제거</title>
+<link href="css/ex02062.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+	<!-- 아무것도 입력하지 않고 제출을 클릭해 보자 -->
+	<form id="login" action="04_01_Event5_EX_reference.html">
+		<fieldset>
+			<legend>회원가입 폼</legend>
+			<label for="name">이름</label> 
+			<input type="text" name="name" id="name"><div id='name_red'>이름을 입력하세요.</div><br>
+			<label for="pass">비밀번호</label> 
+			<input type="password" name="pass" id="pass"><div id='pass_red'>비밀번호를 입력하세요.</div><br> 
+			<label for="pass-check">비밀번호 확인</label>
+			<input type="password" name="pass-check" id="pass-check"><div id='pass_check_red'>비밀번호 확인을 입력하세요.</div><br> 
+			<input type="submit" value="제출"><br>
+		</fieldset>
+	</form>
+	<script>
+	
+		function whenSubmit() {
+			 name = document.getElementById('name');
+			 pass = document.getElementById('pass');
+			 pass_check = document.getElementById('pass-check');
+
+			 name_input = name.value.trim(); // 입력값 공백 제거
+			 pass_input = pass.value.trim(); // 입력값 공백 제거
+			 pass_check_input = pass_check.value.trim(); // 입력값 공백 제거
+			
+			if (name_input) { // 빈 문자열 확인
+
+				if (pass_input) { // 빈 문자열 확인
+					
+					if(pass_check_input) { // 빈 문자열 확인
+
+						if (pass_input === pass_check_input) { // 비밀번호와 비밀번호 확인 동일한지 확인
+							alert('성공');
+							//location.href = document.getElementsByTagName('form')[0].action;
+							//return true;
+						
+						} else {
+							alert('비밀번호가 다릅니다. 다시 입력해주세요.');
+							pass.value = '';
+							pass_check.value = '';
+							pass.focus();
+							event.preventDefault();
+						}
+					
+					} else {
+						alert('비밀번호 확인을 입력하세요');
+						pass_check.focus();
+						event.preventDefault();
+					}
+
+				} else {
+					alert('비밀번호를 입력하세요');
+					pass.focus();
+					event.preventDefault();
+				}
+
+			} else {
+				alert('이름을 입력하세요');
+				name.focus();
+				event.preventDefault();
+			}
+
+		}
+		 
+		function check (e) {
+				
+			 	if (e.currentTarget.id == 'name')
+					document.getElementById('name_red').style.display="none";
+				if (e.currentTarget.id == 'pass') 	
+					document.getElementById('pass_red').style.display="none";
+				if (e.currentTarget.id == 'pass-check')	
+					document.getElementById('pass_check_red').style.display="none";
+				
+		}
+		
+		document.querySelector("#login").addEventListener("submit", whenSubmit);
+		document.querySelector("#name").addEventListener("input", check);
+		document.querySelector("#pass").addEventListener("input", check);
+		document.querySelector("#pass-check").addEventListener("input", check);
+		
+	</script>
+
+</body>
+</html>

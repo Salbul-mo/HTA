@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>window 객체의 open() 메서드</title>
+    <script>
+    	/*
+    		형식 : open(URL, name, option)
+    		URL : 팝업창으로 보여줄 문서
+    		name : 팝업창의 이름(특별한 이름 : _blank, _self . .)
+    		option : 옵션 (하나의 문자열 안에 콤마로 속성들을 구분해서 작성)
+    		
+    			옵션 이름 			설명 			입력할 수 있는 값
+    			 width 		새 윈도우 너비 			픽셀 값
+    			 height 	새 윈도우 높이 			픽셀 값
+    	*/
+    	
+    	// 변수를 선언한다.
+    	var child = window.open('01_DOM8_removeChild.html',
+    								'_blank',
+    									'width=300, height=200');
+    				// _self : 현재 페이지에서 열린다.
+    				// _blank : 새 창에서 열린다.(기본)
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

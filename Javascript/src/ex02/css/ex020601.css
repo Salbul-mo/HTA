@@ -1,0 +1,63 @@
+@charset "EUC-KR";
+	* {
+		box-sizing:border-box;
+	}
+
+	h2 {
+		color:green; 
+		font-weight:bold; 
+		text-align:center;
+	}
+	form {
+		text-align:center;
+	}
+
+	table {
+		width:700px;
+		height:200px;
+		margin:20px auto;
+		border:1px solid lightgray;
+	}
+
+
+	table th, td {
+		border:1px solid lightgray;
+	}
+
+	table th {
+		background-color:mistyrose; 
+		height:10%;
+	}
+	
+	table td {
+		width:25%;
+	}
+	
+	td:first-child {
+		background-color:skyblue;
+	}
+	
+	tr:last-child td:first-child { 
+		background-color:white;
+	}
+	
+	tr:last-child td {
+		background-color:lightgray;
+	}
+	
+	table input {
+		width:60%; 
+		height:80%; 
+		font-size:18px;
+	}
+	
+	input[type="reset"], input[type="submit"] {
+		width:100px;
+		height:30px;
+		margin:0 20px;
+	}
+	
+	table input:focus {
+		border:2px solid red;
+		outline:none;
+	}
