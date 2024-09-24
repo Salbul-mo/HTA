@@ -23,13 +23,13 @@
 	<script>
 	
 		function whenSubmit() {
-			 name = document.getElementById('name');
-			 pass = document.getElementById('pass');
-			 pass_check = document.getElementById('pass-check');
+			var name = document.getElementById('name');
+			var pass = document.getElementById('pass');
+			var pass_check = document.getElementById('pass-check');
 
-			 name_input = name.value.trim(); // 입력값 공백 제거
-			 pass_input = pass.value.trim(); // 입력값 공백 제거
-			 pass_check_input = pass_check.value.trim(); // 입력값 공백 제거
+			var name_input = name.value.trim(); // 입력값 공백 제거
+			var pass_input = pass.value.trim(); // 입력값 공백 제거
+			var pass_check_input = pass_check.value.trim(); // 입력값 공백 제거
 			
 			if (name_input) { // 빈 문자열 확인
 
@@ -74,11 +74,19 @@
 				
 			 	if (e.currentTarget.id == 'name')
 					document.getElementById('name_red').style.display="none";
-				if (e.currentTarget.id == 'pass') 	
+			 	else if (e.currentTarget.id == 'pass') 	
 					document.getElementById('pass_red').style.display="none";
-				if (e.currentTarget.id == 'pass-check')	
+			 	else if (e.currentTarget.id == 'pass-check')	
 					document.getElementById('pass_check_red').style.display="none";
 				
+			 	setInterval(function() {
+			 					if(document.getElementById('name').value == '')
+			 						document.getElementById('name_red').style.display="inline-block";
+			 					if(document.getElementById('pass').value == '')
+			 						document.getElementById('pass_red').style.display="inline-block";
+			 					if(document.getElementById('pass-check').value == '')
+			 						document.getElementById('pass_check_red').style.display="inline-block";
+			 	},100);
 		}
 		
 		document.querySelector("#login").addEventListener("submit", whenSubmit);
