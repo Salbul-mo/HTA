@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Arrow Function</title>
+  </head>
+  <body>
+	<script>
+		/*
+			화살표 함수(Arrow Function) 는 자바스크립트의 함수 표현식으로, 간결한 문법을 제공하여 짧은 코드로
+			함수를 작성할 수 있게 해준다.
+			사용법
+			
+				1. 형식
+					(매개 변수 리스트) => {문장들}
+					(param1, param2, . . . , paramN) => { statements }
+					
+				2. 애로우 함수는 함수 선언문으로 정의할 수 없고 함수 표현식으로 정의한다.
+					=> 익명 함수, 코드 위치에 따라 작동 오류 발생한다.
+					
+				3. 매개 변수가 한 개인 경우 소괄호는 선택 사항이다.
+					(singleParam) => { statements }
+					singleParam => { statements }
+					
+				4. 매개 변수가 없는 경우 소괄호는 생략할 수 없다.
+					예) () => { statements }
+		*/
+	
+		const sayHi = function (user) {
+			// 문자열 + 변수의 형태로 문자열을 만듬
+			console.log('Hi, ' + user + '!');
+		}
+		
+		const sayHi2 = (user) => {
+			// 백틱(`) 을 이용한 문자열 서식(템플릿 리터럴)
+			console.log(`Hi, ${user}!`);
+		}
+		
+		sayHi('arrow1 function)');
+		sayHi2('arrow2 function)');
+	</script>  
+  </body>
+
+
+</html>

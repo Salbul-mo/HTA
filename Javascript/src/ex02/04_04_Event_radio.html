@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>radio 객체에서 선택한 그림 출력</title>
+    <style>
+    	img {
+    		width:80px;
+    		height:80px;
+    	}
+    </style>
+  </head>
+  <body>
+  	<h3>선택한 그림 출력</h3>
+  	<hr>
+  	<div> radio 버튼을 클릭하면 이미지가 바뀝니다.</div>
+  	<form>
+  		<label><input type='radio' name='icon' value='image/image1.jpg'>image1</label>
+  		<label><input type='radio' name='icon' value='image/image2.jpg' checked>image2</label>
+  		<label><input type='radio' name='icon' value='image/image3.jpg'>image3</label>
+  		<img src='image/image2.jpg' id='iconImg'>
+  	</form>
+  	
+  	<script>
+  		var radio = document.getElementsByTagName('input');
+  		// var radio = document.querySelectorAll('input[name=icon]');
+  		for (var cnt = 0; cnt < radio.length ; cnt++) {
+  			radio[cnt].addEventListener('click', show);
+  		}
+  		
+  		function show(e) {
+			
+  			document.getElementById('iconImg').src = this.value;
+  			// document.querySelector('#iconImg').src = this.value;
+  			// this 키워드를 사용해서 해당 객체의 밸류를 img 의 src 에 적용한다.
+  			
+  			
+  			
+  			// document.getElementById('iconImg').src = e.currentTarget.value;
+  			// 이벤트 발생시킨 객체의 value 값을 바로 img 의 src 에 적용시킨다.
+  			
+  			/*
+  			// radio 객체 전체를 for 문으로 체크하고 출력한다.
+  			for (var i = 0 ; i < radio.length; i++) {
+  				if (radio[i].checked == true) {
+  					var str = 'image/image' + (i+1) +'.jpg';
+  					document.getElementById('iconImg').src = str;
+  				} else {
+  					continue;
+  				}
+  			}
+  			*/
+  		}
+  	</script>
+  </body>
+
+</html>

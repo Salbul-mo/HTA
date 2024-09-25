@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>모든 체크박스 선택/해제</title>
+  </head>
+  <body>
+  	<div> 모든 체크 박스 선택/해제 (checked 속성 이용하기)</div>
+  	<hr>
+  	<form>
+  		<label><input type='checkbox' name='all' value='모두 선택/해제'>ALL</label><br>
+  		<label><input type='checkbox' name='icon' value='image/moon.png'>image1</label>
+  		<label><input type='checkbox' name='icon' value='image/flower.jpg'>image2</label>
+  		<label><input type='checkbox' name='icon' value='image/koala.jpg'>image3</label>
+  	</form>
+
+	<script>
+		var all = document.querySelector('input[name=all]');
+		// input 태그 중 이름이 all 인 문서 객체를 가져오기
+		all.addEventListener('click', show);
+		
+		function show(e) {
+			console.log(this.checked);
+			var icon = document.querySelectorAll('input[name=icon]');
+			// input 태그 중 이름이 icon 인 문서 객체들을 배열로 가져오기
+			var length = icon.length;
+			
+			if(this.checked == true) {
+				for (var cnt = 0; cnt < length; cnt++) 
+					icon[cnt].checked = true;
+			} else {
+				for (var cnt = 0; cnt < length; cnt++) 
+					icon[cnt].checked = false;
+			}
+			
+			/*
+				for (var cnt = 0; cnt < length; cnt++) {
+					console.log(this.checked);
+					icon[cnt].checked = this.checked;
+				}
+			
+				// 현재 this.checked 값을 그대로 대입하면 조건문 없이 한번에 지정할 수 있다.
+			*/
+			
+		}
+	
+	</script>  
+  </body>
+</html>
