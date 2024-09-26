@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>String 객체의 메서드 활용 - 정규 표현식</title>
+    <style>
+    
+        	@keyframes textColor {
+    		0% {color:yellow;}
+    		25% {color:green;}
+    		50% {color:blue;}
+    		75% {color:magenta;}
+    		100% {color:yellow;}
+    	}
+    	
+    	div {animation:textColor 3s infinite; font-size:100px; }
+    	
+    </style>
+  </head>
+  <body>
+  	<script>
+  		/*
+  			1.  정규 표현식(Regular Expression) 은 문자열에 나타나는 특정 문자 조합과 대응시키기 위해
+  				사용되는 패턴이다.
+  				자바스크립트에서 정규 표현식은 객체이다.
+  			
+  			2.  표현 작성 방법
+  				1) 정규 표현식 리터럴 사용법 - 슬래쉬 사이에 표현식을 넣는 방식
+  					예) var reg = /^[0-9]{6}-[0-9]{7}$/; 
+  					=> 주민번호를 정규 표현식으로 작성하면 이렇게 된다.
+  					
+  					① 슬래쉬(/) 와 슬래쉬(/) 사이에 표현식을 넣는다.
+  					② ^     : 정규 표현식 문자열 시작
+  					③ $     : 정규 표현식 문자열 끝
+  					④ [ ]   : 안에 있는 문자 중 하나를 선택하고 범위는 '-'로 지정
+  					⑤ 0-9   : 0123456789를 의미하며 [0-9]는 '\d'와 같은 의미
+  					⑥ { }   : 반복 수
+  								예) {3,4} - 3~4번 반복
+  									{4} - 4번 반복
+  									{1,} - 1번 이상 반복
+  					⑦ (A|B) : A 또는 B
+  					
+  				2) new RegExp() 사용법
+  					예) var reg = new RegExp("^[0-9]{6}-[0-9]{7}$");
+  				
+  				3) test() 메서드는 주어진 문자열이 정규 표현식을 만족하는지 판별하고,
+  					그 여부를 true 또는 false 로 반환한다.
+  			
+  					
+  					주민번호 표현식 만들기
+  					1. 숫자6자리-숫자7자리
+  					/^[0-9]{6}-[0-9]{7}$/
+  					
+  					2. 숫자6자리-[1~4]숫자6자리
+  					/^[0-9]{6}-[1-4][0-9]{6}$/
+  					
+  					3. [0-9] 는 \d 와 같다.
+  					/^\d{6}-[1-4]\d{6}$/
+  					
+  					4. 년도.월.일. 맞춰서 유효한 형식의 주민번호 표현하여야 한다.
+  					/^[0-9]{2}(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])-[1234][0-9]{6}$/
+  					    년도   01 ~ 09|10 ~ 12  01 ~ 09|10 ~ 19|20~29|30~31 - 1~4 . 숫자 6자리 
+  		*/	
+  		var reg =/^[0-9]{2}(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])-[1234][0-9]{6}$/;
+  		
+  		do {
+  			var jumin = prompt("주민번호를 입력하세요.","911234-1234567");
+  			//test() 메서드는 주어진 문자열이 정규 표현식을 만족하는지 판별하고, 그 여부를 true 또는 false 로 반환한다.
+  			
+  			var pandan = reg.test(jumin);
+  			
+  			if (!pandan) {
+  			alert("주민번호 형식을 확인하세요");
+  			}
+  		} while (!pandan);
+  		
+  		var list = "";
+  		var test = jumin.substr(7,1);
+  		if (test == '1' || test == '3') {
+  			list += "<div>남자</div>";
+  			document.body.style.background = 'skyblue';
+  		} else if (test == '2' || test == '4') {
+  			list += "<div>여자</div>"
+  			document.body.style.background = 'pink';
+  		} 
+  		
+  		document.body.innerHTML = list;
+  		
+  	</script>
+  </body>
+</html>

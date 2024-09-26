@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Using Objects</title>
+    <!-- 
+    	1.  객체는 속성들의 모임이다.
+    	
+    	2.  각 속성(property) 은 이름(name) 과 값(value)의 조합으로 구성된다.
+    	
+    	3.  객체의 property 값이 함수 자료형인 경우 이 프로퍼티를 메서드(method) 라고 한다.
+    	
+    	4.  점 연산자 이용법
+    		- 객체.property(속성) 이름 및 객체.메서드 방식으로 접근
+    		 예)  saram.name = "나최고";
+    			 saram.print(); 
+    	
+    	5.  배열 표시 방식 대괄호([]) 이용법
+    		- 객체["속성이름"] 또는 객체['속성이름']
+    			saram["name"] = "나최고";
+    			saram['name'] = "나최고";
+    	
+    	6.  객체 생성 방법
+    		하나) new 연산자 이용하기
+    			예) var saram = new Object();
+    			
+    		둘) 객체 리터럴 {} 이용하기
+    			예) var saram = {};
+    			
+    	7.  객체 생성 추가하는 방법
+    		객체 생성 후 속성을 추가하기 때문에 '동적으로 속성을 추가한다' 라고 한다.
+    		1단계) 객체 생성
+    				var saram = new Object();
+    		2단계) 속성 추가
+    				saram.name = '나최고';
+    	
+    	8.  속성 삭제 방법 - delete
+    				delete saram.name;	 
+     -->
+  </head>
+  <body>
+  	<script>
+  		// 객체 생성 방법
+  		// 1. new 연산자 이용하기
+  		var saram = new Object();
+  		
+  		saram.name = '나최고';
+  		saram.age = 25;
+  		saram.height = 170.2;
+  		saram.blood = 'A';
+  		saram.address = '서울시 강남구';
+  		/*
+  			객체를 만들고 그 뒤에 속성을 자유롭게 추가할 수 있다.
+  		*/
+  		
+  		// 메서드 만들기
+  		// 객체.메서드명 = function() {};
+  		saram.print = function() {
+  			var out = '';
+  			
+  			for (var p in saram) {
+  				if(p != 'print')
+  				out += p + ":" + saram[p] + "<br>";
+  			}
+  			
+  			out += "<hr>";
+  			document.body.innerHTML = out;
+  		};
+  		/*
+  			name:나최고
+			age:25
+			height:170.2
+			blood:A
+			address:서울시 강남구
+			print:function() { var out = ''; for ( var p in saram) { out += p + ":" + saram[p] + "
+			"; } out += "
+			"; document.body.innerHTML = out; }
+  			
+  			=> print 역시 saram 의 property 이므로 같이 출력된다. 따라서 제외하고 출력해야 한다.
+  			
+  			if (p != 'print') 추가
+  			
+  			name:나최고
+  			age:25
+  			height:170.2
+  			blood:A
+  			address:서울시 강남구
+  		*/
+  		
+  		saram.print(); // 메서드 호출
+  		
+  	</script>
+  </body>
+</html>

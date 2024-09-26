@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>배열을 이용하여 양식 작성하기</title>
+    <!--  var itemlist = ['국수', '계란', '고추장', '김치', '오이']; -->
+    <style>
+    	h1 {font-size:50px;}
+    	li {font-size:30px; font-style:italic; margin:10px 30px; font-weight:bold;}
+    	
+    	li:nth-child(4n+1) {color:green;}
+    	li:nth-child(4n+2) {color:yellow;}
+    	li:nth-child(4n+3) {color:red;}
+    	li:nth-child(4n)   {color:black;}
+    </style>
+  </head>
+  <body>
+  	<script>
+  		var itemlist = ['국수', '계란', '고추장', '김치', '오이'];
+  		
+  		var output = " <h1> 비빔국수 재료 </h1> <hr>";
+  		output += "<ul>"
+  		output += "<li>" + itemlist[0] + "</li>";
+  		output += "<li>" + itemlist[1] + "</li>";
+  		output += "<li>" + itemlist[2] + "</li>";
+  		output += "<li>" + itemlist[3] + "</li>";
+  		output += "<li>" + itemlist[4] + "</li>";
+  		output += "</ul> <hr>";
+  		
+  		document.body.innerHTML = output;
+  	</script>
+  </body>
+</html>

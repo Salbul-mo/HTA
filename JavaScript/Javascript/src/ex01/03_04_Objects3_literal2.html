@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Using Objects - literal</title>
+    <style>
+    	table {
+    		border-collapse:collapse; 
+    		border:1px solid lightgrey; 
+    		width:500px; 
+    		text-align:center;
+    		margin:0 auto;
+    		/*
+    			위 아래로 0, 좌 우는 크기에 따라 자동으로 분배. -> 중앙에 오게 된다.
+    		*/
+    	}
+    	
+    	table caption {
+    		font-size:30px; 
+    		font-weight:bold; 
+    		color:green;
+    	}
+    	
+    	table th {
+    		background:pink;
+    	}
+    	
+    	th,td {
+    		border:1px solid lightgray; 
+    		height:30px; 
+    	}
+    	
+    </style>
+  </head>
+  <body>
+  	<script>
+  		// 객체 리터럴
+  		// property 는 콜론을 기준으로 키와 값의 쌍으로 작성한다.
+  		// property 가 여러 개인 경우 콤마로 구분하여 작성한다.
+  		var saram = {
+  					name    : '나최고',
+  					age     : '25세',
+  					height  : '170.2cm',
+  					blood   : 'A형',
+  					address : '서울시 강남구',
+  				  	print   : function() {
+  			  						var out = '<table> <caption>신상 정보</caption>';
+  			  						out += '<thead> <tr> <th> key </th> <th> value </th>' 
+  			  								+ '</thead> <tbody>';
+
+  			  						for (var p in saram) {
+  			  							if(p != 'print')
+  			  							out += '<tr> <td>'+ 'saram.'+ p +'</td>' 
+  			  										+ '<td>' + saram[p] + '</td> </tr>';
+  			  						}
+  			  						/* 
+  			  						자신의 property 에 접근할 때 this 를 사용할 수 있다.
+  			  						for (var p in this) {
+  			  							if (p != 'print') {
+  			  								out += "<tr>";
+  			  								out += "<td> saram." + p + "</td>";
+  			  								out += "<td>" + this[p];
+  			  								if (p == 'age')
+  			  									out += "세";
+  			  								else if (p == 'blood')
+  			  									out += "형";
+  			  								else if (p == 'height')
+  			  									out += "cm";
+  			  								
+  			  								out += '</td> </tr>';
+  			  							}
+  			  						}
+  			  						
+  			  						*/
+  			  			
+  			  						out += '</tbody> </table>';
+  			  						document.body.innerHTML = out;
+  			  				  }
+  		};
+  		
+  		//출력
+  		saram.print();
+		
+  	</script>
+  </body>
+</html>

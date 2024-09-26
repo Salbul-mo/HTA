@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>DOM_access</title>
+    <script>
+    	window.onclick = function() {
+    			var input = document.getElementById('username');
+	    		var name = prompt(input.value,'홍길동');
+				
+	    		var output = '<br><br> 이름 : <input id = "username2" type="text" value=' + name + '>';
+	    		
+	    		document.body.innerHTML += output;
+	    		
+	    		var input2 = document.getElementById('username2');
+	    		input2.style.background = 'yellow';
+	    		input2.style.color = 'red';
+	    		input2.style.width = '150px';
+	    		input2.style.height = '50px';
+	    		input2.style.fontSize = '40px';
+	    		input2.focus();
+	    		
+    	}
+    	
+    </script>
+  </head>
+  <body>
+  	이름 : <input id='username' type='text' value='사용자의 이름은?'>
+  </body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>기본값 함수 매개 변수</title>
+  </head>
+  <body>
+  	<script>
+  		/*
+  			기본값 함수 매개 변수 (default function parameter) 를 사용하면
+  			값이 없거나 undefined 가 전달될 경우 이름 붙은 매개 변수를 기본값으로 초기화할 수 있다.
+  		*/
+  		const a = (page=1) => {
+  			console.log(`${page}`);
+  		}
+  		
+  		let b;
+  		
+  		a(); // 전달되는 값이 없다. => 1
+  		a(20); // 20 을 전달한다. => 20
+  		
+  		console.log(`b=${b}`) // b=undefined
+  		a(b); //undefined 를 전달 => 1
+  	</script>
+  </body>
+</html>

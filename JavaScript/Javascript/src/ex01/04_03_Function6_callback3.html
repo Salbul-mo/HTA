@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Function</title>
+    <!-- 자바스크립트에서는 함수도 하나의 자료형이므로 매개변수로 전달할 수 있다
+    	 이렇게 매개변수로 전달하는 함수를 콜백함수라고 부른다. 
+    	 이해하고 넘어가야 Jquery 를 할 수 있다.-->
+	  	<script>
+	  		// 함수 선언
+	  		function callTenTimes(callback) {
+	  			for (var i = 0; i < 10; i++)
+	  				callback(i, i + '0');
+	  		}
+	  		// 두 개의 매개변수를 사용하는 콜백 함수.
+	  		
+	  		
+	  		// 함수 호출
+			callTenTimes(
+					function (index, string) {
+						alert("첫번째 매개변수 값 : " + index + " 두번째 매개변수 값 : " + string);
+					}
+			);
+	  		// callTenTimes 를 선언할 때 매개변수로 사용했던 callback 을 
+	  		// callTenTimes를 호출할 때 익명함수로 선언한 형식이다.
+	  		
+	  		/*
+	  		callTenTimes(
+					function (index) {
+						alert("함수 호출 : " + index);
+					}
+			);
+	  		이렇게 호출하면 i 값만 출력되고 i +'0' 은 출력되지 않는다.
+	  		
+	  		즉, 매개변수를 선택적으로 사용할 수 있다.
+	  		*/
+	  	</script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>location</title>
+    <!-- 
+    		location 객체는 브라우저의 주소 표시줄과 관련된 객체 이다.
+    		location 객체는 프로토콜의 종류, 호스트 이름, 문서 위치 등의 정보가 있다.
+    		
+    		속성이름		설명							예
+    		href		문서의 URL 주소				http://localhost:30763/project/Location.html
+    		protocol	프로토콜 종류					http:
+    		hostname	호스트 이름					localhost
+    		host		호스트 이름과 포트 번호			localhost:30763
+    		port 		포트 번호						30763
+    		pathname	디렉토리 경로					/project/Location.html
+    -->
+    <!--	
+    	href : 이동시에 사용하는 속성이다. 
+    	
+    	이동하는 세가지 방법
+    	anchor 태그 		=> 	<a href="URL">
+    	form 태그 		=>	<form action="URL">
+    	location 객체 	=>	location.href = "URL"
+    	
+     -->
+    <script>
+    	location.href = "http://www.w3schools.com";
+    </script>
+  </head>
+  <body>
+  </body>
+
+</html>

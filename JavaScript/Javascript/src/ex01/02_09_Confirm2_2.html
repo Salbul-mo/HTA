@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>confirm : [확인] [취소] 버튼이 있는 대화 상자</title>
+    <style>
+    	img {width:500px; height:400px;}
+    </style>
+  </head>
+  <body>
+  	<script>
+  		/* 확인을 누르면 true, 취소를 누르면 false */
+  		var answer = confirm("장바구니로 이동할까요?");
+  		
+  		var list = "Answer = " + answer + "<br>";
+  		
+  		if(answer) {
+  			list += "<img src='image/peng.jpg'>";
+  		} else {
+  			document.head.innerHTML += "<style> body {background-color:yellow;} </style>";
+  			//document.head.innerHTML = "<style>. . . </style>"; 로 하면 
+  			//해당 HTML의 head 부분이 교체되어 원래 있던 head 의 태그들이 모두 사라진다.
+  		}
+  		
+  		document.body.innerHTML = list;
+	</script>
+  </body>
+</html>

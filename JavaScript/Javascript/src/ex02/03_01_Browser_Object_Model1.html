@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>브라우저 기반 내장 객체(BOM:Browser Object Model)</title>
+    <!--
+    		브라우저 기반 내장 객체(BOM:Browser Object Model)
+    			1. window : 미리 정의된 객체로 자바스크립트가 실행되고 있는 웹브라우저 창을 나타낸다.
+    						브라우저 기반 자바스크립트의 최상위 객체이다.
+    			
+    			2. document : window 객체의 속성으로 HTML 문서 전체를 나타내는 객체이다.
+    			
+    			3. location : 주소 정보를 제어하는 객체이다.
+    			
+    			4. history : 웹 브라우저에 기록되어 있는 히스토리 정보를 제어하는 객체이다.
+    			
+    			5. navigator : 웹 브라우저의 종류를 판별해 주는 객체이다.
+    			
+    			6. screen : 브라우저가 실행되는 스크린 장치에 대한 정보를 담고 있는 객체이다.
+    			
+    			함수 alert(), confirm(), prompt() 는
+    			window 객체에서 제공하는 메서드로 "window." 이 생략된 것이다. 
+   	-->
+  </head>
+  <body>
+  	<script>
+  		// 출력
+  		for (var p in window) {
+  				window.document.body.innerHTML += '●' + p + ': ' + window[p] + '<br>';
+  		}
+  	</script>
+  
+  
+  </body>
+
+
+</html>
+
+
+<!-- 
+출력 결과.
+●window: [object Window]
+●self: [object Window]
+●document: [object HTMLDocument]
+●name:
+●location: file:///C:/Users/jhta/git/JavaScript/Javascript/src/ex02/03_Window.html
+●customElements: [object CustomElementRegistry]
+●history: [object History]
+●navigation: [object Navigation]
+●locationbar: [object BarProp]
+●menubar: [object BarProp]
+●personalbar: [object BarProp]
+●scrollbars: [object BarProp]
+●statusbar: [object BarProp]
+●toolbar: [object BarProp]
+●status:
+●closed: false
+●frames: [object Window]
+●length: 0
+●top: [object Window]
+●opener: null
+●parent: [object Window]
+●frameElement: null
+●navigator: [object Navigator]
+●origin: null
+●external: [object External]
+●screen: [object Screen]
+●innerWidth: 1000
+●innerHeight: 918
+●scrollX: 0
+●pageXOffset: 0
+●scrollY: 0
+●pageYOffset: 0
+●visualViewport: [object VisualViewport]
+●screenX: 911
+●screenY: 0
+●outerWidth: 1016
+●outerHeight: 1047
+●devicePixelRatio: 1
+●event: undefined
+●clientInformation: [object Navigator]
+●screenLeft: 911
+●screenTop: 0
+●styleMedia: [object StyleMedia]
+●onsearch: null
+●isSecureContext: true
+●trustedTypes: [object TrustedTypePolicyFactory]
+●performance: [object Performance]
+●onappinstalled: null
+●onbeforeinstallprompt: null
+●crypto: [object Crypto]
+●indexedDB: [object IDBFactory]
+●sessionStorage: [object Storage]
+●localStorage: [object Storage]
+●onbeforexrselect: null
+●onabort: null
+●onbeforeinput: null
+●onbeforematch: null
+●onbeforetoggle: null
+●onblur: null
+●oncancel: null
+●oncanplay: null
+●oncanplaythrough: null
+●onchange: null
+●onclick: null
+●onclose: null
+●oncontentvisibilityautostatechange: null
+●oncontextlost: null
+●oncontextmenu: null
+●oncontextrestored: null
+●oncuechange: null
+●ondblclick: null
+●ondrag: null
+●ondragend: null
+●ondragenter: null
+●ondragleave: null
+●ondragover: null
+●ondragstart: null
+●ondrop: null
+●ondurationchange: null
+●onemptied: null
+●onended: null
+●onerror: null
+●onfocus: null
+●onformdata: null
+●oninput: null
+●oninvalid: null
+●onkeydown: null
+●onkeypress: null
+●onkeyup: null
+●onload: null
+●onloadeddata: null
+●onloadedmetadata: null
+●onloadstart: null
+●onmousedown: null
+●onmouseenter: null
+●onmouseleave: null
+●onmousemove: null
+●onmouseout: null
+●onmouseover: null
+●onmouseup: null
+●onmousewheel: null
+●onpause: null
+●onplay: null
+●onplaying: null
+●onprogress: null
+●onratechange: null
+●onreset: null
+●onresize: null
+●onscroll: null
+●onsecuritypolicyviolation: null
+●onseeked: null
+●onseeking: null
+●onselect: null
+●onslotchange: null
+●onstalled: null
+●onsubmit: null
+●onsuspend: null
+●ontimeupdate: null
+●ontoggle: null
+●onvolumechange: null
+●onwaiting: null
+●onwebkitanimationend: null
+●onwebkitanimationiteration: null
+●onwebkitanimationstart: null
+●onwebkittransitionend: null
+●onwheel: null
+●onauxclick: null
+●ongotpointercapture: null
+●onlostpointercapture: null
+●onpointerdown: null
+●onpointermove: null
+●onpointerrawupdate: null
+●onpointerup: null
+●onpointercancel: null
+●onpointerover: null
+●onpointerout: null
+●onpointerenter: null
+●onpointerleave: null
+●onselectstart: null
+●onselectionchange: null
+●onanimationend: null
+●onanimationiteration: null
+●onanimationstart: null
+●ontransitionrun: null
+●ontransitionstart: null
+●ontransitionend: null
+●ontransitioncancel: null
+●onafterprint: null
+●onbeforeprint: null
+●onbeforeunload: null
+●onhashchange: null
+●onlanguagechange: null
+●onmessage: null
+●onmessageerror: null
+●onoffline: null
+●ononline: null
+●onpagehide: null
+●onpageshow: null
+●onpopstate: null
+●onrejectionhandled: null
+●onstorage: null
+●onunhandledrejection: null
+●onunload: null
+●crossOriginIsolated: false
+●scheduler: [object Scheduler]
+●alert: function alert() { [native code] }
+●atob: function atob() { [native code] }
+●blur: function blur() { [native code] }
+●btoa: function btoa() { [native code] }
+●cancelAnimationFrame: function cancelAnimationFrame() { [native code] }
+●cancelIdleCallback: function cancelIdleCallback() { [native code] }
+●captureEvents: function captureEvents() { [native code] }
+●clearInterval: function clearInterval() { [native code] }
+●clearTimeout: function clearTimeout() { [native code] }
+●close: function close() { [native code] }
+●confirm: function confirm() { [native code] }
+●createImageBitmap: function createImageBitmap() { [native code] }
+●fetch: function fetch() { [native code] }
+●find: function find() { [native code] }
+●focus: function focus() { [native code] }
+●getComputedStyle: function getComputedStyle() { [native code] }
+●getSelection: function getSelection() { [native code] }
+●matchMedia: function matchMedia() { [native code] }
+●moveBy: function moveBy() { [native code] }
+●moveTo: function moveTo() { [native code] }
+●open: function open() { [native code] }
+●postMessage: function postMessage() { [native code] }
+●print: function print() { [native code] }
+●prompt: function prompt() { [native code] }
+●queueMicrotask: function queueMicrotask() { [native code] }
+●releaseEvents: function releaseEvents() { [native code] }
+●reportError: function reportError() { [native code] }
+●requestAnimationFrame: function requestAnimationFrame() { [native code] }
+●requestIdleCallback: function requestIdleCallback() { [native code] }
+●resizeBy: function resizeBy() { [native code] }
+●resizeTo: function resizeTo() { [native code] }
+●scroll: function scroll() { [native code] }
+●scrollBy: function scrollBy() { [native code] }
+●scrollTo: function scrollTo() { [native code] }
+●setInterval: function setInterval() { [native code] }
+●setTimeout: function setTimeout() { [native code] }
+●stop: function stop() { [native code] }
+●structuredClone: function structuredClone() { [native code] }
+●webkitCancelAnimationFrame: function webkitCancelAnimationFrame() { [native code] }
+●webkitRequestAnimationFrame: function webkitRequestAnimationFrame() { [native code] }
+●chrome: [object Object]
+●caches: [object CacheStorage]
+●cookieStore: [object CookieStore]
+●ondevicemotion: null
+●ondeviceorientation: null
+●ondeviceorientationabsolute: null
+●launchQueue: [object LaunchQueue]
+●sharedStorage: [object SharedStorage]
+●documentPictureInPicture: [object DocumentPictureInPicture]
+●getScreenDetails: function getScreenDetails() { [native code] }
+●queryLocalFonts: function queryLocalFonts() { [native code] }
+●showDirectoryPicker: function showDirectoryPicker() { [native code] }
+●showOpenFilePicker: function showOpenFilePicker() { [native code] }
+●showSaveFilePicker: function showSaveFilePicker() { [native code] }
+●originAgentCluster: false
+●onpageswap: null
+●onpagereveal: null
+●credentialless: false
+●fence: null
+●speechSynthesis: [object SpeechSynthesis]
+●onscrollend: null
+●webkitRequestFileSystem: function webkitRequestFileSystem() { [native code] }
+●webkitResolveLocalFileSystemURL: function webkitResolveLocalFileSystemURL() { [native code] }
+●p: p
+●TEMPORARY: 0
+●PERSISTENT: 1
+●addEventListener: function addEventListener() { [native code] }
+●dispatchEvent: function dispatchEvent() { [native code] }
+●removeEventListener: function removeEventListener() { [native code] }
+ -->

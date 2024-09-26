@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>애로우 함수 사용법</title>
+  </head>
+  <body>
+	<script>
+		const s = function (x) {
+			return x * 2;
+		}
+		
+		// 함수 블럭 내 문장이 리턴문 한 개인 경우 return 키워드와 중괄호 생략이 가능하다.
+		const s2 = (x) => { return x * 2;}
+		
+		const s3 = x => x * 2; // 값이 return 되어 계산된 값이 잘 출력된다.
+		console.log(s(10))
+		console.log(s2(10))
+		console.log(s3(10))
+		
+		const s4 = x => { x * 2 }; // 값을 리턴하는 키워드가 없다.
+		console.log(s4(10)) // undefined
+		// return 생략할 때는 중괄호도 생략.
+	</script>  
+  </body>
+
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Using Objects - literal</title>
+  </head>
+  <body>
+  	<script>
+  		// 객체 생성 방법
+  		// 1. new 연산자 이용하기
+  		// var saram = new Object(); // 사용자 정의 객체 생성
+  		
+  		// 2. 객체 리터럴
+  		// property 는 콜론을 기준으로 키와 값의 쌍으로 작성한다.
+  		// property 가 여러 개인 경우 콤마로 구분하여 작성한다.
+  		var saram = {
+  					'name' : '나최고',
+  					'age' : 25,
+  					height : 170.2,
+  					blood : 'A',
+  					address : '서울시 강남구',
+  				  	print : function() {
+  			  					var out = '';
+
+  			  					for (var p in saram) {
+  			  						if(p != 'print')
+  			  						out += p + ":" + saram[p] + "<br>";
+  			  					}
+  			  			
+  			  					out += "<hr>";
+  			  					document.body.innerHTML = out;
+  			  				}
+  		};
+  		
+  		//출력
+  		saram.print();
+  		
+  		delete saram.address;
+  		saram.print();
+  		
+  		saram.name = '홍길동';
+		saram.height = 175.3;
+		saram.address = '우리집';
+  		
+		saram.print();
+		
+		/*
+			name:나최고
+			age:25
+			height:170.2
+			blood:A
+			address:서울시 강남구
+			
+			saram.address 삭제
+			name:나최고
+			age:25
+			height:170.2
+			blood:A
+			
+			saram.name, saram.height 변경, saram.address 추가
+			name:홍길동
+			age:25
+			height:175.3
+			blood:A
+			address:우리집
+
+		*/
+		
+  	</script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>select 객체에서 선택한 그림 출력</title>
+    <style>
+    	img {
+    		width:80px;
+    		height:80px;
+    	}
+    
+    </style>
+  </head>
+  <body>
+  	<h3>select 객체에서 선택한 그림 출력</h3>
+  	<hr>
+  	<div>select 를 선택하면 해당 이미지가 보입니다.</div>
+  	<form>
+  		<select id='icon'>
+  			<option value='image/image1.jpg'>image1</option>
+  			<option value='image/image2.jpg' selected>image2</option>
+  			<option value='image/image3.jpg'>image3</option>
+  		</select>
+		<img id='iconImg' src='image/image2.jpg'>  	
+		
+  	</form>
+	<script>
+		document.querySelector('#icon').addEventListener('change', show);
+		// 값이 바뀔 때 이벤트 발생. onchange
+		
+		function show(e) {
+			document.querySelector('#iconImg').src = this.value;
+			// this.value 사용해도 선택된 option 의 value 값이 그대로 전달된다.
+		}
+	</script>
+  </body>
+</html>

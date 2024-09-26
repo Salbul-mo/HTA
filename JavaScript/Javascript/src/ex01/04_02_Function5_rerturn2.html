@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Function</title>
+    	<!--
+    	 	return 키워드는 함수가 실행되는 도중에 함수를 호출한 곳으로 돌아가라는 의미이다.
+    	 	return 키워드를 사용하면 값을 지정하지 않아도 함수를 호출한 곳으로 돌아간다.
+    	 -->
+	  	
+	  	<script>
+	  		// 함수 선언
+	  		function returnFunction() {
+	  				alert('문장 A');
+	  				return "자바스크립트";
+	  		}
+	  		
+	  		var output = returnFunction(); // 함수의 return 값 대입
+	  		
+	  		alert(typeof (output) + ' : ' + output);
+	  		// string : 자바스크립트 로 출력된다.
+	  	</script>
+  </head>
+  <body>
+  </body>
+</html>

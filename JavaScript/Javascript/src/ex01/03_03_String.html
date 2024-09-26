@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>String 객체의 메서드 활용</title>
+  </head>
+  <body>
+  	<h3>String 객체의 메서드 활용</h3>
+  	<hr>
+  	<script>
+  		var a = new String ("Boys and Girls");
+  		var b = "!!";
+  		document.write("a : " + a + "<br>");
+  		document.write("b : " + b + "<br><hr>");
+  		/*
+  			a : Boys and Girls
+			b : !!
+  		*/
+  		
+  		
+  		document.write("a.charAt(0) = " + a.charAt(0) + "<hr>");
+  		/*
+  			a.charAt(0) = B
+  		*/
+  		
+  		// 문자열 a 뒤에 문자열 b 와 "입니다"를 연결한다.
+  		document.write('a.concat(b,"입니다") = ' + a.concat(b,"입니다.") + "<br>");
+  		document.write("a : " + a + "<br>");
+  		document.write('문자열 길이 = ' + a.length + "<hr>");
+  		/*
+  			a.concat(b,"입니다") = Boys and Girls!!입니다.
+			a : Boys and Girls
+			문자열 길이 = 14
+  		*/
+  		
+  		document.write('a.indexOf("s") = ' + a.indexOf("s") + "<br>");
+  			
+  		document.write('a.lastIndexOf("s") = ' + a.lastIndexOf("s") + "<br>");
+  		
+  		// String 객체의 부분 문자열의 시작 위치를 리턴한다. 없으면 -1을 리턴한다.
+  		document.write('a.indexOf("And") = ' + a.indexOf("And") + "<br>");
+  		
+  		document.write('a.indexOf("and") = ' + a.indexOf("and") + "<hr>");
+  		/*
+  			a.indexOf("s") = 3
+			a.lastIndexOf("s") = 13
+			a.indexOf("And") = -1
+			a.indexOf("and") = 5
+  		*/
+  		
+  		document.write('a.substring(5) = ' + a.substring(5) + "<br>");
+  		document.write('a.substring(5,8) = ' + a.substring(5,8) +"<br>");
+  		// 인덱스 5부터 인덱스 7까지의 문자열을 가져온다.
+  		document.write('a.substr(5,3) = ' + a.substr(5,3) + "<hr>");
+  		// 인덱스 5로부터 3개의 문자열을 가져온다.
+  		
+  		/*
+  			a.substring(5) = and Girls
+			a.substring(5,8) = and
+			a.substr(5,3) = and
+  		*/
+  		
+  		document.write('a.toUpperCase() = ' + a.toUpperCase() + "<br>");
+  		document.write('a.toLowerCase() = ' + a.toLowerCase() + "<hr>");
+  		
+  		/*
+  			a.toUpperCase() = BOYS AND GIRLS
+			a.toLowerCase() = boys and girls
+  		*/
+  		
+  		document.write('a.replace("and","or") = ' + a.replace("and","or") + "<br>");
+  		document.write(a + "<hr>");
+  		
+  		/*
+  			a.replace("and","or") = Boys or Girls
+			Boys and Girls
+  		*/
+  		
+  		// 문자열 앞 뒤 공백 제거, 문자 사이에 있는 공백은 제거되지 않는다.
+  		document.write("      Javascript     ".trim() + "<hr>");
+  		/*
+  			Javascript
+  		*/
+  		
+  		document.write("      Java script2     ".trim() + "<hr>");
+  		/*
+  			Java script2
+  		*/
+  		
+  		// 구분자를 기준으로 문자열을 나누고 배열로 반환한다.
+  		var sub = a.split(" ");
+  		document.write("a를 빈칸으로 분리 <br>");
+  		/*
+  			a를 빈칸으로 분리
+			sub[0]=Boys
+  		*/
+  		
+  		for (var i = 0; i < sub.length; i++)
+  			document.write("sub[" + i + "]=" + sub[i] + "<hr>");
+  		
+  		/*
+  			sub[1]=and
+  			sub[2]=Girls
+  		*/
+  	</script>
+  </body>
+</html>

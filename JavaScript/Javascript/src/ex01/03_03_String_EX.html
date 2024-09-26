@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>String 객체의 메서드 활용</title>
+  </head>
+  <body>
+  	<script>
+  		var num = prompt("주민번호를 입력하세요","910404-1234123");
+  		var output = '<h1>String 객체의 메서드 활용 </h1> <hr>';
+  		
+  		// 주민번호를 입력받아 남자와 여자에 따라 body 배경색을 설정한다.
+  		
+  		if (num.charAt(7) === '1' || num.charAt(7) === '3') {
+  			output += '<div>남자</div>';
+  			document.body.style.background="purple";
+  			document.body.innerHTML= output;
+  		} else if (num.charAt(7) === '2' || num.charAt(7) === '4') {
+  			output += '<div>여자</div>';
+  			document.body.style.background="skyblue";
+  			document.body.innerHTML= output;
+  		}
+  	</script>
+  </body>
+</html>

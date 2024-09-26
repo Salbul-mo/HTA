@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>getElementById</title>
+	<!-- 문서 객체의 스타일 조작 -->
+    <script>
+    	window.onclick = function() {
+    		var header = document.getElementById('header');
+    		header.style['background-color'] = 'red';
+    		header.style['border'] ='3px solid black';
+    		header.style['color'] = 'orange';
+    		header.style['font-family'] = '굴림';
+    		/*
+				또는 style 에서 type 에 직접 적용하는
+				style[속성 type] 으로 사용해도 된다. 
+			
+    		*/
+    	}
+    
+    </script>
+  </head>
+  <body>
+    <h1 id="header">Header</h1>
+</body>
+  
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Form handling with JavaScript</title>
+    <link href="css/ex020601.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+  	<h2>서적 주문 양식</h2>
+  	<form action="result.html" method="get">
+  	<!-- 입력할 때 마다 변경되게 한다. -->
+  	<table id="table">
+  		<thead>
+  			<tr>
+  				<th>책 제목</th>
+  				<th>가격</th>
+  				<th>수량</th>
+  				<th>합계</th>
+  			</tr>
+  		</thead>
+  		<tr>
+  			<td>4차 산업</td>
+  			<td class='price'>30,000원</td>
+  			<td><input id='book1' type='text' size='2' value='0' onclick='this.select();'></td>
+  			<!-- 
+  				this.select() 는 각 서적 수량을 표시하는 텍스트 박스를 클릭하면 그 값이 선택되도록 하는 기능을 갖는다.
+  				this는 <input> 요소의 DOM 을 가리키게 된다. 즉, 자신이 속한 DOM 을 가리킨다.
+  			 -->
+  			 <td><input id='book1Total' type='text' size='6' value='0' readOnly>원</td>
+  			 <!-- size => 문자의 수 -->
+  		</tr>
+  		<tr>
+  			<td>다이어트</td>
+  			<td class='price'>27,000원</td>
+  			<td><input id='book2' type='text' size='2' value='0' onclick='this.select();'></td>
+  			<td><input id='book2Total' type='text' size='6' value='0' readOnly>원</td>
+  		</tr>
+  		<tr>
+  			<td>윤식당</td>
+  			<td class='price'>25,000원</td>
+  			<td><input id='book3' type='text' size='2' value='0' onclick='this.select();'></td>
+  			<td><input id='book3Total' type='text' size='6' value='0' readOnly>원</td>
+  		</tr>
+		<tr>
+			<td>합계</td>
+			<td>&nbsp;</td>
+			<td><input id='totalNumber' type='text' size='2' value='0' readOnly></td>
+			<td><input id='totalPrice' type='text' size='6' value='0' readOnly>원</td>
+		</tr>
+  	</table>
+  	<br>
+  	<input type="reset" value="초기화">
+  	<input type="submit" value="제출">
+  </form>
+  <script>
+  	function updateAll() {
+  			var book1 = document.getElementById('book1');
+  			var book2 = document.getElementById('book2');
+  			var book3 = document.getElementById('book3');
+  			
+  			var book1Total = document.getElementById('book1Total');
+  			var book2Total = document.getElementById('book2Total');
+  			var book3Total = document.getElementById('book3Total');
+  			
+  			var totalNumber = document.getElementById('totalNumber');
+  			var totalPrice = document.getElementById('totalPrice');
+  			
+  			var price = document.getElementsByClassName('price');
+  			
+  			// 정규식과 replace() 사용해서 ',' 와 '원' 제거
+  			// price[0].textContent 로 내용을 불러올 수 있다.
+  			var book1Totalvalue = Number(book1.value) * Number(price[0].innerHTML.replace(/\,|원/g,""));
+  			var book2Totalvalue = Number(book2.value) * Number(price[1].innerHTML.replace(/\,|원/g,""));
+  			var book3Totalvalue = Number(book3.value) * Number(price[2].innerHTML.replace(/\,|원/g,""));
+  			
+  			// toLocaleString() 사용해서 , 찍기 
+  			book1Total.value = book1Totalvalue.toLocaleString();
+  			book2Total.value = book2Totalvalue.toLocaleString();
+  			book3Total.value = book3Totalvalue.toLocaleString();
+  			
+  			totalNumber.value = Number(book1.value) + Number(book2.value) + Number(book3.value);
+  			
+  			totalPrice.value = (book1Totalvalue + book2Totalvalue + book3Totalvalue).toLocaleString();
+  			
+  	}
+  
+  	document.getElementsByTagName('form')[0].addEventListener('input', updateAll);
+  	// 입력 즉시 실행시켜서 백스페이스를 사용할 수 없게 된다.
+  </script>
+  </body>
+</html>

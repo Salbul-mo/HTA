@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>DOM_access</title>
+    <script>
+    	window.onload = function() {
+    		var clock = document.getElementById('clock');
+    		
+    		var today = new Date();
+    		
+    		clock.innerHTML = today.toLocaleString();
+    		
+    		setInterval(function() {
+    						today = new Date();
+    						clock.innerHTML = today.toLocaleString();}, 1000);
+    						//toLocaleString() => 2024. 9. 24. 오전 9:05:26 와 같이 출력
+    	}
+    	
+    </script>
+  </head>
+<body>
+    <h1 id="clock"></h1>
+</body>
+</html>

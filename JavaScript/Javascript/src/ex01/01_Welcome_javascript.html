@@ -1,0 +1,55 @@
+<!-- hello.html
+	간단한 인사말을 화면에 표시하는 HTML/JavaScript 기본 예제 -->
+	
+<!-- 자바스크립트 코드의 위치
+	
+	1. HTML 태그의 이벤트 리스너 속성(onclick, onload, onchange, onkeyup, onsubmit 등)에 작성
+		예) <img src="koala.jpg" onclick="this.src='Desert.png'">
+		
+	2. <script></script> 내에 작성
+		예) <script>
+				alert("자바스크립트 안녕");
+			</script>
+	3. 자바스크립트 파일에 작성
+		예) <script src="Welcome.js"></script>
+		
+	4. URL 부분에 작성
+		예) <a href="javascript:alert('Hello World')">환영합니다.</a>
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Welcome to the JavaScript</title>
+    <script>
+    
+    	document.write("Hello, welcome to the JavaScript world!<br>");	
+    	/* document 객체의 write 메서드를 사용하는 예제. */
+    	
+    	/*  
+    		-자바스크립트 내에서 HTML 문서는 Document 라는 객체로 모델링 되어 있다.
+    		-Document 객체는 웹 브라우저와 관련된 객체로 document 라는 이름으로 접근할 수 있다.
+    		-document.write() 라는 Method 를 이용해서 HTML 문서 내에 컨텐츠를 삽입할 수 있다.
+    		 즉, document.write() 라는 명령어는 그대로 화면에 표시되는 것이 아니라
+    		 HTML문서에서 실행되는 명령어이다.
+    		-Method 는 객체 안의 함수를 의미한다. (document 객체의 write 메서드)
+    		 함수(Function)는 특정 작업을 수행하기 위해 독립적으로 만들어진 하나의 단위로 
+    		 return값이 존재한다.
+    		-Function 과 Method 의 차이점은 
+    		 Method 는 객체에 종속되지만 
+    		 Function 은 객체에 독립적이다.
+    	*/
+    </script>
+  </head>
+  <body>
+  	안녕하세요? 자바스크립트 세계에 오신 것을 환영합니다! <br>
+  	<img src="image/koala.jpg"
+  		onclick="this.src='image/Desert.jpg'"
+  		style="width:300px; height:300px;">
+  		<!-- 클릭으로 속성을 변경하는 코드. 
+  			 this.src => 해당 태그의 src 
+  			 자바스크립트는 변수의 scope가 함수단위이다.
+  		-->
+  </body>
+</html>

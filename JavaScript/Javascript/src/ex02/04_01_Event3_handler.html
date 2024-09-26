@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>이벤트 핸들러</title>
+    <!-- 이벤트 핸들러 : 특정 이벤트가 발생했을 때 실행하고자 하는 자바스크립트 함수나 코드 -->
+  </head>
+  <body>
+  	<form>
+  		<input id="op1" type="text" size="2"> + 
+  		<input id="op2" type="text" size="2">
+  		<input type="button" value="=" onclick="add()">
+  		<input id="result" type="text" size="2">
+  		
+  		<script>
+  			function add() {
+  				var op1 = document.getElementById('op1');
+  				var op2 = document.getElementById('op2');
+  				
+  				var result = document.getElementById('result');
+  				
+  				result.value = Number(op1.value) + Number(op2.value);
+  				// result.value = op1.value + op2.value; => 문자열 연결 제대로 출력될 수 없다.
+  				// 객체의 속성값은 문자열로 리턴된다. 따라서 정수로 바꾸어 주어야 한다.
+  				// result.value = parseInt(op1.value) + parseInt(op2.value);
+  				// parseInt는 문자열을 정수형으로만 리턴하기 때문에 실수는 소숫점 아래가 잘린다. 2.6 + 3 = 5 출력. 
+  			}
+  		</script>
+  	</form>
+  </body>
+
+</html>
