@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>가상클래스 상태 선택자</title>
+    <!-- 
+    	입력 양식의 상태에 따라 각각 스타일을 적용할 수 있다.
+    	가상 클래스 상태 선택자 종류
+    	(1) :checked - 선택된 input 요소에 스타일 적용
+    	(2) :disabled - 사용 불가능한 input 요소에 스타일 적용
+    	(3) :enabled - 사용 가능한 input 요소에 스타일 적용
+    	(4) :not - 지정한 input 요소가 아닌 요소에 스타일 적용
+     -->
+     <style>
+     	button:enabled {color:green;}
+     	
+     	button:disabled {color:red;}
+     </style>
+  </head>
+  	
+  <body>
+  	<button>enabled</button>
+  	<button disabled>disabled</button>
+  </body>
+</html>

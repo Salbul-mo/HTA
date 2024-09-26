@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>figure 태그 활용</title>
+</head>
+<body>
+	<!-- <figure>,<figcaption> 태그 :
+			HTML5 에서는 이미지와 그 이미지에 해당하는 캡션을 묶어서 관리할 수 있는 태그가 제공된다.
+			HTML4 에서는 이미지를 첨부하고 그 상하단에 관련 설명을 첨부하여도 검색 엔진의 입장에서는 알아낼 수 없었지만,
+			HTML5 의 <figure>(본문에 삽입된 그림을 블록화하는 시맨틱 태그) 태그와 
+					<figcaption> (그림 제목을 나타내는 태그) 태그를 이용한 페이지에서는 
+					검색 엔진이 포함된 이미지가 어떤 것인가에 대해서 보다 정확한 정보를 얻을 수 있다. -->
+
+	<h3>figure 태그 활용</h3>
+	<hr>
+	<figure>
+		<img src="..\image\Image20240909160105.png">
+		<!-- 현재 위치는 html 파일이 위치하는 ex01 패키지 -->
+		<!-- .\image\파일이름 => 현재 위치의 하위폴더 , 패키지 안의 image 폴더-->
+		<!-- ..\image\파일이름 => 현재 위치의 상위폴더 , ex01 패키지 밖의 image 폴더-->
+		<!-- src => 파일 디렉토리, URI(통합 자원 식별자) -->
+		<figcaption>시원한 아이스 크림</figcaption>
+	</figure>
+
+</body>
+</html>

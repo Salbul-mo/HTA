@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Transform(변환)</title>
+    <style>
+    	div {display:inline-block;
+    		border:1px solid black;
+    		color:white;
+    		background-color:olive;
+    		padding:5px;}
+    	
+    	#rotate1 {transform:rotate(20deg); 
+    				left:130px;
+    				transition:transform 3s;}
+    	
+    	#rotate2 {transform:rotate(20deg); 
+    				left:230px;
+    				transition:transform 3s;}
+    	
+    	#rotate1:hover {transform:rotate(45deg); 
+    					left:130px;}
+    	
+    	#rotate2:hover {transform:rotate(-45deg); 
+    					left:230px;}
+    </style>
+  </head>
+  <body>
+  	<h3>다양한 Transform</h3>
+  	아래는 회전(rotate)을 적용합니다. [[transform: rotate(각도)]]
+  	<hr>
+ 	<br>
+ 	<br>
+  		<div id="rotate1">rotate(20deg)->rotate(45deg)</div>
+  		<div id="rotate2">rotate(20deg)->rotate(-45deg)</div>
+  </body>
+</html>

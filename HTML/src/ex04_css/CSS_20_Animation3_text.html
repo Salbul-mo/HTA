@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>키 프레임 애니메이션-텍스트 색 변화</title>
+    <style>
+    	div {width:100px;
+    		height:100px;}
+    			
+    	@keyframes textColor {
+    		0% {color:yellow;}
+    		25% {color:green;}
+    		50% {color:blue;}
+    		75% {color:magenta;}
+    		100% {color:yellow;}
+    	}
+    	
+    	h1 {animation:textColor 3s infinite;
+    		color:yellow;}
+    </style>
+  </head>
+  <body>
+  	<h1>1시는 점심시간 입니다~</h1>
+  </body>
+</html>

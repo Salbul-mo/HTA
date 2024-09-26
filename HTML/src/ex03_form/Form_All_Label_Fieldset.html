@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>다양한 입력 폼</title>
+</head>
+<body>
+	<h1>다양한 입력 폼</h1>
+
+	<form method="post" action="result.html">
+		<fieldset>
+			<legend>회원 가입 폼</legend>
+			<p>
+				성명: <input type="text" value="" name="name"> <br> 성별:
+				&nbsp; <label for="male">남성<input type="radio" name="gender"
+					id="male" value="male">
+				</label> <label for="female">여성<input type="radio" name="gender"
+					id="female" value="female">
+				</label> <br>
+				<!-- 라벨의 텍스트를 클릭해도 된다.
+					 label태그의 for 속성과 input 태그의 id 속성값이 같으면 라벨의 텍스트를 클릭해도
+					 선택이 가능해진다. -->
+				<!-- 라벨 태그 안에 input 태그를 작성할 수 있다. -->
+				과목: <select name="subject" size="1">
+					<option value="HTML">HTML</option>
+					<option value="JSP">JSP</option>
+					<option value="CSS">CSS</option>
+					<option value="JavaScript">JavaScript</option>
+				</select>
+
+			</p>
+			<p>
+				구입희망분야(복수선택 가능) <br> - 분야: <label for="Computer"><input
+					type="checkbox" name="books" value="Computer" id="Computer">
+					컴퓨터</label> <label for="Economy"><input type="checkbox"
+					name="books" value="Economy" id="Economy"> 경제</label> <label
+					for="Common"><input type="checkbox" name="books"
+					value="Common" id="Common"> 상식</label>
+			</p>
+			<p>
+				비고: <br>
+				<textarea name="comments" rows="4" cols="40"> 나는 &lt;textarea&gt;입니다.
+			속성은 rows=&quot;4&quot; cols=&quot;40&quot; 입니다. </textarea>
+			</p>
+
+			<h3>파일 업로드하기(확장자 &quot;png&quot;인 파일만 보입니다.)</h3>
+
+			<input type="file" accept=".png"> <br>
+			<hr>
+			<input type="submit" value="전송"> <input type="reset"
+				value="취소">
+		</fieldset>
+	</form>
+
+
+
+</body>
+</html>

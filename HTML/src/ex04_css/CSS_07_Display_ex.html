@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+    	span {display:none;}
+    	/* display:none; 으로 감추고 */
+    	
+    	div:hover+span {display:block;
+    					width:400px;
+    					height:100px;
+    					align-content:center;
+    					text-align:center;
+    					background:pink;}
+    	/* 커서를 가져다 댄 div의 형제 요소인 span 에 속성과 서식 지정해서 출력되게 한다. */ 	  
+    </style>
+  </head>
+  <body>
+  	<div>여기에 커서를 갖다 놓으세요</div>
+  	<span>나는 보여요.</span>
+  </body>
+</html>

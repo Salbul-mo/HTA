@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>박스 모델(Box Model) : box-sizing:border-box</title>
+    <!-- box-sizing:border-box;
+    	 width 와 height 속성이 padding 및 border 를 포함한 크기로 계산이 되며,
+    	 margin을 포함하지 않는다. -->
+    	 
+    <style>
+    	div { box-sizing:border-box; }
+    	
+    	#first { background:red; }
+    	
+    	#second { background:orange;
+    			  width:100px;
+    			  height:100px; }
+    			  
+    	#third { background:yellow;
+    			 width:100px;
+    			 height:100px;
+    			 padding:20px; }	
+    	/* border-box 가 이미 padding을 포함한 크기이므로 content의 크기가 줄어들면서 padding 공간이
+    	추가되었다. content -> width:100 - 2*20 height:100 - 2*20 */
+    	
+    	#fourth { background:green;
+    				  width:100px;
+    				  height:100px;
+    				  padding:20px;
+    				  margin:20px; }	 
+    	/* border-box 는 margin을 포함하지 않기 때문에 margin 크기가 추가되었다. */
+    	
+    	#fifth { background:blue;
+    			 width:100px;
+    			 height:100px;
+    			 padding:20px;
+    			 margin:20px;
+    			 border:10px solid olive; 
+    			 color:white; } 
+    	/* border-box 는 border를 포함하기 때문에 전체적인 크기는 똑같다.
+    	content -> width:100 - 2*20 -2*10 height:100 - 2*20 -2*10 */		 
+    </style>
+  </head>
+  <body>
+  
+    <div id="first">first</div>
+  	<div id="second">second</div>
+  	<div id="third">third</div>
+  	<div id="fourth">fourth</div>
+  	<div id="fifth">fifth</div>
+  
+  </body>
+</html>

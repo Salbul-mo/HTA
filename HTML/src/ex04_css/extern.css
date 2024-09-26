@@ -1,0 +1,60 @@
+@charset "UTF-8";
+	
+	
+	* {box-sizing:border-box;}
+	
+	html,body {width:80%;
+				height:100%;}
+	
+	header {display:block;
+			text-align:center;
+			align-content:center;
+			width:100%;
+			height:5%;
+			padding:0.5px;
+			background-color:skyblue;
+			}
+	
+	nav {float:right;
+		width:100%;
+		height:5%;
+		background:CornflowerBlue;
+		align-content:center;}
+	
+	nav ul {margin:0px;
+			align-content:center;}
+		
+	nav li {float:left;
+			list-style-type:none;
+			text-align:left;
+			margin-right:2rem;}
+	
+	nav a {text-decoration:none;
+			color:white;
+			font-size:15px;}
+			
+	aside {width:40%;
+			height:70%;
+			background-color:HoneyDew;
+			float:right;
+			font-size:x-large;
+			padding:2rem;}
+	
+	aside ul {list-style-type:circle;}
+	
+	article {width:60%;
+			height:70%;
+			float:right;
+			background-color:DarkSeaGreen;
+			font-size:small;
+			padding:2rem;}
+	
+	article p::before {content:"▶";}
+	
+	footer {clear:right;
+			align-content:center;
+			text-align:center;
+			background-color:Lavender;
+			height:5%;
+			color:white;
+			}
