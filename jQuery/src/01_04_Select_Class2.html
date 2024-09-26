@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>클래스 선택자</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+    <!-- 클래스 선택자 이용 예제 -->
+    <script>
+    	$(document).ready(function() {
+    						$('.item').css('color', 'orange');
+    						$('h1.item').css('background','red');
+    					}
+    	);
+    	// 태그 중 특정 클래스를 갖는 객체만 선택하는 예제 '태그이름.클래스이름' 
+    
+    </script>
+  </head>
+  <body>
+  	<h2 class="item">나는~</h2>
+  	<h1 class="item">졸리지</h1>
+  	<h1 class="item">않아요</h1>
+  	<h1>전혀 졸리지 않아요</h1>
+  </body>
+</html>

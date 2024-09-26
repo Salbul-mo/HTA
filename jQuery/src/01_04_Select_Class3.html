@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>클래스 선택자</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+    <!-- 클래스 선택자 이용 예제 -->
+    <script>
+    	$(document).ready(function() {
+    						$('.item').css('color', 'orange');
+    						$('.select').css('background','black');
+    						// select 클래스에 css 스타일 지정.
+    						// ('.item.select') => 두 가지 클래스를 모두 갖는 객체 선택
+    						//$('.item,.select').css('color', 'orange'); => 두 가지 클래스 모두 선택
+    						
+    					}
+    	);
+    	// 태그 중 특정 클래스를 갖는 객체만 선택하는 예제 '태그이름.클래스이름' 
+    
+    </script>
+  </head>
+  <body>
+  	<h2 class="item">class="item"</h2>
+  	<h1 class="item select">class="item select" : 나만 검정 바탕</h1>
+  	<!-- 클래스는 여러 개를 부여할 수 있고 공백으로 구분된다. -->
+  	<h1 class="item">class="item"</h1>
+  </body>
+</html>

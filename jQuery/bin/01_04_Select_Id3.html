@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>태그이름 선택자</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+    <!-- 프롬프트 이용 예제 -->
+    <script>
+    	$(document).ready(function() {
+    						// 프롬프트로 사용자에게서 입력받고 해당 값으로 css 스타일 바꾸는 예제			
+    						const color = prompt('글자색을 바꿀 색을 입력하세요','orange');
+    						
+    						$('#target').css('color', color);
+    					}
+    	);
+    </script>
+  </head>
+  <body>
+  	<h1>Header-0</h1>
+  	<h1 id="target">'#target' : 카멜레온</h1>
+  	<h1>Header-2</h1>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>태그이름 선택자</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+    <!-- 태그이름 선택자 이용 예제 -->
+    <script>
+    	$(document).ready(function() {
+    						$('p,h1').css('color', 'orange');
+    					}
+    	);
+    	// $('태그이름') 으로 해당 태그 객체에 접근할 수 있다.
+    	// css 에서 사용하던 것처럼 , 를 사용해서 여러 개의 태그를 선택할 수 있다.
+    </script>
+  </head>
+  <body>
+  	<h2>나는 검정색 입니다.</h2>
+  	<p>나는 오렌지색 입니다.</p>
+  	<h1>나는 오렌지색 입니다.</h1>
+  	<p>나는 오렌지색 입니다.</p>
+  </body>
+</html>
