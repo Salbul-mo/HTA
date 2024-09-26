@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>입력 양식 필터 선택자(1)</title>
+    <!-- 
+			jQuery 입력 양식 필터 선택자(1) :
+				input 태그의 type 속성에 따라 문서 객체를 선택할 수 있다.
+				속성 선택자 input[type="text"] 와 같은 의미로 input:text 로 사용한다.
+				(1) 요소 : text (input 태그 중 type 속성이 text 인 문서 객체를 선택한다.)
+				(2) 요소 : submit (input 태그 중 type 속성이 submit 인 문서 객체르 선택한다.)
+				(3) 요소 : reset (input 태그 중 type 속성이 reset 인 문서 객체를 선택한다.)
+     -->
+     <script src="../js/jquery-3.7.1.js"></script>
+     <script>
+     	$(document).ready(function() {
+     					const name = prompt('이름을 입력하세요?','홍길동');
+     				/*	
+     					$('input[type="text"]').val(name);
+     					$('input[type="text"]').css('color', 'green');
+     					$('input[type="text"]').css('background-color', 'orange');
+     					$('input[type="text"]').css('width', '400px');
+     					$('input[type="text"]').css('font-size', '50px');
+     				*/
+    	// 선택한 객체에 대해 메서드를 연속적으로 사용할 수 있는 기법을 체이닝 (chaining) 기법이라고 한다.
+     				/*
+     				$('input:text').val(name)
+     								.css('color', 'green')
+     								.css('background-color', 'orange')
+     								.css('height','50px')
+     								.css('font-size','50px');
+     				*/
+     	// css 메서드에 속성 값을 한 번에 입력할 수도 있다. css({'속성':'값', '속성2':'값2', . . . ,'속성N':'값N'}); 			
+     				$('input:text').val(name)
+     								.css({'color':'green','background-color':'orange',
+     										'height':'50px','font-size':'50px'});
+     		}	
+     	);
+     </script>
+  </head>
+  <body>
+  	<input type="text" placeholder="이름"> <br>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>클래스 속성 추가</title>
+    <!--
+    		1. attr 메서드 : 속성의 값을 구해오거나 값을 설정한다.
+    			형식) 
+    				1. attr(속성명) - 속성에 해당하는 속성 값을 구해온다.
+    				2. attr(속성명, 속성값) - 속성에 해당하는 속성 값을 설정한다.
+    		
+    		2. removeArrt() 메서드 : 문서 객체에 속성을 제거하는 메서드이다.
+    				removeAttr(속성명)
+     -->
+     <script src="../js/jquery-3.7.1.js"></script>
+     <script>
+     	$(document).ready(function() {
+     						setTimeout(function() {
+     								 img = $('radio:selected').val();
+     								$('img').arrt('src',img);
+     						},5000);
+     	});
+     </script>
+  </head>
+  <body>
+  	<h3>선택한 그림 위치 출력</h3>
+  	<hr>
+  	<div> radio 버튼을 클릭하세요</div>
+  	<form>
+  		<img src="image/koala.jpg" width="100px" height="100px"><br>
+  		<input type="radio" name="icon" value="image/koala.jpg">image1 <br>
+  		<input type="radio" name="icon" value="image/desert.jpg">image2 <br>
+  		<input type="radio" name="icon" value="image/moon.png">image3 <br>
+  	</form>
+  </body>
+</html>

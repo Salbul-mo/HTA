@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>클래스 속성 추가</title>
+    <style>
+    	.high-light {background:yellow;}
+    
+    </style>
+    <!--
+    		1. attr 메서드 : 속성의 값을 구해오거나 값을 설정한다.
+    			형식) 
+    				1. attr(속성명) - 속성에 해당하는 속성 값을 구해온다.
+    				2. attr(속성명, 속성값) - 속성에 해당하는 속성 값을 설정한다.
+    		
+    		2. removeArrt() 메서드 : 문서 객체에 속성을 제거하는 메서드이다.
+    				removeAttr(속성명)
+     -->
+     <script src="../js/jquery-3.7.1.js"></script>
+     <script>
+     	$(document).ready(function() {
+     					$('h1').attr('class','high-light'); // h1 태그에 클래스=high-light 부여
+     					$('h1:even').removeAttr('class'); // 짝수 인덱스 h1 태그에 클래스 삭제
+     	});
+     </script>
+  </head>
+  <body>
+	<h1>item - 0</h1>  
+	<h1>item - 1</h1>  
+	<h1>item - 2</h1>  
+	<h1>item - 3</h1>  
+	<h1>item - 4</h1>  
+  </body>
+</html>

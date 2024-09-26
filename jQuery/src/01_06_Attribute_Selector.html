@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>속성 선택자 val()</title>
+    <!-- 
+    			속성 선택자
+    		1)  input[type="text"]
+    			input 태그 중 type 이 text 인 문서 객체를 선택한다.
+    			
+    		2)  val() 메서드는 매개 변수 값을 입력하면 input 태그의 value 속성을 지정하고 
+    			매개 변수를 입력하지 않으면 value 속성을 검사하여 값을 반환한다.
+    			예) val() : 해댕 요소의 값을 가져온다.
+    				
+    				val(변경 값) : 해당 요소의 value 속성 값을 변경 값으로 바꾼다.
+    				
+     -->
+     <script src="../js/jquery-3.7.1.js"></script>
+     <script>
+     	$(document).ready(function() {
+		// 1. console.log() 이용해서 input[type='text'] 문서 객체의 value 값을 가져와 출력한다.
+     						console.log($('input[type="text"]').val());
+     						}
+     	);
+     
+     
+     </script>
+  </head>
+  <body>
+  	<input type="text" value="저요?" name="name"> <br>
+  	<input type="password" name="pwd"> <br>
+  </body>
+</html>

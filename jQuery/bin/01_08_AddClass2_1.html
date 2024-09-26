@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>클래스 속성 추가</title>
+    <!--
+    	addClass() 메서드 : 문서 객체에 class 속성을 추가하는 메서드이다.
+    	removeClass() 메서드 : 문서 객체에 class 속성을 제거하는 메서드이다. 
+     -->
+     <script src="../js/jquery-3.7.1.js"></script>
+     <script>
+     	$(document).ready(function() {
+     				$('h1:nth-child(2n)').addClass('high-light');
+     				$('.high-light').css('background-color','yellow');
+     	});
+     </script>
+  </head>
+  <body>
+	<h1>item - 0</h1>  
+	<h1>item - 1</h1>  
+	<h1>item - 2</h1>  
+	<h1>item - 3</h1>  
+	<h1>item - 4</h1>  
+  </body>
+</html>
