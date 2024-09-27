@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>문서 객체 선택과 탐색</title>
+    <script src="http://code.jquery.com/jquery-3.7.1.js"></script>
+    <!-- 특정 위치의 문서 객체 선택
+    		eq() : 특정 위치에 존재하는 문서 객체를 선택한다.
+    		first() : 첫 번째 위치하는 문서 객체를 선택한다.
+    		last() : 마지막에 위치하는 문서 객체를 선택한다.
+     -->
+    <script>
+    	$(document).ready(function() {
+    					$('h1').first().css('border','4px dotted green');
+						$('h1').last().css('border','4px solid red');
+    	});		
+    </script>
+  </head>
+  <body>
+	<div>
+		<h1>Header-0</h1>
+		<h1>Header-1</h1>
+		<h1>Header-2</h1>
+	</div>
+	<div>
+		<h1>Header-3</h1>
+		<h1>Header-4</h1>
+		<h1>Header-5</h1>
+	</div>
+  </body>
+</html>
