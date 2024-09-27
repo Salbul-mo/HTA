@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>html() 과 text() 의 차이</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <!-- 
+    		html() 메서드에서 사용된 함수의 두 번째 매개 변수 html 은 index 위치에 해당하는 요소의 내용이다.
+     -->
+    <script>
+    	$(document).ready(function() {
+    						$('h1').html(function(index, html) {
+    										//return '★' + html + index + '★';
+    										return `★${html}${index}★`;
+    						});
+    	});
+    </script>
+  </head>
+  <body>
+  	<h1>월요일</h1>
+  	<h1>화요일</h1>
+  	<h1>수요일</h1>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>문서 객체 조작</title>
+    <!-- 
+    		attr()메서드
+    		
+    		1. $(selector).attr(name);
+    		2. $(selector).attr(name, value);
+    		3. $(selector).attr(name, function(index, attr){});
+     -->
+     <script src='../js/jquery-3.7.1.js'></script>
+     <script>
+     	$(document).ready(function() {
+     						console.log($('img').attr('src')); // 첫번째 속성 값만 가져온다.
+     						//image.desert.jpg
+     	});
+     </script>
+  </head>
+  <body>
+  	<img src="image/desert.jpg" alt='desert.jpg'>
+  	<img src="image/koala.jpg" alt='koala.jpg'>
+  	<img src="image/moon.png" alt='moon.png'>
+  </body>
+</html>

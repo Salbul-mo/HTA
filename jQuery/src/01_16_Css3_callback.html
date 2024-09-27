@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>문서 객체 조작</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <!-- 
+    		css() 메서드 : 스타일과 관련된 모든 기능을 수행한다.
+    		형식
+    			1. $(selector).css(name);
+    			2. $(selector).css(name, value);
+    			3. $(selector).css(name, function(index, style){});
+     -->
+    <style>
+    	div {
+    		width:100px;
+    		height:100px;
+    	} 
+    	.red {
+    		background-color:red;
+    	}
+    	.orange {
+    		background-color:orange;
+    	}
+    	.yellow {
+    		background-color:yellow;
+    	}
+    </style>
+    <!-- 문서 객체 스타일 검사 -->
+    <script>
+		$(document).ready(function() {
+							let message = '';
+							$('div').css('background-color', function(index, style) {
+																message += index + '번째 background-color 속성값은 '
+																						+ style + "\n";
+							});
+							console.log(message);
+							/*
+							0번째 background-color 속성값은 rgb(255, 0, 0) 		red
+							1번째 background-color 속성값은 rgb(255, 165, 0) orange
+							2번째 background-color 속성값은 rgb(255, 255, 0) yellow
+							*/
+		});
+    </script>
+  </head>
+  <body>
+  	<div class='red'></div>
+  	<div class='orange'></div>
+  	<div class='yellow'></div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>문서 객체 선택과 탐색</title>
+    <style>
+    	.siblings * {
+    		display:block;
+    		border:2px solid lightgrey;
+    		color:lightgrey;
+    		padding:5px;
+    		margin:15px;
+    	}
+    </style>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <script>
+    	$(document).ready(function(){
+    	// 선택한 요소의 다음 형제를 선택한다.
+    	$('h2').next().css({'color':'red', 'border':'2px solid red'});
+    	//<h2>나</h2>의 형제 객체를 선택하고(next()) 그 형제 객체에 css를 부여한다.
+    	});
+    </script>
+  </head>
+  <body class='siblings'>
+  	<div>div (parent)
+	  	<p>p</p>
+	  	<span>span</span>
+	  	<h2>나</h2>
+	  	<h3>h3</h3>
+	  	<h4>h4</h4>
+	  	<h5>h5</h5>
+	  	<p>p</p>
+  	</div>
+  </body>
+</html>

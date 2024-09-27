@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>텍스트 노드 가져오기</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <!-- 
+    		text() 메서드 : 문서 객체 내부의 글자와 관련된 기능을 수행한다.
+    			형식)
+    				1. $(selector).text(); - 선택자의 텍스트 노드의 값을 가져온다.
+    				2. $(selector).text(value); - 선택자의 텍스트 노드의 값을 변경한다.
+    				3. $(selector).text(function(index, text){});
+     -->
+    <script>
+		$(document).ready(function() {
+							$('div').text('오늘은 금요일이다~~~');
+		});
+    </script>
+  </head>
+  <body>
+  	<div>다음주에 만나요</div>
+  </body>
+</html>

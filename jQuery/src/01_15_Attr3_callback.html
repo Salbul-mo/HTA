@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>문서 객체 조작</title>
+    <!-- 
+    		attr()메서드
+    		
+    		1. $(selector).attr(name);
+    		2. $(selector).attr(name, value);
+    		3. $(selector).attr(name, function(index, attr){});
+     -->
+     <style>
+     	img {width:100px;}
+     </style>
+     <script src='../js/jquery-3.7.1.js'></script>
+     <script>
+     	$(document).ready(function() {
+     						$('img').attr('src', function(index, attrValue){
+     												console.log(`index = ${index} , ${attrValue}`);
+     						});
+     	});
+     </script>
+  </head>
+  <body>
+  	<img src="image/desert.jpg" alt='desert.jpg'>
+  	<img src="image/koala.jpg" alt='koala.jpg'>
+  	<img src="image/moon.png" alt='moon.png'>
+  </body>
+</html>
