@@ -34,9 +34,12 @@
      					// friend 태그는 세 개이므로 each() 메서드를 사용한다.
      					let output = '';
      					$(xmlDoc).find('friend').each(function(index) {
+     												// 인덱스 활용해서 정보 추가
      												output += '<div>';
+     												output += '<p> 친구' + (index + 1) + '</p>';
      												output += '<h1>' + $(this).find('name').text() + '</h1>';
      												output += '<p>' + $(this).find('language').text() + '</p>';
+     												output += '<hr>';
      												output += '</div>';
      					});
      					
