@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Xml 문서 find()로 찾기</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+    <!-- 
+    	 find() 메서드 : 특정 태그를 선택한다
+    	 $.parseXML() 메서드 : 문자열을 XML 문서 객체로 변경한다.
+    	 text() 메서드 : 태그 사이의 글자를 가져온다.
+     -->
+     <script>
+     	$(document).ready(function() {
+     				// xml 객체로 만들 문자열 생성
+     					let xml =  '<friends>';
+     						xml += '	<friend>';
+     						xml += '		<name>오바마</name>';
+     						xml += ' 		<language>영어</language>';
+     						xml += '	</friend>';
+     						xml += '	<friend>';
+     						xml += '		<name>하니</name>';
+     						xml += '		<language>중국어</language>';
+     						xml += '	</friend>';
+     						xml += '	<friend>';
+     						xml += '		<name>세종대왕</name>';
+     						xml += '		<language>한국어</language>';
+     						xml += '	</friend>';
+     						xml += '</friends>';
+     					
+     					// 문자열을 XML 문서 객체로 변경한다.
+     					const xmlDoc = $.parseXML(xml);
+     					var search = prompt('검색할 친구의 이름을 입력하세요');
+     					let output = '<h1>입력한 친구가 명단에 없습니다.</h1>';
+     					
+     					if(search.trim() != '') {
+     						const result = $(xmlDoc).find('friend').filter(function() {
+     										return $(this).find('name').text().indexOf(search) >= 0;
+     										// 참이면 반환 아니면 버림.
+     						});
+     					
+     						if (result.length > 0) {
+     							output =  '<table>';
+     							output += '<caption> 검색어 ' + search + '</caption>';
+     							output += '<thead> <tr> <th>번호</th> <th>이름</th> <th>언어</th> </tr> </thead>';
+     							output += '<tbody>';	
+     							$.each(result, function(index, item) {
+     											output += '<tr>';
+ 												output += '<td>' + (index + 1) + '</td>';
+ 												output += '<td>' + $(this).find('name').text() + '</td>';
+ 												output += '<td>' + $(this).find('language').text() + '</td>';
+ 												output += '</tr>';
+     							});
+     						
+     							output += '</tbody>';
+     							output += '</table>';
+     						}
+     					}
+     					// document.body.innerHTML = output;
+     					$('body').html(output);
+     					$('table').css({'width':'400px', 'height':'150px', 'text-align':'center', 'margin':'0px auto', 'border-collapse':'collapse'});
+     					$('caption').css({'color':'green','font-size':'30px', 'font-weight':'bold', 'margin':'5px'});
+     					$('tr').css('height','40');
+     					$('td, th').css({'border-bottom':'1px solid lightgray', 'padding':'8px 0'});
+     					$('tr').hover(function(){
+     								$(this).css('background-color','orange');}
+     								  ,function(){
+     								$(this).css('background-color','white')}
+     								  );
+     					//.hover(function(){올라와 있을때 동작},function(){떠났을때 동작});
+     	});
+     </script>
+  </head>
+  <body>
+  
+  </body>
+</html>

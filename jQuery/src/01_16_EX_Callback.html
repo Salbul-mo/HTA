@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CSS 콜백 함수 사용</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <style>
+    	div {width:100px; height:100px;}
+    </style>
+    <script>
+		$(document).ready(function() {
+							// 변수를 선언한다.
+							const color = ['orange', 'yellow', 'green'];
+							
+							// 문서 객체의 스타일을 변경한다.
+							// css() 메서드에서 두 번째 매개 변수에 함수를 사용해서 
+							// 개별적으로 스타일 속성을 적용한다.
+							$('div').css('background-color', function(index){
+																return color[index];
+													// 속성값에 적용할 정보를 리턴하는 콜백함수
+							});
+		});    	
+    </script>
+  </head>
+  <body>
+  	<div></div>
+  	<div></div>
+  	<div></div>
+  </body>
+</html>

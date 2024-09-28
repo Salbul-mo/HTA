@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>html() 과 text() 의 차이</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <script>
+    	$(document).ready(function() {
+    						$('div').first().text('<span>호호</span>');
+    						// => <div> <span>호호</span> </div> 텍스트 그대로 입력
+    						$('div').eq(1).html('<span>하하</span>'); // 하하
+    						// => <span>하하</span> span 태그 인식하고 html 양식 생성
+    						console.log($('div').eq(3).text())	//하하
+    						// => div 태그 안의 텍스트 노드 값 하하 만 가져옴
+    						console.log($('div').eq(3).html())	//<span>하하</span>
+    						// => div 태그 안의 html 정보 <span>하하</span> 을 가져옴
+    	});
+    </script>
+  </head>
+  <body>
+  	<div>월요일</div>
+  	<div>화요일</div>
+  	<div>수요일</div>
+  	<div><span>하하</span></div>
+  </body>
+</html>

@@ -16,8 +16,8 @@
      <script>
      	$(document).ready(function() {
      						setTimeout(function() {
-     								 img = $('radio:selected').val();
-     								$('img').arrt('src',img);
+     								var img = $('input:checked').val();
+     								$('img').attr('src',img);
      						},5000);
      	});
      </script>
