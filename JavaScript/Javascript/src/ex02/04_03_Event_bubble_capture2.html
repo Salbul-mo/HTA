@@ -52,12 +52,13 @@
 								+ e.target.tagName;
 				alert(message);
 				event.stopPropagation();
+				// e.stopPropagation();
 				// 이벤트 전파를 막는 메서드.
 		}
 		
 		for (var i = 0; i < items.length; i++) {
-			//items[i].addEventListener('click', something, false); // 이벤트 버블링
-			items[i].addEventListener('click', something, true); //이벤트 캡처링
+			items[i].addEventListener('click', something, false); // 이벤트 버블링
+			//items[i].addEventListener('click', something, true); //이벤트 캡처링
 		}
 		// 상속 객체에게 모두 onclick 이벤트리스너를 만들었기 때문에
 		// 이벤트 전파가 일어나면서 같은 이벤트 발생 타입을 가진 이벤트 핸들러가 모두 작동한다.

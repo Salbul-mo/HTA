@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>trigger() 이벤트 강제 발생</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <!-- 
+    		trigger() : 이벤트를 강제로 발생시킨다.
+    			형식) trigger(eventName)
+     -->
+    <script>
+    	$(document).ready(function(){
+    				
+    		$('h1').click(function(){
+    			
+    			const start = $(this).text();
+    			
+    			$(this).text(start + '★');
+    			
+    		});
+    	});
+    </script>
+  </head>
+  <body>
+  	<h1>start: </h1>
+  	<h1>start: </h1>
+  </body>
+</html>

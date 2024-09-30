@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>trigger() 이벤트 강제 발생</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <!-- 
+    		trigger() : 이벤트를 강제로 발생시킨다.
+    			형식) trigger(eventName)
+     -->
+    <script>
+    	$(document).ready(function(){
+    				
+    		$('h1').click(function(){
+    			
+    			const start = $(this).text();
+    			
+    			$(this).text(start + '★');
+    			
+    			});
+    	
+    	// 1초마다 함수를 실행한다.
+    	// 마지막에 위치한 h1 테그는 자동으로 1초마다 클릭 이벤트를 실행한다.
+    	const interval = setInterval(function() {
+    		
+    		$('h1').last().trigger('click');
+    		// h1 태그중 마지막 객체의 click 이벤트를 발생시킨다.
+    		}, 1000);
+    	
+    	$('#end').click(function(){
+    		alert('트리거 종료');
+    		clearInterval(interval);
+    		});
+    	
+    	});
+    </script>
+  </head>
+  <body>
+  	<h1>start: </h1>
+  	<h1>start: </h1>
+  	<input type="button" value="트리거 종료" id="end">
+  </body>
+</html>

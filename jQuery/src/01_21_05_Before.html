@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>문서 객체 삽입</title>
+    <!-- 문서 객체 삽입 -->
+    <!--  		
+    			(A).prepend(B) : B를 A의 맨 처음 자식에 추가한다. 
+    			형식) $(selector).prepend(content);
+    -->
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script>
+    	$(document).ready(function() {
+    						// 변수를 선언한다.
+    						const h1 = '<h1>화요일</h1>';
+    						const h2 = '<h1>수요일</h1>';
+    						const h3 = '<h1>월요일</h1>';
+    						const h4 = '<h1>목요일</h1>';
+    						const h5 = '<h1>일요일</h1>';
+    						
+    						// 문서 객체를 추가한다.
+    						// h1, h2 를 div 태그의 마지막 자식에 추가한다.
+    						$('div').append(h1, h2);
+    						
+    						// h3을 div 태그의 맨 처음 자식으로 추가한다.
+    						$('div').prepend(h3);
+    						
+    						// div 태그의 바로 다음 형제 노드로 추가
+    						$('div').after(h4);
+    						
+    						// div 태그의 바로 이전 형제 노드로 추가
+    						$('div').before(h5);
+    	});
+    </script>
+  </head>
+  <body>
+  	<div>내 뒤에 붙어라</div>
+  </body>
+</html>

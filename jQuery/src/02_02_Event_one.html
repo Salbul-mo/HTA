@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>이벤트 제거 off()</title>
+    <!--
+    		one() : 이벤트를 한 번씩먼 실행한다.
+     -->
+     <script src="../js/jquery-3.7.1.js"></script>
+     <script>
+     	$(document).ready(function(){
+     			let count = 0;
+     			// 이벤트를 연결한다.
+     			// click() 메서드 사용
+     			$('div').one('click', function(){
+						$(this).html(function(index, html) {
+									return "<mark>이벤트가 발생했습니다.</mark>" + count++;
+     							});
+     			});
+     	});
+     </script>
+  </head>
+  <body>
+  	<div>월요일</div>
+  	<div>화요일</div>
+  	<div>수요일</div>
+  </body>
+</html>

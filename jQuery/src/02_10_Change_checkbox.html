@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>change() 메서드 -checkbox</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <script>
+    	$(document).ready(function(){
+    		
+    		$('#all-check').change(function() {
+    			
+    			console.log($(this).is(':checked')); // #all-check 문서 객체가 체크되었는지 확인한다.
+    				
+    			const checks = $('div input:checkbox'); 
+    			
+    			// all-check 와 같은 값을 갖도록 속성 입력한다.
+    			for(var cnt = 0; cnt < checks.length ; cnt++) 
+    				checks[cnt].checked = this.checked;
+    				
+    		});
+    	});
+    
+    </script>
+  </head>
+  <body>
+  	<label><input type='checkbox' id='all-check'>All</label>
+  	<div id='check-item'>
+  		<input type='checkbox'>
+  		<label>A option</label>
+  		<input type='checkbox'>
+  		<label>B option</label>
+  		<input type='checkbox'>
+  		<label>C option</label>
+  	</div>
+  </body>
+</html>

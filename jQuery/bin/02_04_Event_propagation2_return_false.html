@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>이벤트 전달</title>
+    <style>
+    	* {
+    		margin:5px; padding:5px;
+    		border:3px solid black;
+    	}
+    </style>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <!-- 
+    	  a 태그 클릭시 배경색을 파란색으로 변경한다.
+    	div 태그 클릭시 배경색을 오렌지색으로 변경한다.
+     
+     	event.stopPropagation();
+     	event.preventDefault();
+     	두 가지 메서드를 jQuery 에서는 return false 로 적용할 수 있다.
+     -->
+     
+    <script>
+    	$(document).ready(function(){
+    		
+    		$('a').click(function(event){
+    			$(this).css('background','blue');
+    			return false;
+    		});
+    		
+    		$('div').click(function(event){
+    			$(this).css('background','orange');
+    		});
+    	});
+    </script>
+  </head>
+  <body>
+  	<div>
+  		<a href='02_03_Event_Trigger3_clear2_restart2.html'>트리거 예제</a> div태그
+  	</div>
+  </body>
+</html>

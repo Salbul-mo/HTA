@@ -6,8 +6,19 @@
     <script src='../js/jquery-3.7.1.js'></script>
     <script>
     	$(document).ready(function() {
-    						$('tbody').append($('tbody>tr:first').clone());	
-    						// cloen() 메서드를 통해 복제한 객체를 맨뒤로 추가하는 append() 메서드 사용법
+    						const content = [ 
+    											{ no: '3', name : "김영희"},
+    											{ no: '4', name : "손오공"},
+    											{ no: '5', name : "저팔계"},
+											];    
+    						content.forEach(function(item){
+    											let str = '';
+    											str += '<td>' + item['no'] + '</td>';
+    											str += '<td>' + item['name'] + '</td>';
+    											
+    											$('tbody').append($('tbody > tr:first').clone().html(str));
+    											
+    										});
     		
     						$('table').css({'width':'400px', 'height':'150px', 'text-align':'center', 'margin':'0px auto', 'border-collapse':'collapse'});
          					$('caption').css({'color':'green','font-size':'30px', 'font-weight':'bold', 'margin':'5px'});
@@ -18,12 +29,12 @@
          								  ,function(){
          								$(this).css('background-color','white')}
          								  );
-    	})
+    	});
     </script>
   </head>
   <body>
   	<table>
-  		<caption>append - 이동</caption>
+  		<caption>친구 추가</caption>
   		<thead>
   			<tr>
   				<td>번호</td>
@@ -39,18 +50,6 @@
 				<td>2</td>  		
 				<td>이순신</td>
 			</tr>
-			<tr>
-				<td>3</td>  		
-				<td>손오공</td>
-			</tr>
-			<tr>
-				<td>4</td>  		
-				<td>저팔계</td>
-			</tr>
-			<tr>
-				<td>5</td>  		
-				<td>사오정</td>
-			</tr>  		
   		</tbody>
   	</table>
   </body>

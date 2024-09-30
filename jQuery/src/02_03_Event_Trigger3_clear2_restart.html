@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>trigger() 이벤트 강제 발생</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <style>
+
+    	#start {
+    		background-color:green;
+    		color:white;
+    	}
+    	
+    	#end {
+    		background-color:red;
+    		color:white;
+    	}
+    	input:disabled { 
+    		background-color:grey;
+    		color:white;
+    	/*
+    		적용되지 않는다.
+    		
+    		#start:disabled, #end:disabled{
+    		}
+    		로 적용시켜야 한다.
+    	*/
+    	}
+    </style>
+    <!-- 
+    		trigger() : 이벤트를 강제로 발생시킨다.
+    			형식) trigger(eventName)
+     -->
+    <script>
+    	$(document).ready(function(){
+    				
+    		$('h1').click(function(){
+    			
+    			const start = $(this).text();
+    			
+    			$(this).text(start + '★');
+    			
+    			});
+    	
+    	$('#start').click(function(){
+    		 interval = setInterval(function() {
+        		
+        		$('h1').last().trigger('click');
+        		// h1 태그중 마지막 객체의 click 이벤트를 발생시킨다.
+        		}, 1000);
+	    		 $(this).attr('disabled',true);
+	    		 $(this).css({'background-color':'gray', 'color':'white'});
+	    		 $('#end').attr('disabled',false);
+	    		 $('#end').css({'background-color':'red', 'color':'white'});
+    		});
+    	
+    	$('#end').click(function(){
+    		alert('트리거 종료');
+    		clearInterval(interval);
+    		 $(this).attr('disabled',true);
+	    	 $(this).css({'background-color':'gray', 'color':'white'});
+			 $('#start').attr('disabled',false);	    		
+	    	 $('#start').css({'background-color':'green', 'color':'white'});
+    		});
+    	
+    	});
+    </script>
+  </head>
+  <body>
+  	<h1>start: </h1>
+  	<h1>start: </h1>
+  	<input type="button" value="트리거 시작" id="start">
+  	<input type="button" value="트리거 종료" id="end">
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>trigger() 이벤트 강제 발생</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <style>
+		input {
+			width:100px; height:40px; 
+			color:white;
+			font-weight:bold;
+			border:none;
+			outline:none;
+		}
+		
+		input:hover {
+			opacity:0.8; 
+			cursor:pointer;
+		}
+		
+		input:disabled:hover {
+			opacity:1; 
+			cursor:not-allowed;
+		}
+		
+		#start {
+			background:green;
+		}
+		
+		#start:disabled, #end:disabled {
+			background:grey;
+		}
+		
+		#end {
+			background:red;
+		}
+    </style>
+    <!-- 
+    		trigger() : 이벤트를 강제로 발생시킨다.
+    			형식) trigger(eventName)
+     -->
+    <script>
+    	$(document).ready(function(){
+    				
+    		$('h1').click(function(){
+    			
+    			const start = $(this).text();
+    			
+    			$(this).text(start + '★');
+    			
+    			});
+    		
+    		$('#end').attr('disabled',true);
+    		// 문서 로드되면 비활성화되게
+    	
+    		let interval; // 로 밖에서 선언하고 사용할 수 있다. 
+    		
+    		// 비활성화 시켜서 같은 이벤트가 여러번 발생하지 않도록 한다.
+    		$('#start').click(function(){
+    			
+    			interval = setInterval(function() {
+        		
+    				$('h1').last().trigger('click');
+    				// h1 태그중 마지막 객체의 click 이벤트를 발생시킨다.
+       
+    			}, 1000);
+	    		
+    			$(this).attr('disabled',true).val('시작중....');
+	    		// 비활성화 시키면서 value 속성을 바꿀 수 있다.
+    			
+	    		$('#end').attr('disabled',false);
+    		});
+    	
+    		$('#end').click(function(){
+    			
+    			clearInterval(interval);
+    			
+    			$(this).attr('disabled',true);
+				
+    			$('#start').attr('disabled',false).val('트리거 시작');		
+				
+    		});
+    	
+    	});
+    </script>
+  </head>
+  <body>
+  	<h1>start: </h1>
+  	<h1>start: </h1>
+  	<input type="button" value="트리거 시작" id="start">
+  	<input type="button" value="트리거 종료" id="end">
+  </body>
+</html>

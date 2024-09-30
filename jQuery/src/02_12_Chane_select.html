@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>change() 메서드 - select</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <style>
+    	img {
+    		width:200px;
+    		height:200px;
+    	}
+    </style>
+    <script>
+    	$(document).ready(function(){
+    		
+    		$('select').change(function(){
+    			
+    			$('#iconImg').prop('src', $(this).val());
+
+    		});
+    	});
+    
+    
+    </script>
+  </head>
+  <body>
+  	<h3>select 객체에서 선택한 그림 출력</h3>
+  	<hr>
+  	<div>select를 선택하면 해당 이미지가 보입니다.</div>
+  	<form>
+  		<select id="icon">
+  			<option value='./image/desert.jpg'>image1</option>
+  			<option value='./image/koala.jpg'>image2</option>
+  			<option value='./image/moon.png'>image3</option>
+  		</select><br>
+  		<img id='iconImg' src='./image/koala.jpg'>
+  	</form>
+  </body>
+</html>

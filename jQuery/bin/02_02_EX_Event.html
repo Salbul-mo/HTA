@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>예제</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <script>
+    	$(document).ready(function(){
+    				// 이벤트를 연결한다.
+    				$('div').click(function(){
+    							// 변수를 선언한다.
+    							const header = $(this).find('h1').text();
+    							const paragraph = $(this).find('p').text();
+    							
+    							// 출력한다.
+    							alert(header + '\n' + paragraph);
+    				});		
+    	});
+    
+    </script>
+    <style>
+    	* {
+    		margin:0px;
+    		padding:0px;
+    	}
+    	
+    	div {
+    		margin:5px;
+    		padding:3px;
+    		border:3px solid black;
+    		border-radius:10px;
+    	}
+    </style>
+  </head>
+  <body>
+  	<div>
+  		<h1>Header 1</h1>
+  		<p>Paragraph1</p>
+  	</div>
+  	<div>
+  		<h1>Header 2</h1>
+  		<p>Paragraph2</p>
+  	</div>
+  	<div>
+  		<h1>Header 3</h1>
+  		<p>Paragraph3</p>
+  	</div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>매개변수 2개인 on() 메서드</title>
+    <script src='../js/jquery-3.7.1.js'></script>
+    <!--
+    	 매개 변수 2개인 on() 메서드
+    	 추가된 p태그는 클릭해도 이벤트 발생하지 않는다.
+    	 새로 생긴 p태그는 이벤트 등록이 되어있지 않기 때문이다.
+    	 
+    	 $(document).ready(); 가 작동한 시점인 HTML 문서가 로드된 당시에는 
+    	 Click me! 가 적힌 p 태그 하나뿐이기 때문에 추가된 p 태그는 이벤트가 발생하지 않는다.
+    	 
+     -->
+    <script>
+		$(document).ready(function(){
+			
+			let count = 0;
+			
+			$('p').on('click', function(){
+				// after() : 선택자의 다음 형제 위치에 추가한다.
+				$(this).after(`<p> 추가된 paragraph! ${count++} </p>`);
+			});
+		});    
+    </script>
+  </head>
+  <body>
+  	<p>Click me!</p>
+  	<span>end</span>
+  </body>
+</html>
