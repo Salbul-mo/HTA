@@ -2,15 +2,26 @@
  * 
  */
 $(document).ready(function() {
+	// 아이디 중복 검사 여부
+	let idcheckedvalue = '';
+	// 아이디 중복검사를 하고 아이디를 변경하면 뚫리므로 boolean 값이 아니라 
+	//현재 id입력값을 저장하고 submit 시 동일한지 체크한다.
+	
 	
 	// submit 클릭 시 양식 검사하고 넘길 데이터 취합
 	$('#myform').submit(function() {
-
+		
 		// id 공백 검사
 		const id = $('#id');
 		if (id.val().trim() == "") {
 			alert('id를 입력하세요');
 			id.focus();
+			return false;
+		}
+		
+		// id 중복검사
+		if (idcheckedvalue != id.val().trim()){
+			alert('ID 중복검사 하세요');
 			return false;
 		}
 
@@ -129,6 +140,8 @@ $(document).ready(function() {
 			intro.focus();
 			return false;
 		}
+		
+		
 	});
 
 	// Id 중복검사 및 양식 검사
@@ -148,6 +161,7 @@ $(document).ready(function() {
 			$('#id').val('').focus();
 			return false;
 		} else {
+			idcheckedvalue = id_value.trim();
 			window.open(`idcheck.html?id=${id_value.trim()}`, '_blank', 'width=300, height=250');
 		}
 	});
