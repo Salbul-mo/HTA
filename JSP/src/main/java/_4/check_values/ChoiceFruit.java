@@ -1,4 +1,4 @@
-package _4.check_value;
+package _4.check_values;
 import java.io.IOException;
 import java.io.PrintWriter;
 
