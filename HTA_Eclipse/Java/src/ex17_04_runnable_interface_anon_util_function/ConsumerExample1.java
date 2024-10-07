@@ -30,7 +30,7 @@ public class ConsumerExample1 {
 		//void java.util.ArrayList.forEach(Consumer<? super Integer> action)
 		/*
 		 * Consumer<? super Integer> 는
-		 * Integer 타입 또는 Integer 의 상위 클래스를 받아들일 수 있는 Consumer를 타나낸다.
+		 * Integer 타입 또는 Integer 의 상위 클래스를 받아들일 수 있는 Consumer를 나타낸다.
 		 * 
 		 */
 		/*list.forEach(new Consumer<Integer> {
