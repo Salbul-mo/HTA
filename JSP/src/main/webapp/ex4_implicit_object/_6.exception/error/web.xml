@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	* XML 선언문
+	일반적으로 XML 선언은 XML 문서의 첫 번째 줄에 나타난다.
+	XML 선언은 필수 항목이 아니지만 사용할 경우 문서에서 첫 번째 줄이어야 하며
+	그 앞에 다른 내용이나 공백이 없어야 한다.  
+ -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+	<!-- 
+		각각의 응답 상태 코드별로 보여줄 페이지를 지정한다.
+		<error-page> : 하나의 에러 페이지를 지정한다.
+		<error-code> : 에러 상태 코드 지정
+		<location> : 에러 페이지의 위치를 지정
+		<exception-type> : 예외 종류
+	-->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/ex4_implicit_object/_6.exception/error/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/ex4_implicit_object/_6.exception/error/error500.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/ex4_implicit_object/_6.exception/error/errorNullPointer.jsp</location>
+	</error-page>
+</web-app>
