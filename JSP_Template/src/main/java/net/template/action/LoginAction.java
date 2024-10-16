@@ -3,20 +3,27 @@ package net.template.action;
 import java.io.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import net.common.action.Action;
-import net.common.action.ActionForward;
+import net.common.action.*;
 
 public class LoginAction implements Action {
 
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String go = request.getParameter("page");
-		// page 속성 값을 가져온다.
-
+		
+		String id = "";
+		
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (int i = 0 ; i < cookies.length ; i++) {
+				if (cookies[i].getName().equals("id")) {
+					id = cookies[i].getValue();
+				}
+			}
+		}
+		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		request.setAttribute("pagefile", go);
+		request.setAttribute("cookieId", id);
 		forward.setPath("/template/login.jsp");
 		return forward;
 	}

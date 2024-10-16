@@ -16,3 +16,9 @@ address 	varchar2(150),
 intro 		varchar2(100),
 register_date date default sysdate
 );
+
+
+-- 어드민 계정 db에 직접 추가
+insert into template_join
+(id, password, jumin, email, gender, hobby, post, address, intro)
+values ('admin', '1234', '900909-1234567', 'admin@naver.com', 'm', '공부,운동', '12345', '서울시 종로구', '좋아요');

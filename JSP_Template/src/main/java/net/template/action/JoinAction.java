@@ -3,8 +3,7 @@ package net.template.action;
 import java.io.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import net.common.action.Action;
-import net.common.action.ActionForward;
+import net.common.action.*;
 
 public class JoinAction implements Action {
 

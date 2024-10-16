@@ -14,7 +14,7 @@
 					<li class="nav-item"><a class="nav-link">${id}님이 로그인 되었습니다.</a>
 					<li class="nav-item"><a class="nav-link" href="update.net">정보수정</a>
 					
-					<c:if test="${sessionScope.id=='admin'}">
+					<c:if test="${sessionScope.id == 'admin'}">
 						<li class="nav-item"><a class="nav-link" href="list.net">(회원정보)</a></li>
 					</c:if>
 					

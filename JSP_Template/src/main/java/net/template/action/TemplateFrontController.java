@@ -55,6 +55,21 @@ public class TemplateFrontController extends HttpServlet {
 		case "/join.net":
 			action = new JoinAction();
 			break;
+		case "/idcheck.net":
+			action = new IdcheckAction();
+			break;
+		case "/joinProcess.net":
+			action = new JoinProcessAction();
+			break;
+		case "/loginProcess.net":
+			action = new LoginProcessAction();
+			break;
+		case "/logout.net":
+			action = new LogoutAction();
+			break;
+		case "/list.net":
+			action = new ListAction();
+			break;
 		}
 		
 		forward = action.execute(request, response);

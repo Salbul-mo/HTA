@@ -1,25 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <meta charset="UTF-8">
-    <title>유효성 체크</title>
-    <link href="../../css/NewFile.css" rel="stylesheet" type="text/css">
-    <script src='../../js/jquery-3.7.1.js'></script>
-    <script src='../../js/validate4.js'></script>
-    <script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'></script>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="${pageContext.request.contextPath}/css/NewFile.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/js/jquery-3.7.1.js"></script>
+<script src="${pageContext.request.contextPath}/js/validate.js"></script>
+<script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'></script>
+</head>
   <body>
 	<div class='container'>
-		<form name="myform" method="post" action="CheckServlet" 
+		<form name="myform" method="post" action="joinProcess.net" 
 				id='myform' >
 			<fieldset>
-				<legend>유효성 검사</legend>
+				<legend>회원 가입</legend>
 				<label for='id'>ID</label>
 				<div>
-					<input type='text' placeholder='Enter id' name='id' id='id'>
+					<input type='text' placeholder='Enter id' name='id' id='id' maxLength="20">
 					<input type='button' value='ID중복검사' id='idcheck' >
+					<div id="opener_message"></div><input type="hidden" id="result">
 				</div>
 				
 				<label for='pass'>Password</label>
-				<input type='password' placeholder='Enter Password' name='pass' id='pass'>
+				<input type='password' placeholder='Enter Password' name='pass' id='pass' maxLength="20">
 				
 				<label for='jumin1'>주민번호</label>
 				<input type='text' placeholder='주민번호 앞자리' maxLength='6'
@@ -72,6 +78,5 @@
 			</fieldset>	
 		</form>
 	</div>
-	
   </body>
 </html>

@@ -5,23 +5,20 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import net.common.action.*;
 
-public class TemplateTestAction implements Action {
+public class LogoutAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String go = request.getParameter("page");
-		// page 속성 값을 가져온다.
-
-		if (go == null) {
-			go = "newitem";
-		}
-
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		request.setAttribute("pagefile", go);
-		forward.setPath("/template/templatetest.jsp");
+		forward.setRedirect(true);
+		forward.setPath("templatetest.net");
+		
 		return forward;
 	}
+
 }

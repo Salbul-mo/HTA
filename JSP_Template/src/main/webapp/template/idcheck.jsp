@@ -1,13 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<script src="${pageContext.request.contextPath}/js/jquery-3.7.1.js"></script>
+<title>Idcheck.jsp</title>
 </head>
 <body>
-
+	<div id="message"></div>
+	
+	<script>
+		const message = ["사용 중인 아이디 입니다.", "사용 가능한 아이디입니다"];
+		const color = ["red", "green"];
+		const index = ${result + 1}; // 아이디가 없으면 1, 있으면 0
+		$("#message").text(message[index]).css('color', color[index]);
+	
+		// 2초 후 자동으로 창을 닫는다.
+		setTimeout(function() {
+			// opener : 현재 창(자식창)을 열어준 창(부모창)
+			$(opener.document).find("#opener_message").text(message[index]).css('color',color[index]);
+			$(opener.document).find("#result").val('${result}'); // 아이디가 존재하지만 비밀번호가 틀리면 -1
+			window.close();
+		}, 2000);
+	
+	</script>
+<%--
 	<%
 		String id = application.getInitParameter("id");
 		String password = application.getInitParameter("password");
@@ -43,5 +62,6 @@
 	<%	
 		} 
 	%>
+ --%>
 </body>
 </html>

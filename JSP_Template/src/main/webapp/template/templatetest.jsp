@@ -24,6 +24,12 @@
 </style>
 </head>
 <body>
+	<c:if test="${!empty message}">
+		<script>
+			alert("${message}");
+		</script>
+	<% session.removeAttribute("message"); %>
+	</c:if>
 	<header>
 		<div class="jumbotron text-center" style="margin-bottom:0">
 			<h1>상품목록</h1>
