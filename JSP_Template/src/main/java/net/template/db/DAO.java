@@ -124,6 +124,98 @@ public class DAO {
 		}
 		
 		return list;
+	}
+
+	public TemplateJoin selectInfo(String id) {
+		
+			String sql = """
+							select * 
+							from Template_join 
+							where id=?
+						 """;
+			
+			try (Connection conn = ds.getConnection();
+					PreparedStatement pstmt = conn.prepareStatement(sql); ) {
+				
+				pstmt.setString(1, id);
+				
+				try (ResultSet rs = pstmt.executeQuery();) { 
+						
+						if(rs.next()) {
+							TemplateJoin temp = new TemplateJoin();
+							temp.setId(rs.getString("id"));
+							temp.setGender(rs.getString("gender"));
+							temp.setHobby(rs.getString("hobby"));
+							temp.setIntro(rs.getString("intro"));
+							temp.setRegister_date(rs.getString("register_date").substring(0,11));
+							temp.setPassword(rs.getString("password"));
+							temp.setEmail(rs.getString("email"));
+							temp.setAddress(rs.getString("address"));
+							temp.setJumin(rs.getString("jumin"));
+							temp.setPost(rs.getString("post"));
+							return temp;
+						}
+				}
+				
+			} catch(SQLException se) {
+				se.printStackTrace();
+			}
+			
+			return null;
+	}
+
+	public int delete(String id) {
+		String sql = """
+					delete Template_join
+					where id=?
+					 """;
+		int result = 0;
+		
+		try (Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			
+			pstmt.setString(1, id);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int update(TemplateJoin temp) {
+		String sql = """
+					update Template_join
+					set password=?, jumin=?, email=?, gender=?, 
+							hobby=?, post=?, address=?, intro=?
+					where id=?
+					""";
+		
+		int result = 0;
+		
+		try (Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			
+			pstmt.setString(1, temp.getPassword());
+			pstmt.setString(2, temp.getJumin());
+			pstmt.setString(3, temp.getEmail());
+			pstmt.setString(4, temp.getGender());
+			pstmt.setString(5, temp.getHobby());
+			pstmt.setString(6, temp.getPost());
+			pstmt.setString(7, temp.getAddress());
+			pstmt.setString(8, temp.getIntro());
+			pstmt.setString(9, temp.getId());
+			
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+		}
+		
+		return result;
 	}	
 
 }

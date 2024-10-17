@@ -68,8 +68,27 @@ public class TemplateFrontController extends HttpServlet {
 			action = new LogoutAction();
 			break;
 		case "/list.net":
-			action = new ListAction();
+			action = new ListAction1();
 			break;
+		case "/info.net":
+			action = new InfoAction();
+			break;
+		case "/update.net":
+			action = new UpdateAction();
+			break;
+		case "/updateProcess.net":
+			action = new UpdateProcessAction();
+			break;
+		case "/delete.net":
+			action = new DeleteAction();
+			break;
+		case "/forbidden.net":
+			action = new ForbiddenAction();
+			break;
+		default :
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/error/error404.jsp");
+			dispatcher.forward(request, response);
+			return;
 		}
 		
 		forward = action.execute(request, response);
