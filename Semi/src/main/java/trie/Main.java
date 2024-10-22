@@ -1,6 +1,6 @@
 package trie;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
 	
@@ -34,7 +34,7 @@ public class Main {
 		test.insert(teststr10);
 		test.insert(teststr11);
 		
-		ArrayList<String> list = test.recommendedSearch("수학");
+		ArrayList<String> list = test.recommendedSearch("영");
 		System.out.println(list.toString());
 		
 		

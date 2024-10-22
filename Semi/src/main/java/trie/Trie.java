@@ -52,11 +52,21 @@ public class Trie {
 			result.add(node.getInput());
 		}
 		
+		 
 		
-		Collection<TrieNode> collection = node.getChild().values();
+		ArrayList<TrieNode> list = new ArrayList<TrieNode>(node.getChild().values());
 		
-		collection.
-		
+		while (!list.isEmpty()) {
+			TrieNode next = list.remove(list.size()-1);
+			
+			if (next.isEndOfWord()) {
+				result.add(next.getInput());
+			}
+			
+			if(!next.getChild().isEmpty()) {
+				list.addAll(next.getChild().values());
+			}
+		}
 		
 		return result;
 		
