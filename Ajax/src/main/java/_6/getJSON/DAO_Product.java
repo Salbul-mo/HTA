@@ -88,10 +88,38 @@ public class DAO_Product {
 		try(Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);){
 			
+			pstmt.setString(1, product.getName());
+			pstmt.setInt(2, product.getPrice());
+			pstmt.setString(3, product.getMaker());
+			pstmt.setInt(4, product.getId());
+			
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException se) {
 			se.printStackTrace();
 		}
 		
+		return result;
+	}
+
+	public int delete(int id) {
+		String sql = """
+					delete from products
+					where id=?
+					""";
+		int result = 0;
+		
+		try (Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);){
+			
+			pstmt.setInt(1, id);
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException se){
+			se.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	

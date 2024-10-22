@@ -24,22 +24,52 @@ public class Product2 extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int result = 0;
+		DAO_Product dao = new DAO_Product();
+		String label = request.getParameter("label");
 		DTO product = new DTO();
 		
-		product.setName(request.getParameter("name"));
-		product.setPrice(Integer.parseInt(request.getParameter("price")));
-		product.setMaker(request.getParameter("maker"));
+		switch(label) {
+			case "삭제" : result = dao.delete(Integer.parseInt(request.getParameter("id")));
+						 break;
 		
-		DAO_Product dao = new DAO_Product();
-		int result = dao.insert(product);
-		
-		if (result == 1) {
-			System.out.println("DB에 행이 추가되었습니다."); 
-		} else {
-			System.out.println("DB에 행 추가 실패했습니다.");
+			case "추가" :
+				product.setName(request.getParameter("name"));
+				product.setPrice(Integer.parseInt(request.getParameter("price")));
+				product.setMaker(request.getParameter("maker"));
+				
+				result = dao.insert(product);
+				
+				if (result == 1) {
+					System.out.println("DB에 행이 추가되었습니다."); 
+				} else {
+					System.out.println("DB에 행 추가 실패했습니다.");
+				}
+				
+				doGet(request, response);
+				break;
+			
+			case "수정완료" :
+				product.setName(request.getParameter("name"));
+				product.setPrice(Integer.parseInt(request.getParameter("price")));
+				product.setMaker(request.getParameter("maker"));
+				if (label.equals("수정완료")) {
+					product.setId(Integer.parseInt(request.getParameter("id")));
+					result = dao.update(product);
+				} else {
+					result = dao.insert(product);
+				}
+				break;
 		}
 		
-		doGet(request, response);
+		if (result == 1) {
+			System.out.println(label + "성공");
+			doGet(request, response);
+		} else {
+			System.out.println(label + "실패");
+			response.setContentType("text/html;charset=utf-8");
+			response.getWriter().print(label + "실패");
+		}
 	}
 	
 }
