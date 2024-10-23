@@ -33,12 +33,13 @@ public class MemberJoinProcessAction implements Action {
 			ActionForward forward = new ActionForward();
 			request.setAttribute("message", "회원 가입 실패입니다.");
 			forward.setRedirect(false);
-			forward.setPath("/error/error.jsp");
+			forward.setPath("WEB-INF/views/error/error.jsp");
 			return forward;
 		}
 		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
+		
 		out.print("<script>");
 		out.print("alert('회원가입을 축하합니다.');");
 		out.print("location.href='../members/login';");

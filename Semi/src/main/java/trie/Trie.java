@@ -69,7 +69,21 @@ public class Trie {
 		}
 		
 		return result;
+	}
+	
+	public void delete(String input) {
 		
+		TrieNode node = this.root;
+		
+		String regex = "[^a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]";
+		String edit = input.replaceAll(regex, ""); // 특수문자, 공백 삭제
+		
+		for (int cnt = 0 ; cnt < edit.length() ; cnt++) {
+			if (node.getChild().containsKey(edit.charAt[cnt])) {
+				
+			}
+			
+		}
 	}
 
 }

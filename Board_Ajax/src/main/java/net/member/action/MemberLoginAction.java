@@ -24,7 +24,7 @@ public class MemberLoginAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/member/loginForm.jsp");
+		forward.setPath("/WEB-INF/views/member/loginForm.jsp");
 		return forward;
 	}
 	

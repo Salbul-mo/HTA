@@ -11,6 +11,7 @@ create table comm (
 	comment_re_ref		number
 );
 
+select * from comm;
 
 drop sequence com_seq;
 

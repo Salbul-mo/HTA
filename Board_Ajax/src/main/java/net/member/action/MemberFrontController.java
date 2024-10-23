@@ -31,7 +31,7 @@ public class MemberFrontController extends HttpServlet {
 		System.out.println("contextPath = " + contextPath);
 			
 		// RequestURI 에서 컨텍스트 경로 길이 값의 인덱스 위치부터 마지막 위치 문자까지 추출
-		// command 는 "members/login" 반환된다.
+		// command 는 "members/login" 반환된다. /members 추가 제거 => /login 반환
 		String command = RequestURI.substring(contextPath.length() + "/members".length());
 		System.out.println("command = " + command);
 			
@@ -55,10 +55,10 @@ public class MemberFrontController extends HttpServlet {
 		case "/idcheck":
 			action = new MemberIdcheckAction();
 			break;
-	/*
 		case "/logout.net":
-			action = new LogoutAction();
+			action = new MemberLogoutAction();
 			break;
+	/*
 		case "/list.net":
 			action = new ListAction1();
 			break;
@@ -79,7 +79,7 @@ public class MemberFrontController extends HttpServlet {
 			break;
 	*/
 		default :
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/error/error404.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error404.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
