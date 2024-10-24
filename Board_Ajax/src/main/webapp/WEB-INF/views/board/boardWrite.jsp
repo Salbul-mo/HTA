@@ -47,7 +47,7 @@
   	  </div>
   	  <div class='form-group'>
   	  	<label for='board_content'>내용</label>
-  	  	<textarea name='board_content' id='board_content' rows="10" class='form-control'>Enter board_content</textarea>
+  	  	<textarea name='board_content' id='board_content' rows="10" class='form-control'></textarea>
   	  </div>
   	  <div class='form-group'>
   	  	<label>

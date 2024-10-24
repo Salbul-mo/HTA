@@ -55,7 +55,7 @@ public class MemberFrontController extends HttpServlet {
 		case "/idcheck":
 			action = new MemberIdcheckAction();
 			break;
-		case "/logout.net":
+		case "/logout":
 			action = new MemberLogoutAction();
 			break;
 	/*

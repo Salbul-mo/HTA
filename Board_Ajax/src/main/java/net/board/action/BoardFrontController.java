@@ -36,6 +36,18 @@ public class BoardFrontController extends HttpServlet {
 			case "/add":
 				action = new BoardAddAction();
 				break;
+			case "/detail":
+				action = new BoardDetailAction();
+				break;
+			case "/modify":
+				action = new BoardModifyAction();	
+				break;
+			case "/delete":
+				action = new BoardDeleteAction();
+				break;
+			case "/modifyProcess":
+				action = new BoardModifyProcessAction();
+				break;
 				
 			default :
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error404.jsp");

@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
-	<nav class="navbar navbar-expand-sm d-flex navbar-light bg-info">
+	<nav class="navbar sticky-top navbar-expand-sm d-flex navbar-light bg-info">
 			<div class='nav-item'><a class="navbar-brand text-white" href="#">Logo</a></div>
 				<form class="form-inline" action="/action_page.php">
     				<input class="form-control mr-sm-2" type="text" placeholder="Search">

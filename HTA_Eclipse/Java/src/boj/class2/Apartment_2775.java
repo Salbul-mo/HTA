@@ -10,26 +10,31 @@ public class Apartment_2775 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		int t = Integer.parseInt(br.readLine());
+		int t = Integer.parseInt(br.readLine()); // 입력 케이스 수
+		int k = Integer.parseInt(br.readLine()); // 입력 층
+		int n = Integer.parseInt(br.readLine()); // 입력 호
 		
-		for(int cnt = 1; cnt <= t; cnt++) {
-			int k = Integer.parseInt(br.readLine());
-			int n = Integer.parseInt(br.readLine());
+		int[] zero = new int[n];
+		
+		for (int i = 1; i < zero.length; i++) {
+			zero[i] = i;
+		}
+		
+		int[] beforefloor = zero;
+		int[] presentfloor = new int[n];
+		
+		
+		for(int cnt = 2; cnt < k; cnt++) {
 			
-			int total = 0;
-			/* 1	5	15	35	70	126	210	330	495
-			 * 1	4	10	20	35	56	84	120	165
-			 * 1	3	6	10	15	21	28	36	45
-			 * 1	2	3	4	5	6	7	8	9
-			 */
-			for(int floor = 0 ; floor < k ; floor++) {
-				for(int ho = 1 ; ho <= n ; ho++) {
-					total += ho;
+			for (int ho = 0; ho < presentfloor.length; ho++) {
+				
+				int sum = 0;
+				
+				for (int before = 0; before <= ho; before++) {
+					sum += beforefloor[before];
 				}
-			}  
-			
-			
-			
+				presentfloor[ho] = sum;
+			}
 		}
 		
 		

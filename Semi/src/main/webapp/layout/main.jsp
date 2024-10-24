@@ -11,18 +11,18 @@
 </head>
 <body>
 	<div class="container-fluid d-flex p-0">
-		<div class="col-sm- col-lg-1 bg-info">
+		<div class="col- col-md- bg-info">
 			사이드
 			<ul class="nav flex-column">
-				<li class="nav-item"><a class="nav-link active" href="#">Active</a>
+				<li class="nav-item"><a class="nav-link active" href="#">회원 관리</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-				<li class="nav-item"><a class="nav-link disabled">Disabled</a>
+				<li class="nav-item"><a class="nav-link" href="#">강사관리</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">학생관리</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">추가사항</a>
 				</li>
 			</ul>
 		</div>
-		<div class="col-sm-9 col-lg-11 bg-success">
+		<div class="col-9 col-md-11 bg-success">
 			메인
 			<div class="container row row-cols-2 mx-2 d-flex">
 				<div class="col">
@@ -62,6 +62,6 @@
 
 		</div>
 	</div>
-	<div class="jumbotron my-0 fixed-bottom">footer</div>
+	<div class="jumbotron mt-auto"><jsp:include page="footer.jsp"/></div>
 </body>
 </html>
