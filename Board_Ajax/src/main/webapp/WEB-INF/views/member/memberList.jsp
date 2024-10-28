@@ -47,10 +47,31 @@
 		 }
 		 
 		 if (selectedValue == 2) {
-			 const pattern = /^[0-9]{2}/
+			 const pattern = /^[0-9]{2}$/;
+			 if (!pattern.test(word)) {
+				 alert("나이는 형식에 맞게 입력하세요(두자리 숫자)");
+				 return false;
+			 }
+		 } else if (selectedValue == 3) {
+			 if (word != "남" && word != "여") {
+				 alert("남 또는 여를 입력하세요");
+				 return false;
+			 }
 		 }
-	 })
+	 });
 	 
+	 // 검색어 입력창에 placeholder 나타나도록 한다.
+	 $('#viewcount').change(function(){
+		 selectedValue = $(this).val();
+		 $input.val('').attr("placeholder", message[selectedValue] + " 입력하세요:");
+	 })
+	 $("tr > td:nth-child(3) > a").click(function(event) {
+		 const answer = confirm("정말 삭제하시겠습니까?");
+		 console.log(answer);
+		 if (!answer) {
+			 event.preventDefault();
+		 }
+	 });
 	 
  });
 	 
@@ -95,7 +116,7 @@
 					<td>
 						${m.name}
 					</td>
-					<td><a href="delete?id="${m.id}">삭제</a></td>
+					<td><a href="delete?id=${m.id}">삭제</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>

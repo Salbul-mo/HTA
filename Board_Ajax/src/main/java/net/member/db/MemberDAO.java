@@ -94,11 +94,12 @@ private DataSource ds;
 		try(Connection conn = ds.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(delete_sql);) {
 			
+			pstmt.setString(1, id);
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException se) {
 			se.printStackTrace();
 		}
-		
-		
 		return result;
 		
 	}
