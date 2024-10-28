@@ -61,18 +61,21 @@ public class MemberUpdateProcessAction implements Action {
 			
 			boolean result = memberDAO.updateMember(mem);
 			
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
 			if (!result) {
 				System.out.println("회원 정보 수정 실패");
-				forward.setPath("/WEB-INF/views/error/error.jsp");
-				request.setAttribute("message", "회원 정보 수정 실패입니다.");
-				forward.setRedirect(false);
+				out.print("<script>");
+				out.print("alert('회원 정보 수정에 실패했습니다.');");
+				out.print("history.back();");
+				out.print("</script>");
+				out.close();
+				return null;
 			} else {
 				System.out.println("회원 정보 수정 성공");
-				response.setContentType("text/html;charset=utf-8");
-				PrintWriter out = response.getWriter();
 				out.print("<script>");
 				out.print("alert('회원 정보 수정 되었습니다.');");
-				out.print("location.href='boards/list';");
+				out.print("location.href='../boards/list';");
 				out.print("</script>");
 				out.close();
 				return null;
@@ -80,11 +83,9 @@ public class MemberUpdateProcessAction implements Action {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			forward.setPath("/WEB-INF/views/error/error.jsp");
-			request.setAttribute("message", "회원 정보 수정 실패입니다.");
+			request.setAttribute("message", "프로필 사진 업로드 실패입니다.");
 			forward.setRedirect(false);
 			return forward;
 		}
-		
-		return null;
 	}
 }
