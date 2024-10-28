@@ -31,3 +31,16 @@ values ('user2', '1234', '신사임당', 40, '여', 'sin@hta.com');
 insert into member
 (id, password, name, age, gender, email)
 values ('user3', '1234', '이순신', 50, '남', 'lee@hta.com');
+
+
+select count(*)
+from member
+where id != 'admin'
+and name like '%홍길동%';
+
+
+
+
+
+
+

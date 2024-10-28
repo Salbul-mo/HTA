@@ -200,14 +200,13 @@ private DataSource ds;
 				rownum 으로 잘라오는 쿼리문
 			 */
 			String sql = """
-					  	select *
-						from (select rownum as rnum, j.*
-								from (select *
-										from member
-										where id != 'admin'
-										order by id) j
-								where rownum <= ? )
-						where rnum >= ? and rnum <= ?																																											
+					select * from (select b.*, rownum rnum
+					from (select * from member
+							where id != 'admin'
+							order by id) b
+							where rownum <= ?
+							)
+					where rnum between ? and ?
 						""";
 			List<Member> list = new ArrayList<>();
 			
@@ -243,13 +242,87 @@ private DataSource ds;
 			return list;
 		}
 
-	public int getListCount(String string, String search_word) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getListCount(String field, String search_word) {
+	  	String sql = """
+	  			select count(*)
+	  			from member
+	  			where id != 'admin'
+	  			and %s like ? 
+	  			""".formatted(field);
+	  	
+	  	System.out.println(sql);
+		int result = 0;
+		
+		try (Connection conn = ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			// 한 페이지 당 10개 씩 목록인 경우 		1  	2 	3 	4 . . . 10 페이지까지 rownum
+				
+			pstmt.setString(1, "%" + search_word + "%"); // '%a%'
+				try (ResultSet rs = pstmt.executeQuery();) {
+					
+					while (rs.next()) {
+						result = rs.getInt(1);
+					}
+				}
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("getListCount() 에러 " + se);
+		}
+		
+		
+		return result;
 	}
 
-	public List<net.member.db.Member> getMemberList(String string, String search_word, int page, int limit) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<net.member.db.Member> getMemberList(String field, String search_word, int page, int limit) {
+		/*
+		page : 현재 페이지
+		limit : 페이지 당 출력 목록 수
+		board_re_ref desc, board_re_seq asc 에 의해 정렬한 것을
+		rownum 으로 잘라오는 쿼리문
+	 */
+	String sql = """
+			select * from (select b.*, rownum rnum
+					from (select * from member
+							where id != 'admin'
+							and %s like ?
+							order by id) b
+							where rownum <= ?
+							)
+					where rnum between ? and ?																																									
+				""".formatted(field);
+	
+	List<Member> list = new ArrayList<>();
+	
+	try (Connection conn = ds.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);) {
+		// 한 페이지 당 10개 씩 목록인 경우 		1  	2 	3 	4 . . . 10 페이지까지 rownum
+		int startRow = (page - 1) * limit + 1; //	1	11	21	31 . . 	91	
+		int endRow = startRow + limit - 1;	//		10	20	30	40	. . 100
+			pstmt.setString(1, "%" + search_word + "%");
+			pstmt.setInt(2,endRow);
+			pstmt.setInt(3,startRow);
+			pstmt.setInt(4,endRow);
+			
+			try (ResultSet rs = pstmt.executeQuery();) {
+				
+				while (rs.next()) {
+					Member m = new Member();
+					m.setId(rs.getString("id"));
+					m.setPassword(rs.getString("password"));
+					m.setName(rs.getString("name"));
+					m.setAge(rs.getInt("age"));
+					m.setGender(rs.getString("gender"));
+					m.setEmail(rs.getString("email"));
+					list.add(m);
+				}
+			}
+		
+	} catch (SQLException se) {
+		se.printStackTrace();
+		System.out.println("getMemberList() 에러 " + se);
 	}
-	}
+	
+	return list;
+	}	
+}

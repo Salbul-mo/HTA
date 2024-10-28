@@ -4,146 +4,149 @@
 <html>
 <head>
   <jsp:include page="header.jsp"/>
-  <style>
-  	select.form-control {
-  	  width: auto;
-  	  margin-bottom: 2em;
-  	  display: inline-block;
-  	}
-  	
-  	.rows {
-  		text-align: right;
-  	}
-  	
-  	.gray {
-  		color: gray;
-  	}
-  	
-  	body > div > table > thead > tr:nth-child(2) > th:nth-child(1){width: 8%}
-  	body > div > table > thead > tr:nth-child(2) > th:nth-child(2){width: 50%}
-  	body > div > table > thead > tr:nth-child(2) > th:nth-child(3){width: 14%}
-  	body > div > table > thead > tr:nth-child(2) > th:nth-child(4){width: 17%}
-  	body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width: 11%}
-  </style>
-  <script src="${pageContext.request.contextPath}/js/list.js"></script>
+  <link href="${pageContext.request.contextPath}/css/memberList.css" type="text/css" rel="stylesheet">
   <title>MVC 게시판</title>
+  <script>
+  /*
+  1. 검색어를 입력한 후 다시 list으로 온 경우 검색 필드와 검색어가 나타나도록 합니다.
+
+  2. 검색 필드를 변경하면 검색어 입력창에 placeholder 나타나도록 합니다
+     예로 아이디를 선택하면 placeholder로 "아이디 입력하세요"라고 나타납니다.
+     예로 이름을 선택하면 placeholder로 "이름 입력하세요"라고 나타납니다.
+     예로 나이를 선택하면 placeholder로 "나이 입력하세요"라고 나타납니다.
+     예로 성별을 선택하면 placeholder로 "여 또는 남 입력하세요"라고 나타납니다.
+
+  3. 검색 버튼 클릭시 다음을 체크합니다.
+     1) 검색어를 입력하지 않은 경우 "검색어를 입력하세요" 라고 대화상자가 나타나게 합니다.
+     2) 나이는 두 자리 숫자가 아닌 경우 "나이는 형식에 맞게 입력하세요(두자리 숫자)" 라고 대화상자가 나타나게 합니다.
+     3) 성별은 "남" 또는 "여"가 아닌 경우 "남 또는 여를 입력하세요" 라고 대화상자가 나타나게 합니다.
+     
+  4. 회원 목록의 삭제를 클릭한 경우
+     confirm("정말 삭제하시겠습니까?")를 실행해서 취소를 클릭하면 "delete"로 이동하지 않습니다.
+ */
+ $(function(){
+	 // 검색 클릭 후 응답 화면에 검색 시 선택한 필드가 선택되도록 한다.
+	let selectedValue = '${search_field}' 
+	if (selectedValue != '-1')
+		$('#viewcount').val(selectedValue);
+	else
+		selectedValue = 0; // 선택된 필드가 없는 경우 기본적으로 아이디를 선택
+	 
+	 // 검색 후 selectedValue 깞에 따라 placeholder 나타나게 한다.
+	 const message = ["아이디", "이름", "나이", "여 또는 남"]
+	 const $input = $(".input-group input");
+	 $input.attr("placeholder", message[selectedValue] + " 입력하세요");
+	 
+	 // 검색 버튼 클릭한 경우
+	 $("button").click(function(){
+		 const word = $input.val();
+		 if (word == '') {
+			 alert("검색어를 입력하세요");
+			 $input.focus();
+			 return false;
+		 }
+		 
+		 if (selectedValue == 2) {
+			 const pattern = /^[0-9]{2}/
+		 }
+	 })
+	 
+	 
+ });
+	 
+  </script>
 </head>
 <body>
-	<div class="container">
-	<%-- 게시글이 있는 경우 --%>
 	<c:if test="${listCount > 0}">
-		<div class="rows">
-			<span>줄보기</span>
-			<select class="form-control" id="viewcount">
-				<option value="1">1</option>
-				<option value="3">3</option>
-				<option value="5">5</option>
-				<option value="7">7</option>
-				<option value="10" selected>10</option>
-			</select>
-		</div>
+		<div class="container">
+			<form action="list" method="post">
+				<div class="input-group">
+					<select id="viewcount" name="search_field">
+						<option value="0" selected>아이디</option>
+						<option value="1">이름</option>
+						<option value="2">나이</option>
+						<option value="3">성별</option>
+					</select>
+						<input name="search_word" type="text" class="form-control" 
+						placeholder="아이디를 입력하세요" value="${search_word}">
+						<button class="btn btn-primary" type="submit">검색</button>
+				</div>
+			</form>
+			
 		<table class="table table-striped">
+			<caption style="font-weight: bold">회원 목록</caption>
 			<thead>
 				<tr>
-					<th colspan="3">MVC 게시판 - list</th>
-					<th colspan="2"><span>글 개수 : ${listCount}</span></th>
+					<th colspan="2">MVC 게시판 - 회원 정보 list</th>
+					<th><span>회원 수 : ${listCount}</span></th>
 				</tr>
 				<tr>
-					<th><div>번호</div></th>
-					<th><div>제목</div></th>
-					<th><div>작성자</div></th>
-					<th><div>날짜</div></th>
-					<th><div>조회수</div></th>
+					<th><div>아이디</div></th>
+					<th><div>이름</div></th>
+					<th><div>삭제</div></th>
 				</tr>
 			</thead>
 			<tbody>
-			<c:set var="num" value="${listCount-(page-1)*limit}"/> 
-			<%-- num 
-			총 글 수에서 페이지 * limit 빼기 => 1 페이지에서 -0 2페이지에서 -10 . . .
-			앞 페이지까지 출력된 limit * page -1 만큼 빼고 설정 --%> 
-			<c:forEach var="b" items="${boardList}"> <%-- 현재 페이지에 출력될 게시글 리스트로 for 문 --%>
+				<c:forEach var="m" items="${totalList}">
 				<tr>
-					<td> <%-- 번호 --%>
-						<c:out value="${num}"/> <%-- num 출력 --%>
-						<c:set var="num" value="${num-1}"/> <%-- num = num -1와 동일. 하나씩 줄여 나간다 --%>
+					<td>
+						<a href="info?id=${m.id}">${m.id}</a> 
 					</td>
-					<td> <%-- 제목 --%>
-						<div>
-							<%-- 답변글 제목앞에 여백 처리 부분 --%>
-							<c:if test="${b.board_re_lev > 0}"> 
-								<c:forEach var="a" begin="0" end="${b.board_re_lev * 2}" step="1">
-								<%-- 해당 객체가 답글인 경우 lev 만큼 공백 추가 lev 값만큼 for 문 --%>
-									&nbsp;
-								</c:forEach>
-								<img src="${pageContext.request.contextPath}/image/line.gif"> 
-								<%-- 댓글이라는 이미지 표시 --%>
-							</c:if>
-							
-							<a href="detail?num=${b.board_num}"> 
-							<%-- 클릭하면 board_num 을 인덱스로 게시글 불러오기 --%>
-								<c:if test="${b.board_subject.length() >= 20}"> 
-								<%-- 제목이 길 경우 축약 --%>
-									<c:out value="${b.board_subject.substring(0, 20)}..."/>
-								</c:if>
-								<c:if test="${b.board_subject.length() < 20}">
-									<c:out value="${b.board_subject}"/>
-								</c:if>
-							</a>[${b.cnt}] <%-- 해당 글의 댓글 수 표시 --%>
-						</div>
+					<td>
+						${m.name}
 					</td>
-					<td><div>${b.board_name}</div></td> <%-- 작성자 --%>
-					<td><div>${b.board_date}</div></td> <%-- 작성일 --%>
-					<td><div>${b.board_readCount}</div></td> <%-- 조회 수 링크 클릭 시 update 를 통해 올린다.--%>
+					<td><a href="delete?id="${m.id}">삭제</a></td>
 				</tr>
-			</c:forEach> <%-- 게시글 리스트 for문 끝 --%>
+			</c:forEach>
 			</tbody>
 		</table>
 		<%-- pagination --%>
-		<div class="center-block">
+		<div>
 			<ul class="pagination justify-content-center">
+			<c:if test="${page > 1}">
 				<li class="page-item">
-					<a ${page > 1 ? 'href=list?page=' += (page - 1) : ''} 
-						<%-- 
-							현재 페이지가 1보다 크면 page-1 하고 get 방식으로 list 요청하는 링크 추가
-							현재 페이지가 1보다 같거나 작으면 회색 & 링크 없음
-						 --%>
-						class="page-link ${page <= 1 ? 'gray' : ''}">
-						이전&nbsp;
-					</a>
+					<a href="list?page=${page -1}&search_field=${search_field}&search_word=${searc_word}" class="page-link">이전</a>&nbsp;
 				</li>
+			</c:if>
 				<c:forEach var="a" begin="${startPage}" end="${endPage}">
-				<%-- 해당 페이지의 페이지 그룹 시작(1, 11, 21 , . . .)부터 끝까지(10, 20, 30, . . . MaxPage) for 문 --%>
-					<li class="page-item ${a == page ? 'active' : '' }">
-					<%-- 해당 page 표시가 현재 page와 같으면 active 클래스 추가 --%>
-						<a ${a == page ? '' : 'href=list?page=' += a} class="page-link">${a}</a>
-					<%-- 해당 page 표시가 현재 page 와 같으면 링크 없음 아니면 해당 page 값으로 get 방식 list 요청하는 링크 추가 --%>
-					</li> 
+					<c:if test="${a == page}">
+					<li class="page-item active">
+						<a class="page-link">${a}</a>
+					</li>
+					</c:if>
+				<c:if test="${a != page}">
+					<c:url var="go" value="list">
+						<c:param name="page" value="${a}"/>
+						<c:param name="search_field" value="${search_field}"/>
+						<c:param name="search_word" value="${search_word}"/>
+					</c:url>
+					<li class="page-item">
+						<a href="${go}" class="page-link">${a}</a>
+					</li>
+				</c:if>
 				</c:forEach>
+				
+				<c:if test="${page < maxPage}">
+					<c:url var="next" value="list">
+						<c:param name="page" value="${page+1}"/>
+						<c:param name="search_field" value="${search_field}"/>
+						<c:param name="search_word" value="${search_word}"/>
+					</c:url>
 				<li class="page-item">
-					<a ${page < maxPage ? 'href=list?page=' += (page + 1) : ''} class="page-link ${page >= maxPage ? 'gray' : ''}">
-						&nbsp;다음</a>
-				<%-- 현재 페이지가 maxPage 보다 작으면 현재 페이지 +1 해서 get 방식으로 list 요청하는 링크 추가 아니면 회색, 링크 없음 --%>
+						<a href="${next}" class="page-link">&nbsp;다음</a>
 				</li>
+				</c:if> 
 			</ul>
 		</div>
-	</c:if> <%-- <c:if test="${listCount > 0}"> end --%>
-	
-	<%-- 게시글이 없는 경우 --%>
-	<c:if test="${listCount == 0}">
-		<h3 style="text-align:center">등록된 글이 없습니다.</h3>
+	</div>
 	</c:if>
 	
-	<button type="button" class="btn btn-info float-right">글 쓰 기</button>
-	</div> <%-- <div class='container'> end --%>
+	<%-- 회원이 없는 경우 --%>
+	<c:if test="${listCount == 0 && empty search_word}">
+		<h1>회원이 없습니다</h1>
+	</c:if>
+	<c:if test="${listCount == 0 && !empty search_word}">
+		<h1>검색 결과가 없습니다.</h1>
+	</c:if>
 </body>
 </html>
-
-<%--
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
---%>
