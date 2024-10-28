@@ -35,8 +35,8 @@ public class MemberUpdateProcessAction implements Action {
 			
 			// member 객체에 수정 폼에서 입력 받은 정보들을 저장한다.
 			// multipartRequest 객체를 사용하므로 그곳에서 데이터를 꺼내야 한다.
-			String id =  request.getParameter("id");
-			String pass =  request.getParameter("pass");
+			String id =  multi.getParameter("id");
+			String pass =  multi.getParameter("pass");
 			String name = multi.getParameter("name");
 			int age = Integer.parseInt(multi.getParameter("age"));
 			String gender = multi.getParameter("gender");

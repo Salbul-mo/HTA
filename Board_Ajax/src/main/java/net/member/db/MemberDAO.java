@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.*;
 import javax.naming.*;
 import javax.sql.*;
+import net.member.db.*;
 import com.google.gson.*;
 
 public class MemberDAO {
@@ -167,4 +168,88 @@ private DataSource ds;
 		
 		return is_success;
 	}
-}
+
+	public int getListCount() {
+		String sql = """
+					select count(*) from member
+					where id != 'admin'
+					""";
+		int result = 0;
+			
+		try (Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();) {
+				
+			while (rs.next()) {
+				result = rs.getInt(1);
+			}
+				
+		} catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("getListCount() 에러: " + se);
+		}
+			
+		return result;
+	}
+
+	public List<Member> getMemberList(int page, int limit) {
+			/*
+				page : 현재 페이지
+				limit : 페이지 당 출력 목록 수
+				board_re_ref desc, board_re_seq asc 에 의해 정렬한 것을
+				rownum 으로 잘라오는 쿼리문
+			 */
+			String sql = """
+					  	select *
+						from (select rownum as rnum, j.*
+								from (select *
+										from member
+										where id != 'admin'
+										order by id) j
+								where rownum <= ? )
+						where rnum >= ? and rnum <= ?																																											
+						""";
+			List<Member> list = new ArrayList<>();
+			
+			try (Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);) {
+				// 한 페이지 당 10개 씩 목록인 경우 		1  	2 	3 	4 . . . 10 페이지까지 rownum
+				int startRow = (page - 1) * limit + 1; //	1	11	21	31 . . 	91	
+				int endRow = startRow + limit - 1;	//		10	20	30	40	. . 100
+				
+					pstmt.setInt(1,endRow);
+					pstmt.setInt(2,startRow);
+					pstmt.setInt(3,endRow);
+					
+					try (ResultSet rs = pstmt.executeQuery();) {
+						
+						while (rs.next()) {
+							Member m = new Member();
+							m.setId(rs.getString("id"));
+							m.setPassword(rs.getString("password"));
+							m.setName(rs.getString("name"));
+							m.setAge(rs.getInt("age"));
+							m.setGender(rs.getString("gender"));
+							m.setEmail(rs.getString("email"));
+							list.add(m);
+						}
+					}
+				
+			} catch (SQLException se) {
+				se.printStackTrace();
+				System.out.println("getMemberList() 에러 " + se);
+			}
+			
+			return list;
+		}
+
+	public int getListCount(String string, String search_word) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public List<net.member.db.Member> getMemberList(String string, String search_word, int page, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	}
