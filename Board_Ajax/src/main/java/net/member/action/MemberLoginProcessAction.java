@@ -18,7 +18,7 @@ public class MemberLoginProcessAction implements Action {
 		HttpSession session = request.getSession();
 	
 		MemberDAO dao = new MemberDAO();
-		
+		System.out.println(id + password);
 		int result = dao.isId(id, password);
 		
 		System.out.println("결과는 " + result);

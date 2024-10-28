@@ -58,18 +58,18 @@ public class MemberFrontController extends HttpServlet {
 		case "/logout":
 			action = new MemberLogoutAction();
 			break;
+		case "/update":
+			action = new MemberUpdateAction();
+			break;
+		case "/updateProcess":
+			action = new MemberUpdateProcessAction();
+			break;
 	/*
 		case "/list.net":
 			action = new ListAction1();
 			break;
 		case "/info.net":
 			action = new InfoAction();
-			break;
-		case "/update.net":
-			action = new UpdateAction();
-			break;
-		case "/updateProcess.net":
-			action = new UpdateProcessAction();
 			break;
 		case "/delete.net":
 			action = new DeleteAction();

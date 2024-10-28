@@ -273,4 +273,173 @@ public class BoardDAO {
 		return is_success;
 	}
 
+	public void setSeqUpdate(Connection conn, int board_re_ref, int board_re_seq) throws SQLException {
+		String seq_update_sql = """
+								update board
+								set BOARD_RE_SEQ = BOARD_RE_SEQ + 1
+								where BOARD_RE_REF=? and BOARD_RE_SEQ > ?
+								""";
+		
+		try (PreparedStatement pstmt = conn.prepareStatement(seq_update_sql); ){
+			
+			pstmt.setInt(1, board_re_ref);
+			pstmt.setInt(2, board_re_seq);
+			pstmt.executeUpdate();
+		}
+	}
+
+	private int reply_insert(Connection conn, BoardBean boardData) throws SQLException {
+		
+		String max_sql = "(select nvl(max(board_num),0) +1 from board)";
+		int num = 0;
+		try (PreparedStatement pstmt = conn.prepareStatement(max_sql);) {
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					num = rs.getInt(1);
+				}
+			}
+		}
+		
+		
+		String reply_insert_sql = """
+				insert into board
+				(BOARD_NUM, BOARD_NAME, 
+						BOARD_PASS, BOARD_SUBJECT, 
+						BOARD_CONTENT, BOARD_FILE,
+						BOARD_RE_REF, BOARD_RE_LEV, 
+						BOARD_RE_SEQ, BOARD_READCOUNT)
+				values (?,?,?,?,?,?,?,?,?,?)
+				""";
+		
+		try (PreparedStatement pstmt = conn.prepareStatement(reply_insert_sql);) {
+			pstmt.setInt(1, num);
+			pstmt.setString(2, boardData.getBoard_name());
+			pstmt.setString(3, boardData.getBoard_pass());
+			pstmt.setString(4, boardData.getBoard_subject());
+			pstmt.setString(5, boardData.getBoard_content());
+			pstmt.setString(6, "");
+			pstmt.setInt(7, boardData.getBoard_re_ref()); // 원본 글 번호
+			pstmt.setInt(8, boardData.getBoard_re_lev() +1); // lev + 1
+			pstmt.setInt(9, boardData.getBoard_re_seq() +1); // seq + 1
+			pstmt.setInt(10, 0);
+			
+			pstmt.executeUpdate();
+		}
+		
+		return num; // 답변 board_num 반환
+	}
+	
+	public int boardReply(BoardBean boardData) {
+		
+		int result = 0;
+		
+		try(Connection conn = ds.getConnection();) {
+			
+			conn.setAutoCommit(false);
+			
+			try {
+				setSeqUpdate(conn, boardData.getBoard_re_ref(), boardData.getBoard_re_seq());
+				result = reply_insert(conn, boardData);
+				conn.commit();
+				
+			} catch (SQLException se) {
+				se.printStackTrace();
+				
+				if (conn != null) {
+					try {
+						conn.rollback();
+					} catch (SQLException se2) {
+						se2.printStackTrace();
+					}
+				}
+			}
+			
+			conn.setAutoCommit(true);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("boardReply() 에러 : " + ex);
+		}
+		
+		return result;
+	}
+
+	public boolean boardDelete(int num) {
+		
+		BoardBean deletData = null;
+		
+		String get_sql = """
+					select board_re_ref, board_re_lev, board_re_seq
+					from board
+					where board_num =?
+								""";
+		
+		try (Connection conn = ds.getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(get_sql);) {
+					
+			pstmt.setInt(1, num);
+					
+				try (ResultSet rs = pstmt.executeQuery()) {
+					if (rs.next()) {
+						deletData = new BoardBean();
+						deletData.setBoard_re_ref(rs.getInt(1));
+						deletData.setBoard_re_lev(rs.getInt(2));
+						deletData.setBoard_re_seq(rs.getInt(3));
+					}
+				}
+					
+			} catch (SQLException se) {
+				se.printStackTrace();
+				System.out.println("삭제 정보 조회 실패 " + se);
+			}
+		
+		if (deletData == null) {
+			return false;
+		}
+		
+		boolean is_success = false;
+		
+		String delete_sql = """
+							delete board
+							where BOARD_RE_REF = ?
+							and BOARD_RE_LEV >= ?
+							and BOARD_RE_SEQ >= ?
+							and BOARD_RE_SEQ <= (
+												 nvl((select min(BOARD_RE_SEQ) -1 
+												 from board
+												 where BOARD_RE_REF = ?
+												 and BOARD_RE_LEV = ?
+								 				 and BOARD_RE_SEQ > ? )
+												 ,
+												 (select max(BOARD_RE_SEQ) 
+							 					 from board 
+									 			 where BOARD_RE_REF = ?))
+									 			 )
+							""";
+		// 같은 레벨의 글 중 자신보다 큰 seq 의 최소값에서 1을 빼면 자기에게 달린 글의 seq 중 최대값이 된다.
+		// 없으면 같은 ref 중 가장 큰 seq 값으로 한다.
+		try (Connection conn = ds.getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(delete_sql);) {
+			
+			pstmt.setInt(1, deletData.getBoard_re_ref());
+			pstmt.setInt(2, deletData.getBoard_re_lev());
+			pstmt.setInt(3, deletData.getBoard_re_seq());
+			pstmt.setInt(4, deletData.getBoard_re_ref());
+			pstmt.setInt(5, deletData.getBoard_re_lev());
+			pstmt.setInt(6, deletData.getBoard_re_seq());
+			pstmt.setInt(7, deletData.getBoard_re_ref());
+			
+			int result = pstmt.executeUpdate();
+			
+			if (result > 0) {
+				is_success = true;
+			}
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("삭제에 실패했습니다." + se);
+		}
+		
+		return is_success;
+	}
+
 }

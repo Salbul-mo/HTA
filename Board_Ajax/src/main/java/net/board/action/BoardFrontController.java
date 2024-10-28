@@ -48,6 +48,15 @@ public class BoardFrontController extends HttpServlet {
 			case "/modifyProcess":
 				action = new BoardModifyProcessAction();
 				break;
+			case "/reply":
+				action = new BoardReplyAction();
+				break;
+			case "/replyProcess":
+				action = new BoardReplyProcessAction();
+				break;
+			case "/down":
+				action = new BoardFileDownAction();
+				break;
 				
 			default :
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error404.jsp");

@@ -14,6 +14,8 @@ create table member(
 	PRIMARY KEY(id)
 );
 
+select * from member;
+
 insert into member
 (id, password, name, age, gender, email)
 values ('admin', '1234', 'admin', 30, '남', 'hta@hta.com');

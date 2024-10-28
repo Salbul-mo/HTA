@@ -101,5 +101,70 @@ private DataSource ds;
 		return result;
 		
 	}
+	
+	public Member getMember(String id) {
+		
+		String member_sql = """
+							select * 
+							from member
+							where id=?
+							""";
+		Member mem = null;
+		
+		try(Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(member_sql);) {
+			
+			pstmt.setString(1, id);
+			
+			try(ResultSet rs = pstmt.executeQuery();) {
+				
+				if(rs.next()) {
+					mem = new Member();
+					
+					mem.setId(rs.getString("id"));
+					mem.setPassword(rs.getString("password"));
+					mem.setName(rs.getString("name"));
+					mem.setAge(rs.getInt("age"));
+					mem.setGender(rs.getString("gender"));
+					mem.setEmail(rs.getString("email"));
+					mem.setMemberfile(rs.getString("memberfile"));
+				}
+			}
+		} catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("getMember() 에러 " + se);
+		}
+		return mem;
+	}
 
+	public boolean updateMember(Member mem) {
+
+		String update_sql = """	
+							update member
+							set name=?, age=?, email=?, memberfile=?
+							where id=?
+							""";
+		boolean is_success = false;
+		
+		try (Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(update_sql);) {
+			
+			pstmt.setString(1, mem.getName());
+			pstmt.setInt(2, mem.getAge());
+			pstmt.setString(3, mem.getEmail());
+			pstmt.setString(4, mem.getMemberfile());
+			pstmt.setString(5, mem.getId());
+			
+			if (pstmt.executeUpdate() > 0) {
+				is_success = true;
+			}
+			
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("updateMember() 에러" + se);
+		}
+		
+		return is_success;
+	}
 }
