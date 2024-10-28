@@ -44,6 +44,12 @@ public class MemberUpdateProcessAction implements Action {
 			// 시스템 상에 업로드된 실제 파일명을 얻어온다.
 			String memberfile = multi.getFilesystemName("memberfile"); 
 			
+			if (memberfile != null) {
+				mem.setMemberfile(memberfile);
+			} else {
+				mem.setMemberfile(multi.getParameter("check"));
+			}
+			
 			mem.setId(id);
 			mem.setPassword(pass);
 			mem.setName(name);
