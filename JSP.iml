@@ -45,6 +45,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/JSP">
       <sourceFolder url="file://$MODULE_DIR$/JSP/src/main/java" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/JSP" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />

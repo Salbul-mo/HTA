@@ -1,12 +1,17 @@
 package net.board.action;
 
-import java.io.*;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import net.common.action.*;
-import net.board.db.*;
-import com.oreilly.servlet.*;
-import com.oreilly.servlet.multipart.*;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import net.board.db.BoardBean;
+import net.board.db.BoardDAO;
+import net.common.action.Action;
+import net.common.action.ActionForward;
+
+import java.io.IOException;
 
 public class BoardAddAction implements Action {
 

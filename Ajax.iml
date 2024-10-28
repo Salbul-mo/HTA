@@ -25,6 +25,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/Ajax">
       <sourceFolder url="file://$MODULE_DIR$/Ajax/src/main/java" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/Ajax" />
     </content>
     <orderEntry type="jdk" jdkName="JavaSE-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -25,6 +25,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/JSP_Template">
       <sourceFolder url="file://$MODULE_DIR$/JSP_Template/src/main/java" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/JSP_Template" />
     </content>
     <orderEntry type="jdk" jdkName="JavaSE-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />

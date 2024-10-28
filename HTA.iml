@@ -3,7 +3,10 @@
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/bin" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/HTA_Eclipse" />
+      <excludeFolder url="file://$MODULE_DIR$/JavaScript" />
+    </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
