@@ -1,10 +1,9 @@
 package net.filter.action;
 
-import java.io.*;
 import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import net.common.action.*;
-import net.template.db.*;
+
+import java.io.IOException;
+//import net.template.db.*;
 
 /*
  	1. 필터란 
