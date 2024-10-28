@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/HTA_Eclipse/Java/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/HTA_Eclipse/Java">
+      <sourceFolder url="file://$MODULE_DIR$/HTA_Eclipse/Java/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/HTA_Eclipse/Java/src/ex04_02_local_variable_init_error" />
+      <excludeFolder url="file://$MODULE_DIR$/HTA_Eclipse/Java/src/ex08_06_final_class_error" />
+      <excludeFolder url="file://$MODULE_DIR$/HTA_Eclipse/Java/src/ex08_07_final_method_error" />
+      <excludeFolder url="file://$MODULE_DIR$/HTA_Eclipse/Java/src/ex09_02_null" />
+      <excludeFolder url="file://$MODULE_DIR$/HTA_Eclipse/Java/src/personal" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="inheritedJdk" />
+  </component>
+</module>
