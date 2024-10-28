@@ -58,26 +58,24 @@ public class MemberFrontController extends HttpServlet {
 		case "/logout":
 			action = new MemberLogoutAction();
 			break;
-	/*
-		case "/list.net":
-			action = new ListAction1();
+		case "/update":
+			action = new MemberUpdateAction();
 			break;
-		case "/info.net":
-			action = new InfoAction();
+		case "/updateProcess":
+			action = new MemberUpdateProcessAction();
 			break;
-		case "/update.net":
-			action = new UpdateAction();
+		case "/list":
+			action = new MemberSearchAction();
 			break;
-		case "/updateProcess.net":
-			action = new UpdateProcessAction();
+		case "/info":
+			action = new MemberInfoAction();
 			break;
-		case "/delete.net":
-			action = new DeleteAction();
+		case "/delete":
+			action = new MemberDeleteAction();
 			break;
-		case "/forbidden.net":
+		case "/forbidden":
 			action = new ForbiddenAction();
 			break;
-	*/
 		default :
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error404.jsp");
 			dispatcher.forward(request, response);

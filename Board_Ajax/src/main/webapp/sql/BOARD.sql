@@ -60,6 +60,9 @@ from board left outer join (select comment_board_num, count(*) cnt
 on board_num = comment_board_num
 order by board_re_ref desc, board_re_seq asc;
 
+delete board where board_re_seq > 5;
+
+
 -- 4. 인라인 뷰를 이용한 쿼리문 작성
 select *
 from (select rownum as rnum, j.*
