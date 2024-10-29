@@ -21,8 +21,9 @@ delete comm;
 
 
 
-
-
-
-
+select comm.* , member.memberfile
+					from comm natural join member
+					using id
+					where comment_board_num = 1
+					order by comment_re_ref asc, comment_re_seq asc;
 

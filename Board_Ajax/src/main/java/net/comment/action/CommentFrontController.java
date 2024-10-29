@@ -1,16 +1,18 @@
-package net.board.action;
+package net.comment.action;
 
 import java.io.*;
+import java.util.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.WebServlet;
 import net.common.action.*;
 
-@WebServlet("/boards/*")
-public class BoardFrontController extends HttpServlet {
+@WebServlet("/comments/*")
+public class CommentFrontController extends HttpServlet {
 
-	private static final long serialVersionUID = 223039393188477748L;
 	
+	private static final long serialVersionUID = 77927715160639744L;
+
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String RequestURI = request.getRequestURI();
@@ -19,44 +21,28 @@ public class BoardFrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		System.out.println("contextPath = " + contextPath);
 		
-		String command = RequestURI.substring(contextPath.length() + "/boards".length());
+		String command = RequestURI.substring(contextPath.length() + "/comments".length());
 		System.out.println("command = " + command);
 		
 		ActionForward forward = null;
 		Action action = null;
 		
 		switch (command) {
+			case "/add" : 
+				action = new CommentAddAction();
+				break;
 			case "/list" :
-				action = new BoardListAction();
+				action = new CommentListAction();
 				break;
-			case "/write":
-				action = new BoardWriteAction();
+			case "/delete" :
+				action = new CommentDeleteAction();
 				break;
-			case "/add":
-				action = new BoardAddAction();
+			case "/reply" :
+				action = new CommentReplyAction();
 				break;
-			case "/detail":
-				action = new BoardDetailAction();
+			case "/update" :
+				action = new CommentUpdateAction();
 				break;
-			case "/modify":
-				action = new BoardModifyAction();	
-				break;
-			case "/delete":
-				action = new BoardDeleteAction();
-				break;
-			case "/modifyProcess":
-				action = new BoardModifyProcessAction();
-				break;
-			case "/reply":
-				action = new BoardReplyAction();
-				break;
-			case "/replyProcess":
-				action = new BoardReplyProcessAction();
-				break;
-			case "/down":
-				action = new BoardFileDownAction();
-				break;
-				
 			default :
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error404.jsp");
 				dispatcher.forward(request, response);

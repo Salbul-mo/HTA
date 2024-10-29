@@ -112,7 +112,7 @@ public class BoardListAction implements Action{
 			
 			// List => JsonElement
 			JsonElement je = new Gson().toJsonTree(boardList);
-			System.out.println("baordList = " + je.toString());
+			System.out.println("boardList = " + je.toString());
 			json.add("boardList", je);
 			
 			response.setContentType("application/json;charset=utf-8");

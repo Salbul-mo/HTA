@@ -4,9 +4,6 @@ import java.io.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import net.common.action.*;
-import net.board.db.*;
-import com.oreilly.servlet.*;
-import com.oreilly.servlet.multipart.*;
 
 public class BoardFileDownAction implements Action {
 
