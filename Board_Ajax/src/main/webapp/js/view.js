@@ -1,5 +1,5 @@
 let option = 1; // 등록순 최신순을 수정, 삭제, 추가 후에도 유지되도록 하기 위한 변수로 사용된다.
-
+let reply_isRun = false;
 function getList(state) {
 	console.log(state);
 	option = state;
@@ -37,8 +37,7 @@ function getList(state) {
 					? `../memberupload/${comment.memberfile}` : '../image/profile.png';
 					
 					let replyButton = (lev < 2)
-					? `<a href='javascript:replyform(${comment.num}), ${lev}, ${comment.comment_re_seq}, 
-					${comment.comment_re_ref})' class='comment-info-button'>답글쓰기</a>` : '';
+					? `<a href='javascript:replyform(${comment.num},${lev},${comment.comment_re_seq},${comment.comment_re_ref})' class='comment-info-button'>답글쓰기</a>` : '';
 					
 					// 로그인 한 사람이 댓글 작성자인 경우
 					let toolButtons = $("#loginid").val() == comment.id ? `
@@ -114,6 +113,63 @@ function updateForm(num) {
 	// 글자 수 표시
 	$num.find('.comment-write-area-count').text(`${content.length}/200`);	
 }
+
+function del(num) {
+	if (!confirm('정말 삭제하시갰습니까')) {
+		$('#comment-list-item-layer' + num).hide(); // '수정 삭제' 영역 숨기기
+		return;
+	}
+	
+	$.ajax({
+		url: '../comments/delete',
+		data: {num: num},
+		success: function(rdata) {
+			if (rdata == 1) {
+				getList(option);
+			}
+		}
+	});
+};
+
+function replyform(num, lev, seq, ref) {
+	
+	if (reply_isRun) {
+		return false;
+	}
+	
+	reply_isRun = true;
+	
+	// 수정 삭제 영역 선택 후 답글 쓰기를 클릭한 경우
+	$(".LayerMore").hide(); // 수정 삭제 영역 숨기기
+	
+	let $num = $('#' + num); // 댓글을 달 대상 객체
+	// 답글 폼 추가
+	$num.after(`<li class="comment-list-item comment-list-item--reply lev${lev}"></li>`);
+	
+	// 글쓰기 영역 복사
+	 let replyForm = $('.comment-list+.comment-write').clone();
+	 
+	 // 복사할 폼을 답글 영역에 추가
+	 let $num_next = $num.next().html(replyForm);
+	 
+	 // 답글 폼의 <textarea> 속성 placeholder 를 답글을 남겨보세요로 바꾼다
+	 $num_next.find('textarea').attr('placeholder', '답글을 남겨보세요');
+	 
+	 // 답글 폼의 '.btn-cancel' 을 보여주고 클래스 'reply-cancel' 을 추가한다.
+	 $num_next.find('.btn-cancel').show().addClass('reply-cancel');
+	 
+	 // 답글 폼의 '.btn-register' 에 클래스 reply 추가
+	 // 속성 'data-ref' 에 ref, 'data-lev' 에 lev, 'data-seq' 에 seq 값 설정
+	 // 등록을 답글 완료로 변경
+	 $num_next.find('.btn-register').addClass('reply')
+	 					.attr({'data-ref': ref, 'data-lev': lev, 'data-seq': seq})
+	 						.text('답글완료');
+	 // 원래 댓글 폼 보이지 않게
+	 $('body > div > div.comment-area > div.comment-write').hide();
+	 //$('.comment-area').off('click', '.comment-info-button',replyform).on('click','.comment-info-button',replyform);
+	 //$(".comment-list-item--reply").not(this).next().hide(); 
+	}
+
 
 $(function() {
 	
@@ -215,5 +271,56 @@ $(function() {
 		
 	});
 	
+	$('.comment-area').on('click', '.reply', function(){
+		const content = $(this).parent().parent().find('.comment-write-area-text').val();
+		if(!content) { // 내용없이 답글 완료 클릭한 경우
+			alert("답글을 입력하세요");
+			return;
+		}
+		
+		$.ajax({
+			type: 'post',
+			url: '../comments/reply',
+			data: {
+				id: $('#loginid').val(),
+				content: content,
+				comment_board_num: $('#comment_board_num').val(),
+				comment_re_lev: $(this).attr('data-lev'),
+				comment_re_ref: $(this).attr('data-ref'),
+				comment_re_seq: $(this).attr('data-seq')
+			},
+			success: function(rdata) {
+				if (rdata == 1) {
+					getList(option);
+				}
+			}
+		});
+		
+		// 답글 폼 보여주기
+		$('body > div > div.comment-area > div.comment-write').show();
+		reply_isRun = false;
+	});
 	
+	$('.comment-area').on('click', '.reply-cancel', function(){
+		$(this).parent().parent().parent().remove();
+		$('.comment-tool').show(); // 더보기 영역 다시 보이게
+		reply_isRun = false;
+		
+		// 댓글 폼 보여주기
+		$('body > div > div.comment-area > div.comment-write').show();
+	});
+	
+	
+	$('.comment-area').on('click', '.comment-info-button', function(event){
+		// 대댓글 쓰기 폼이 있는 상태에서 더보기를 클릭할 수 없도록 숨긴다.
+		$('.comment-tool').hide();
+		
+		// 대댓글 쓰기 폼의 갯수를 구한다.
+		const length = $('.comment-area .btn=register.reply').length;
+		if (length == 1) {
+			event.preventDefault();
+			// 대댓글 쓰기 폼이 있는 상태에서 다른 답글쓰기 버튼이 작동되지 않게 막는다.
+			// 또는 이벤트가 실행 중인 상태에서 중복 실행을 막기 위한 변수를 선언하여 변수의 상태를 바꿔가며 실행한다.
+		}
+	})
 });

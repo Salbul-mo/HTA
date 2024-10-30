@@ -24,7 +24,7 @@ public class ForbiddenFilter implements Filter {
 		
 		if(!id.equals("admin")) {
 			System.out.println("admin이 아닙니다.");
-			hprequest.getRequestDispatcher("forbidden.net").forward(hprequest,hpresponse);
+			hprequest.getRequestDispatcher("forbidden").forward(hprequest,hpresponse);
 			return; 
 		}
 		chain.doFilter(request, response);

@@ -164,6 +164,130 @@ public class CommentDAO {
 		return result;
 	}
 
+	public int commentDelete(int num) {
+		
+		int result = 0;
+		
+		String sql = "delete comm where num = ?";
+		try (Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			
+			pstmt.setInt(1,num);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("commentDelete() 에러 " + se);
+		}
+		
+		return result;
+	}
+
+	public int commentsReply(Comment co) {
+		int result = 0;
+		String reply_sql = """
+							insert into comm
+							(NUM, ID, 
+							CONTENT, REG_DATE, 
+							COMMENT_BOARD_NUM, COMMENT_RE_LEV, 
+							COMMENT_RE_SEQ, COMMENT_RE_REF)
+							values(
+							COM_SEQ.NEXTVAL, ?, 
+							?, SYSDATE,
+							?,?,
+							?,?)
+							""";
+		
+		try (Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(reply_sql);) {
+					
+			conn.setAutoCommit(false);
+			try {
+						
+				commentsUpdate(conn, co);
+						
+				pstmt.setString(1, co.getId());
+				pstmt.setString(2, co.getContent());
+				pstmt.setInt(3, co.getComment_board_num());
+				pstmt.setInt(4, co.getComment_re_lev() +1);
+				pstmt.setInt(5, co.getComment_re_seq() +1);
+				pstmt.setInt(6, co.getComment_re_ref());
+						
+				result = pstmt.executeUpdate();
+						
+				if (result == 1) {
+					conn.commit();
+					conn.setAutoCommit(true);
+				}
+		} catch (SQLException se) {
+				se.printStackTrace();
+				System.out.println("commentsReply() 에러 " + se);
+				if (conn != null) {
+					try {
+						conn.rollback();
+					} catch (SQLException se2) {
+						se2.printStackTrace();
+					}
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();;
+		}
+		
+		return result;
+	}
+
+	private void commentsUpdate(Connection conn, Comment co) throws SQLException {
+		
+		String update_sql = """
+							update comm
+							set comment_re_seq = comment_re_seq + 1
+							where comment_board_num = ?
+							and comment_re_seq > ?
+							""";
+		
+		try (PreparedStatement pstmt = conn.prepareStatement(update_sql);) {
+			
+			pstmt.setInt(1, co.getComment_board_num());
+			pstmt.setInt(2, co.getComment_re_seq());
+			
+			pstmt.executeUpdate();
+			
+		}
+	}
+
+	/*String get_sql = """
+						select *
+						from comm
+						where num = ?
+						""";
+		
+		try (Connection conn = 
+		
+		
+		
+		
+		
+		
+		String delete_sql = """
+							delete comm
+							where comment_re_ref = ?
+							and comment_re_lev >= ?
+							and comment_re_seq >= ?
+							and comment_re_seq <= nvl((select min(comment_re_seq) -1 
+				 										from comm
+				 										where comment_re_ref = ?
+				 										and comment_re_lev = ?
+				 										and comment_re_seq > ?
+				 										),
+				 										(select max(comment_re_seq)
+				 										from comm
+				 										where comment_re_ref = ?
+				 										)
+				 										)
+							""";
+	 */
 	/*
 	public boolean setReadCountUpdate(int board_num) {
 		String readCount_sql = """
@@ -190,42 +314,6 @@ public class CommentDAO {
 		return is_success;
 	}
 
-	public Comment getDetail(int board_num) {
-		String detail_sql = """
-							select * 
-							from board 
-							where BOARD_NUM=?
-							""";
-		
-		Comment b = null; // 오류 체크를 위해 일단 null 설정
-		
-		try (Connection conn = ds.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(detail_sql);){
-			pstmt.setInt(1, board_num);
-			
-			try (ResultSet rs = pstmt.executeQuery()){
-				while(rs.next()) {
-					b = new Comment();
-					b.setBoard_num(rs.getInt("BOARD_NUM"));
-					b.setBoard_name(rs.getString("BOARD_NAME"));
-					b.setBoard_subject(rs.getString("BOARD_SUBJECT"));
-					b.setBoard_content(rs.getString("BOARD_CONTENT"));
-					b.setBoard_file(rs.getString("BOARD_FILE"));
-					b.setBoard_re_ref(rs.getInt("BOARD_RE_REF"));
-					b.setBoard_re_lev(rs.getInt("BOARD_RE_LEV"));
-					b.setBoard_re_seq(rs.getInt("BOARD_RE_SEQ"));
-					b.setBoard_readCount(rs.getInt("BOARD_READCOUNT"));
-					b.setBoard_date(rs.getString("BOARD_DATE"));
-				}
-			}
-			
-		} catch (SQLException se) {
-			se.printStackTrace();
-			System.out.println("getDetail() 에러 " + se);
-		}
-		
-		return b;
-	}
 
 	public boolean isBoardWriter(int num, String pass) {
 		

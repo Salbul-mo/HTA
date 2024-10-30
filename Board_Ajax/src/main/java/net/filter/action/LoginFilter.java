@@ -24,7 +24,7 @@ public class LoginFilter implements Filter {
 		
 		if(id == null) {
 			System.out.println("필터:null 입니다.");
-			hpresponse.sendRedirect("login.net");
+			hpresponse.sendRedirect("login");
 			return; // 다른 필터로 요청이 전달되지 않고 login.net로 이동한다.
 		}
 		// 요청의 필터링 결과를 다음 필터에 전달한다.
